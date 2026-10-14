@@ -1,0 +1,70 @@
+{
+  "items": [
+    {
+      "id": "labs-coworking",
+      "icon": "flask-conical",
+      "title": "Labs & co-working",
+      "short": "Co-working desks and research labs on campus.",
+      "long": "Co-working space with offices and research labs in the main building of IISER Bhopal, with common office equipment and high-speed internet.",
+      "href": "/incubation/facilities/",
+      "_source": "legacy site (iice.iiserb.ac.in), downloaded 2026-10-12"
+    },
+    {
+      "id": "mentoring",
+      "icon": "users",
+      "title": "Mentoring",
+      "short": "Mentoring support for incubatees.",
+      "long": "Incubatees receive mentoring as they take a technology towards a product and a company.",
+      "href": "/about/mentors/",
+      "_source": "legacy site (iice.iiserb.ac.in), downloaded 2026-10-12"
+    },
+    {
+      "id": "funding-access",
+      "icon": "landmark",
+      "title": "Funding access",
+      "short": "Help with financial matters and funding.",
+      "long": "TODO_CONFIRM: Guidance on grants and other funding routes, drawn from the schemes IICE confirms it supports.",
+      "href": "/incubation/funding/",
+      "_status": "TODO_CONFIRM",
+      "_note": "Confirm which funding schemes and investor links IICE offers (SRD Q4). The legacy site says only that IICE helps with financial matters."
+    },
+    {
+      "id": "ip-legal-regulatory",
+      "icon": "scale",
+      "title": "IP, legal & regulatory",
+      "short": "Help with IP, legal and regulatory matters.",
+      "long": "Support with technology transfer and the protection of intellectual property, and with legal and regulatory questions.",
+      "href": "/incubation/services/",
+      "_status": "TODO_CONFIRM",
+      "_note": "The legacy site supports IP protection, technology transfer and legal help. Regulatory support is unconfirmed."
+    },
+    {
+      "id": "networking",
+      "icon": "network",
+      "title": "Networking",
+      "short": "Links with industry, academia and alumni.",
+      "long": "Introductions to industry, academia, alumni and the wider startup ecosystem around Bhopal.",
+      "href": "/about/partners/",
+      "_source": "legacy site (iice.iiserb.ac.in), downloaded 2026-10-12"
+    },
+    {
+      "id": "training-workshops",
+      "icon": "graduation-cap",
+      "title": "Training & workshops",
+      "short": "Events and workshops that build entrepreneurial skills.",
+      "long": "Workshops, talks and meet-ups that build entrepreneurial skills among students, faculty and founders.",
+      "href": "/events/",
+      "_source": "legacy site (iice.iiserb.ac.in), downloaded 2026-10-12"
+    },
+    {
+      "id": "birac-edge",
+      "icon": "dna",
+      "title": "BIRAC Edge",
+      "short": "TODO_CONFIRM: Support through the BIRAC EDGE scheme.",
+      "long": "TODO_CONFIRM: How the BIRAC EDGE scheme works with IICE, who can apply and what support it offers.",
+      "href": "/birac-edge/",
+      "_status": "TODO_CONFIRM",
+      "_note": "The BIRAC EDGE scheme was announced at Industry–Academia Conclave 2.0 (8 Aug 2026). Programme details are not yet confirmed (SRD Q6)."
+    }
+  ]
+}

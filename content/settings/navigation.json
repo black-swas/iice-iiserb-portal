@@ -1,0 +1,178 @@
+{
+  "primary": [
+    {
+      "label": "About",
+      "groups": [
+        {
+          "title": "Who we are",
+          "links": [
+            {
+              "label": "Overview and story",
+              "href": "/about/"
+            },
+            {
+              "label": "Director's message",
+              "href": "/about/directors-message/"
+            },
+            {
+              "label": "Impact",
+              "href": "/about/impact/"
+            },
+            {
+              "label": "In the news",
+              "href": "/about/in-the-news/"
+            }
+          ]
+        },
+        {
+          "title": "People",
+          "links": [
+            {
+              "label": "Team and committees",
+              "href": "/about/team/"
+            },
+            {
+              "label": "Mentors",
+              "href": "/about/mentors/"
+            },
+            {
+              "label": "Innovation Club",
+              "href": "/about/innovation-club/"
+            }
+          ]
+        },
+        {
+          "title": "Governance and partners",
+          "links": [
+            {
+              "label": "Support and funding",
+              "href": "/about/support-funding/"
+            },
+            {
+              "label": "Partners",
+              "href": "/about/partners/"
+            },
+            {
+              "label": "Documents",
+              "href": "/documents/"
+            },
+            {
+              "label": "Ecosystem",
+              "href": "/about/ecosystem/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Incubation",
+      "groups": [
+        {
+          "title": "Journey",
+          "links": [
+            {
+              "label": "Catalyse",
+              "href": "/incubation/catalyse/"
+            },
+            {
+              "label": "Culture",
+              "href": "/incubation/culture/"
+            },
+            {
+              "label": "Commercialise",
+              "href": "/incubation/commercialise/"
+            },
+            {
+              "label": "Ways to work with us",
+              "href": "/incubation/#tracks"
+            }
+          ]
+        },
+        {
+          "title": "Get started",
+          "links": [
+            {
+              "label": "Apply",
+              "href": "/apply/"
+            },
+            {
+              "label": "Open calls",
+              "href": "/opportunities/"
+            },
+            {
+              "label": "Funding schemes",
+              "href": "/incubation/funding/"
+            },
+            {
+              "label": "Eligibility and FAQ",
+              "href": "/apply/#eligibility"
+            }
+          ]
+        },
+        {
+          "title": "Resources",
+          "links": [
+            {
+              "label": "Facilities",
+              "href": "/incubation/facilities/"
+            },
+            {
+              "label": "Instruments",
+              "href": "/incubation/facilities/instruments/"
+            },
+            {
+              "label": "Services from IISER Bhopal",
+              "href": "/incubation/services/"
+            },
+            {
+              "label": "Student Innovators Program",
+              "href": "/incubation/student-innovators/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Startups",
+      "href": "/startups/"
+    },
+    {
+      "label": "Events and news",
+      "groups": [
+        {
+          "title": "Events and news",
+          "links": [
+            {
+              "label": "Upcoming events",
+              "href": "/events/"
+            },
+            {
+              "label": "Past events",
+              "href": "/events/?view=past"
+            },
+            {
+              "label": "News",
+              "href": "/news/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "BIRAC Edge",
+      "href": "/birac-edge/"
+    },
+    {
+      "label": "Careers",
+      "href": "/careers/"
+    },
+    {
+      "label": "Contact",
+      "href": "/contact/"
+    }
+  ],
+  "cta": {
+    "label": "Apply for Incubation",
+    "href": "/apply/"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "items": [
+    {
+      "id": "plabeltech",
+      "badge": "Incubated",
+      "title": "Plabeltech",
+      "description": "Functional smart labelling and sustainable packaging materials for supply-chain traceability.",
+      "href": "/startups/plabeltech/",
+      "startupSlug": "plabeltech"
+    },
+    {
+      "id": "intisen-technology",
+      "badge": "Incubated",
+      "title": "Intisen Technology",
+      "description": "Intelligent sensor networks and embedded IoT instrumentation for industrial and environmental monitoring.",
+      "href": "/startups/intisen-technology/",
+      "startupSlug": "intisen-technology"
+    },
+    {
+      "id": "adit-bioscience",
+      "badge": "Incubated",
+      "title": "Adit Bioscience",
+      "description": "Translational bioscience venture developing diagnostic and life-science solutions at IISER Bhopal.",
+      "href": "/startups/adit-bioscience/",
+      "startupSlug": "adit-bioscience"
+    },
+    {
+      "id": "powernet-technology",
+      "badge": "Incubated",
+      "title": "Powernet Technology",
+      "description": "Power electronics, smart energy management, and grid-monitoring systems.",
+      "href": "/startups/powernet-technology/",
+      "startupSlug": "powernet-technology"
+    },
+    {
+      "id": "richnex-skinscience-laboratory",
+      "badge": "Incubated",
+      "title": "Richnex Skinscience Laboratory",
+      "description": "Evidence-based dermatological formulations and bioactive skin-science research.",
+      "href": "/startups/richnex-skinscience-laboratory/",
+      "startupSlug": "richnex-skinscience-laboratory"
+    },
+    {
+      "id": "konarq-technologies",
+      "badge": "Incubated",
+      "title": "Konarq Technologies",
+      "description": "Clean-energy engineering and sustainable technology solutions for industrial and rural infrastructure.",
+      "href": "/startups/konarq-technologies/",
+      "startupSlug": "konarq-technologies"
+    }
+  ]
+}

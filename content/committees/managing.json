@@ -1,0 +1,45 @@
+{
+  "_status": "TODO_CONFIRM",
+  "_note": "Roster copied from the legacy site; verify current membership. The legacy spelling of Treasurer was corrected.",
+  "_source": "legacy site (iice.iiserb.ac.in), downloaded 2026-10-12",
+  "slug": "managing",
+  "name": "Managing Committee",
+  "asOf": null,
+  "members": [
+    {
+      "personSlug": "gobardhan-das",
+      "committeeRole": "President",
+      "order": 1
+    },
+    {
+      "personSlug": "deepak-chopra",
+      "committeeRole": "Vice President",
+      "order": 2
+    },
+    {
+      "personSlug": "abhijit-patra",
+      "committeeRole": "Secretary",
+      "order": 3
+    },
+    {
+      "personSlug": "kumar-gaurav",
+      "committeeRole": "Joint Secretary",
+      "order": 4
+    },
+    {
+      "personSlug": "gaurav-awasthi",
+      "committeeRole": "Treasurer",
+      "order": 5
+    },
+    {
+      "personSlug": "k-v-satya-murty",
+      "committeeRole": "Member",
+      "order": 6
+    },
+    {
+      "personSlug": "jeet-kaliya",
+      "committeeRole": "Member",
+      "order": 7
+    }
+  ]
+}

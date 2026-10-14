@@ -1,0 +1,15 @@
+{
+  "_status": "TODO_CONFIRM",
+  "_note": "The legacy key functions say IICE 'facilitates technology transfer and protection of intellectual property'. Who can use it, turnaround and how to engage are for IICE to supply (SRD FR-SERV-1).",
+  "_source": "legacy site (iice.iiserb.ac.in), downloaded 2026-10-12",
+  "slug": "ip-technology-transfer",
+  "name": "IP & technology transfer",
+  "kind": "ip-tech-transfer",
+  "summary": "TODO_CONFIRM: Support with protecting intellectual property and with transferring technology from IISER Bhopal.",
+  "whoCanUse": [
+    "TODO_CONFIRM: IISER Bhopal faculty, students and incubated startups"
+  ],
+  "turnaround": null,
+  "howToEngage": "TODO_CONFIRM: Write to the IICE team to discuss your technology.",
+  "lastReviewed": null
+}

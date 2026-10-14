@@ -1,0 +1,76 @@
+{
+  "items": [
+    {
+      "kind": "manual",
+      "id": "incubation-space",
+      "label": "Dedicated Incubation & Lab Space",
+      "value": 10000,
+      "unit": "sqft",
+      "plus": true,
+      "asOf": "2026-10-12",
+      "source": "IICE Official Infrastructure Record, Main Building, IISER Bhopal",
+      "order": 1,
+      "showOnHome": true
+    },
+    {
+      "kind": "manual",
+      "id": "startups-incubated",
+      "label": "Incubated Startups & Ventures",
+      "value": 14,
+      "unit": "count",
+      "plus": false,
+      "asOf": "2026-10-12",
+      "source": "IICE Startup Portfolio Registry, IISER Bhopal",
+      "order": 2,
+      "showOnHome": true
+    },
+    {
+      "kind": "manual",
+      "id": "events-held",
+      "label": "National Conclaves & ESDP Programmes",
+      "value": 9,
+      "unit": "count",
+      "plus": true,
+      "asOf": "2026-10-12",
+      "source": "IICE Activities & MSME/BIRAC Programme Archive",
+      "order": 3,
+      "showOnHome": true
+    },
+    {
+      "kind": "manual",
+      "id": "campus-facilities",
+      "label": "Shared Labs, CIF & Support Facilities",
+      "value": 12,
+      "unit": "count",
+      "plus": false,
+      "asOf": "2026-10-12",
+      "source": "IICE & Central Instrumentation Facility (CIF) Inventory",
+      "order": 4,
+      "showOnHome": true
+    },
+    {
+      "kind": "manual",
+      "id": "thrust-areas",
+      "label": "Core Deep-Tech Thrust Domains",
+      "value": 5,
+      "unit": "count",
+      "plus": false,
+      "asOf": "2026-10-12",
+      "source": "IICE Incubation Policy Mandate, DST NIDHI-TBI",
+      "order": 5,
+      "showOnHome": true
+    },
+    {
+      "kind": "manual",
+      "id": "governance-committees",
+      "label": "Statutory & Evaluation Committees",
+      "value": 4,
+      "unit": "count",
+      "plus": false,
+      "asOf": "2026-10-12",
+      "source": "IICE Governance Charter, IISER Bhopal",
+      "order": 6,
+      "showOnHome": true
+    }
+  ]
+}

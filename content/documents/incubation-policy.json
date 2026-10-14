@@ -1,0 +1,11 @@
+{
+  "_status": "TODO_CONFIRM",
+  "_note": "PDF to be supplied by IICE. The legacy file was 'IICE Incubation Policy (IICE TBI IISERB)-3-22.pdf'; rename it without spaces or brackets.",
+  "slug": "incubation-policy",
+  "title": "IICE Incubation Policy",
+  "category": "policy",
+  "date": null,
+  "file": "documents/incubation-policy.pdf",
+  "summary": "The policy and procedure manual for incubation at IICE.",
+  "language": "en"
+}

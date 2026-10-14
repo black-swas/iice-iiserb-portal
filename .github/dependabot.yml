@@ -1,0 +1,25 @@
+# Weekly dependency updates (TRD §14). Exact versions are pinned on purpose (`.npmrc` has save-exact), so each update is a
+# reviewed pull request, not a surprise. TypeScript and ESLint major versions are held back: the lint plugins that
+# `eslint-config-next` bundles do not support them yet, and bumping one breaks `npm run lint`. Check
+# `npm view typescript-eslint peerDependencies` before lifting either rule.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      minor-and-patch:
+        update-types: [minor, patch]
+    ignore:
+      - dependency-name: typescript
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]
+      - dependency-name: eslint
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

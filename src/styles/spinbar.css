@@ -1,0 +1,114 @@
+/*
+ * Institutional Portfolio Showcase Cards (replaces tilted spinbar cards).
+ */
+@layer components {
+  .spinbar {
+    width: 100%;
+  }
+
+  .spin-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    max-width: var(--container-wide);
+    list-style: none;
+  }
+  @media (min-width: 40rem) {
+    .spin-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 64rem) {
+    .spin-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .spin-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 13.5rem;
+    padding: 1.5rem;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-top: 4px solid var(--color-primary-700);
+    border-radius: var(--radius-card);
+    background: var(--color-bg);
+    color: var(--color-ink);
+    text-decoration: none;
+    box-shadow: var(--elevation-1);
+    transition: box-shadow var(--duration-ui), border-color var(--duration-ui);
+  }
+  .spin-card:hover {
+    border-color: var(--color-primary-600);
+    box-shadow: var(--elevation-2);
+  }
+  .spin-card__media,
+  .spin-card__text,
+  .spin-card__mark,
+  .spin-card__line {
+    display: none;
+  }
+  .spin-card__badge {
+    display: inline-block;
+    align-self: flex-start;
+    padding: 0.2rem 0.6rem;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-pill);
+    background: var(--color-surface);
+    color: var(--color-primary-700);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .spin-card__index {
+    position: absolute;
+    top: 1.5rem;
+    right: 3.25rem;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+  }
+  .spin-card__arrow {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    background: var(--color-surface);
+    color: var(--color-primary-700);
+  }
+  .spin-card__arrow svg {
+    width: 1rem;
+    height: 1rem;
+  }
+  .spin-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+  }
+  .spin-card__title {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--color-primary-700);
+  }
+  .spin-card__desc {
+    color: var(--color-muted);
+    font-size: var(--text-small);
+    line-height: 1.5;
+  }
+}

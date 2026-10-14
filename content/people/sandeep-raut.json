@@ -1,0 +1,14 @@
+{
+  "_status": "TODO_CONFIRM",
+  "_note": "Verify current roster (SRD L10, Q1–Q2). The Team page lists him as CEO, but 2026 event pages name Dr. Preeti Chandurkar as Deputy CEO and Mr. Aman Sinha as Project Incubation Manager, and neither is on the Team page.",
+  "_source": "legacy site (iice.iiserb.ac.in), downloaded 2026-10-12",
+  "slug": "sandeep-raut",
+  "name": "Sandeep Raut",
+  "honorific": "Dr.",
+  "team": {
+    "role": "CEO",
+    "order": 2
+  },
+  "email": "ceo_iice@iiserb.ac.in",
+  "phone": "+91 755 269 2387"
+}

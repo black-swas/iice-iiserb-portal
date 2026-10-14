@@ -1,0 +1,40 @@
+{
+  "_status": "TODO_CONFIRM",
+  "_note": "Roster copied from the legacy site; verify current membership.",
+  "_source": "legacy site (iice.iiserb.ac.in), downloaded 2026-10-12",
+  "slug": "executive",
+  "name": "Executive Committee",
+  "asOf": null,
+  "members": [
+    {
+      "personSlug": "abhijit-patra",
+      "committeeRole": "Convener",
+      "order": 1
+    },
+    {
+      "personSlug": "gaurav-awasthi",
+      "committeeRole": "Member Secretary",
+      "order": 2
+    },
+    {
+      "personSlug": "k-v-adarsh",
+      "committeeRole": "Member",
+      "order": 3
+    },
+    {
+      "personSlug": "deepak-chopra",
+      "committeeRole": "Member",
+      "order": 4
+    },
+    {
+      "personSlug": "aditya-sankar-medury",
+      "committeeRole": "Member",
+      "order": 5
+    },
+    {
+      "personSlug": "ajit-chande",
+      "committeeRole": "Member",
+      "order": 6
+    }
+  ]
+}
