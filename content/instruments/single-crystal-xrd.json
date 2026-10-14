@@ -1,0 +1,48 @@
+{
+  "_source": "IISER Bhopal Central Instrumentation Facility (CIF) X-Ray Diffraction laboratory",
+  "slug": "single-crystal-xrd",
+  "name": "Single-Crystal & High-Resolution Powder X-Ray Diffractometer (SC-XRD / PXRD)",
+  "category": "analytical",
+  "make": "Bruker",
+  "model": "D8 Venture Dual-Source (Mo/Cu) Photon III & D8 Advance PXRD",
+  "specs": [
+    "Dual microfocus X-ray sources (Mo K-alpha and Cu K-alpha) with CMOS Photon III area detector",
+    "Oxford Cryostream low-temperature attachment (90 K to 400 K) for temperature-dependent phase transitions",
+    "Laue back-reflection orientation and Rietveld refinement software suite"
+  ],
+  "useCases": [
+    "Single-crystal crystallographic orientation, space-group determination, and defect analysis for quantum materials (Xtalsphere)",
+    "Polymorph screening and phase-purity verification of functional inorganic and pharmaceutical solids"
+  ],
+  "access": "via-cif",
+  "facilitySlug": "central-instrumentation-facility",
+  "status": "available",
+  "bookingNotes": "Crystal dimensions and air/moisture sensitivity must be indicated at the time of booking.",
+  "rateCard": [
+    {
+      "userCategory": "iiserb",
+      "rate": 400,
+      "unit": "run",
+      "gstIncluded": false
+    },
+    {
+      "userCategory": "incubatee",
+      "rate": 800,
+      "unit": "run",
+      "gstIncluded": false
+    },
+    {
+      "userCategory": "external-academic",
+      "rate": 1500,
+      "unit": "run",
+      "gstIncluded": false
+    },
+    {
+      "userCategory": "industry",
+      "rate": 3500,
+      "unit": "run",
+      "gstIncluded": false
+    }
+  ],
+  "lastReviewed": "2026-10-12"
+}

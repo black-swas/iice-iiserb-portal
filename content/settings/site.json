@@ -1,0 +1,237 @@
+{
+  "_status": "TODO_CONFIRM",
+  "_note": "Still to be supplied by IICE: logo files, social profile URLs, map coordinates, office hours, Grievance Officer, the NSTEDB website, and the contact channels for partnerships, facilities and media (SRD \u00a78.3).",
+  "_source": "requirements.txt \u00a72; legacy site (iice.iiserb.ac.in), downloaded 2026-10-12",
+  "name": "Innovation and Incubation Centre for Entrepreneurship",
+  "shortName": "IICE",
+  "hostInstitute": {
+    "name": "Indian Institute of Science Education and Research Bhopal",
+    "url": "https://www.iiserb.ac.in"
+  },
+  "coBranding": [
+    {
+      "name": "Department of Science and Technology (DST), Government of India",
+      "shortName": "DST",
+      "url": "https://dst.gov.in"
+    },
+    {
+      "name": "NSTEDB Division, Department of Science and Technology",
+      "shortName": "NSTEDB"
+    }
+  ],
+  "address": {
+    "lines": [
+      "2nd Floor, Main Building, IISER Bhopal",
+      "Bhauri, Bhopal Bypass Road"
+    ],
+    "city": "Bhopal",
+    "postalCode": "462066",
+    "region": "Madhya Pradesh",
+    "country": "IN"
+  },
+  "phones": [
+    {
+      "label": "IICE office",
+      "number": "+91 755 269 2384"
+    },
+    {
+      "label": "IICE office",
+      "number": "+91 755 269 2385"
+    },
+    {
+      "label": "IICE office",
+      "number": "+91 755 269 2386"
+    },
+    {
+      "label": "IICE office",
+      "number": "+91 755 269 2387"
+    }
+  ],
+  "emails": [
+    {
+      "label": "IICE",
+      "address": "iice@iiserb.ac.in"
+    },
+    {
+      "label": "IICE office",
+      "address": "office_iice@iiserb.ac.in"
+    }
+  ],
+  "incubationSupport": {
+    "phone": "+91 755 269 2384",
+    "email": "iice@iiserb.ac.in"
+  },
+  "contactChannels": [
+    {
+      "intent": "incubation",
+      "label": "Incubation support",
+      "email": "iice@iiserb.ac.in",
+      "phone": "+91 755 269 2384"
+    },
+    {
+      "intent": "general",
+      "label": "General enquiries",
+      "email": "office_iice@iiserb.ac.in"
+    }
+  ],
+  "socials": {},
+  "footerGroups": [
+    {
+      "title": "About",
+      "links": [
+        {
+          "label": "Overview",
+          "href": "/about/"
+        },
+        {
+          "label": "Impact",
+          "href": "/about/impact/"
+        },
+        {
+          "label": "Team and committees",
+          "href": "/about/team/"
+        },
+        {
+          "label": "Director's message",
+          "href": "/about/directors-message/"
+        },
+        {
+          "label": "Support and funding",
+          "href": "/about/support-funding/"
+        },
+        {
+          "label": "Documents",
+          "href": "/documents/"
+        },
+        {
+          "label": "In the news",
+          "href": "/about/in-the-news/"
+        }
+      ]
+    },
+    {
+      "title": "For startups",
+      "links": [
+        {
+          "label": "Apply for incubation",
+          "href": "/apply/"
+        },
+        {
+          "label": "Open calls",
+          "href": "/opportunities/"
+        },
+        {
+          "label": "Incubation journey",
+          "href": "/incubation/"
+        },
+        {
+          "label": "Funding schemes",
+          "href": "/incubation/funding/"
+        },
+        {
+          "label": "Facilities",
+          "href": "/incubation/facilities/"
+        },
+        {
+          "label": "Instruments",
+          "href": "/incubation/facilities/instruments/"
+        },
+        {
+          "label": "Book a facility",
+          "href": "/incubation/facilities/#booking"
+        },
+        {
+          "label": "Startup directory",
+          "href": "/startups/"
+        }
+      ]
+    },
+    {
+      "title": "Ecosystem",
+      "links": [
+        {
+          "label": "Mentors",
+          "href": "/about/mentors/"
+        },
+        {
+          "label": "Become a mentor",
+          "href": "/about/mentors/#become-a-mentor"
+        },
+        {
+          "label": "Partners",
+          "href": "/about/partners/"
+        },
+        {
+          "label": "Partner with us",
+          "href": "/about/partners/#partner-with-us"
+        },
+        {
+          "label": "Innovation Club",
+          "href": "/about/innovation-club/"
+        },
+        {
+          "label": "Events",
+          "href": "/events/"
+        },
+        {
+          "label": "News",
+          "href": "/news/"
+        },
+        {
+          "label": "News feed (RSS)",
+          "href": "/news/rss.xml"
+        }
+      ]
+    },
+    {
+      "title": "Useful links",
+      "links": [
+        {
+          "label": "IISER Bhopal",
+          "href": "https://www.iiserb.ac.in"
+        },
+        {
+          "label": "Department of Science and Technology",
+          "href": "https://dst.gov.in"
+        },
+        {
+          "label": "BIRAC",
+          "href": "https://birac.nic.in"
+        },
+        {
+          "label": "Careers",
+          "href": "/careers/"
+        },
+        {
+          "label": "Contact",
+          "href": "/contact/"
+        },
+        {
+          "label": "Sitemap",
+          "href": "/sitemap/"
+        },
+        {
+          "label": "Accessibility",
+          "href": "/accessibility/"
+        },
+        {
+          "label": "Privacy",
+          "href": "/privacy/"
+        },
+        {
+          "label": "Terms of use",
+          "href": "/terms/"
+        },
+        {
+          "label": "Hyperlink policy",
+          "href": "/hyperlink-policy/"
+        },
+        {
+          "label": "Screen reader access",
+          "href": "/screen-reader-access/"
+        }
+      ]
+    }
+  ],
+  "intakeStatusOpportunity": "rolling-incubation-intake"
+}

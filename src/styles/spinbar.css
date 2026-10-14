@@ -1,0 +1,165 @@
+/*
+ * Featured Portfolio Showcase Grid (SPEC §5 & GIGW 3.0 aligned):
+ * Clean, accessible 1 / 2 / 3 column venture showcase grid in both Light Mode and Dark Mode.
+ */
+
+@layer components {
+  .spin-section {
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-surface-2);
+  }
+  .spin-section__foot {
+    margin-top: 1.75rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .spin-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    max-width: var(--container-wide);
+    margin-inline: auto;
+    padding: 0 var(--gutter);
+    list-style: none;
+  }
+  @media (min-width: 40rem) {
+    .spin-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 64rem) {
+    .spin-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .spin-grid__item {
+    display: flex;
+  }
+
+  .spin-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 14.5rem;
+    padding: 1.35rem;
+    border: 1px solid var(--color-border);
+    border-top: 4px solid var(--color-primary-800);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    color: var(--color-ink);
+    text-decoration: none;
+    box-shadow: var(--shadow-sm);
+    transition:
+      border-color var(--duration-ui) var(--ease-out),
+      box-shadow var(--duration-ui) var(--ease-out),
+      transform var(--duration-ui) var(--ease-out);
+  }
+  .dark .spin-card {
+    border-top-color: var(--color-accent-400);
+  }
+  .spin-card:hover,
+  .spin-card:focus-visible {
+    border-color: var(--color-accent-600);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .spin-card__media {
+    display: none;
+  }
+
+  .spin-card__badge {
+    display: inline-flex;
+    align-self: flex-start;
+    max-width: calc(100% - 3.5rem);
+    padding: 0.2rem 0.55rem;
+    border-radius: 0.25rem;
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-border);
+    color: var(--color-accent-700);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .spin-card__index {
+    position: absolute;
+    top: 1.35rem;
+    right: 2.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--color-muted);
+  }
+
+  .spin-card__arrow {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.15rem;
+    display: inline-flex;
+    width: 1.35rem;
+    height: 1.35rem;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary-700);
+    transition: transform var(--duration-ui) var(--ease-out), color var(--duration-ui);
+  }
+  .dark .spin-card__arrow {
+    color: var(--color-accent-400);
+  }
+  .spin-card:hover .spin-card__arrow,
+  .spin-card:focus-visible .spin-card__arrow {
+    transform: translate(2px, -2px);
+    color: var(--color-accent-600);
+  }
+  .spin-card__arrow svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .spin-card__body {
+    margin-top: 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    flex: 1;
+  }
+
+  .spin-card__title {
+    font-family: var(--font-display);
+    font-size: 1.22rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--color-ink);
+  }
+
+  .spin-card__desc {
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--color-muted);
+  }
+
+  .spin-card__line {
+    margin-top: 1rem;
+    height: 2px;
+    width: 100%;
+    background: var(--color-border);
+    overflow: hidden;
+  }
+  .spin-card__fill {
+    display: block;
+    height: 100%;
+    width: 35%;
+    background: var(--color-accent-600);
+    transition: width var(--duration-ui) var(--ease-out);
+  }
+  .spin-card:hover .spin-card__fill,
+  .spin-card:focus-visible .spin-card__fill {
+    width: 100%;
+  }
+}

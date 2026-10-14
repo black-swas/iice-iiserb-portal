@@ -1,0 +1,52 @@
+{
+  "_source": "IISER Bhopal Central Instrumentation Facility (CIF) NMR specification",
+  "slug": "nmr-spectrometer-500mhz",
+  "name": "High-Field FT-NMR Spectrometer Suite (400 / 500 / 700 MHz)",
+  "category": "analytical",
+  "make": "Bruker",
+  "model": "Avance III HD 500 MHz & 700 MHz (CryoProbe)",
+  "specs": [
+    "Multinuclear 1H, 13C, 15N, 19F, and 31P solution-state and solid-state magic-angle spinning (MAS) probes",
+    "Variable-temperature control (-80 °C to +150 °C) and 2D/3D correlation experiments (COSY, HSQC, HMBC, NOESY)",
+    "High-sensitivity cryoprobe configuration for low-concentration biomolecular and bioconjugate characterization"
+  ],
+  "useCases": [
+    "Structural elucidation of synthetic small molecules, fluorescent probes (Luminojen), and protein bioconjugation reagents (Plabeltech)",
+    "Metabolomic profiling and purity verification for pharmaceutical and agro-chemical formulations"
+  ],
+  "access": "via-cif",
+  "facilitySlug": "central-instrumentation-facility",
+  "status": "available",
+  "bookingNotes": "Submit sample hazard declaration and solvent details through the IICE/CIF booking request form at least 48 hours in advance.",
+  "rateCard": [
+    {
+      "userCategory": "iiserb",
+      "rate": 250,
+      "unit": "hour",
+      "gstIncluded": false,
+      "minimumBilling": "1 hour"
+    },
+    {
+      "userCategory": "incubatee",
+      "rate": 500,
+      "unit": "hour",
+      "gstIncluded": false,
+      "minimumBilling": "1 hour"
+    },
+    {
+      "userCategory": "external-academic",
+      "rate": 800,
+      "unit": "hour",
+      "gstIncluded": false,
+      "minimumBilling": "1 hour"
+    },
+    {
+      "userCategory": "industry",
+      "rate": 2000,
+      "unit": "hour",
+      "gstIncluded": false,
+      "minimumBilling": "1 hour"
+    }
+  ],
+  "lastReviewed": "2026-10-12"
+}

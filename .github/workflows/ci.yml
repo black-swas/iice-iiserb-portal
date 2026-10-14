@@ -1,0 +1,90 @@
+name: CI
+
+# Every pull request and every push to main (TRD §13.1). The order is cheapest first, so a typo fails in seconds.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      # Lighthouse needs a canonical URL on the page's own origin to pass its SEO audit, so CI builds for the address
+      # `npm run lhci` serves on. The deployed site is built by deploy.yml with the real address.
+      NEXT_PUBLIC_SITE_URL: http://localhost:4175
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - name: Content is valid
+        run: npm run content:validate
+
+      - name: Form rules match the schemas
+        run: npm run form-rules -- --check
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Types
+        run: npm run typecheck
+
+      - name: Spelling
+        run: npm run spell
+
+      - name: Unit tests
+        run: npm run test
+
+      - name: No known serious vulnerabilities in what ships
+        run: npm audit --omit=dev --audit-level=high
+
+      - name: Build
+        run: npm run build
+
+      - name: Budgets (JS, CSS, third-party requests)
+        run: npm run size
+
+      - name: Internal links and anchors
+        run: npm run links
+
+      - name: HTML audit
+        run: npm run audit:html
+
+      - name: Install the browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Lighthouse (mobile)
+        run: npm run lhci
+
+      - name: End-to-end tests and axe (rebuilds the preview)
+        run: npm run test:e2e
+
+      - name: Placeholder report (informational)
+        if: always()
+        run: npm run todo:confirm > todo-report.txt
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reports
+          path: |
+            todo-report.txt
+            .lighthouseci/
+            playwright-report/
+            test-results/
+          if-no-files-found: ignore
+          retention-days: 14

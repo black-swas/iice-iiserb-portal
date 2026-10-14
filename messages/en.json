@@ -1,0 +1,1185 @@
+{
+  "site": {
+    "name": "IICE",
+    "fullName": "Innovation and Incubation Centre for Entrepreneurship",
+    "host": "IISER Bhopal",
+    "defaultTitle": "IICE, IISER Bhopal",
+    "titleTemplate": "%s · IICE, IISER Bhopal",
+    "description": "IICE is the DST-supported technology business incubator at IISER Bhopal, helping researchers, students and founders turn deep-tech ideas into companies.",
+    "ogAlt": "IICE, the technology business incubator at IISER Bhopal"
+  },
+  "a11y": {
+    "skipToContent": "Skip to main content",
+    "opensInNewTab": "(opens in new tab)"
+  },
+  "common": {
+    "home": "Home",
+    "breadcrumb": "Breadcrumb"
+  },
+  "pitchPill": {
+    "region": "Pitch your idea",
+    "label": "Pitch to Us",
+    "dismiss": "Dismiss the pitch prompt"
+  },
+  "images": {
+    "missing": "Image not processed yet. Run npm run images."
+  },
+  "spinbar": {
+    "previous": "Show the previous card",
+    "next": "Show the next card",
+    "showing": "Showing {current} of {total}",
+    "record": "The record",
+    "open": "Open",
+    "countLabel": "{title} ({count})"
+  },
+  "header": {
+    "home": "IICE, IISER Bhopal: home",
+    "supportedBy": "Supported by",
+    "primaryNav": "Main navigation",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "menuTitle": "Menu",
+    "sectionMenu": "{section} menu"
+  },
+  "utility": {
+    "announcements": "Announcements",
+    "pause": "Pause announcements",
+    "resume": "Resume announcements",
+    "search": "Search",
+    "searchLabel": "Search the site",
+    "shortcutMac": "⌘K",
+    "shortcutOther": "Ctrl K",
+    "startupPortal": "Startup Portal",
+    "social": "IICE on social media"
+  },
+  "theme": {
+    "system": "system",
+    "light": "light",
+    "dark": "dark",
+    "toggle": "Colour theme: {current}. Switch to {next}."
+  },
+  "intake": {
+    "label": "Application status",
+    "open": "Applications open · closes {date}",
+    "openEnded": "Applications open",
+    "rolling": "Rolling applications",
+    "upcoming": "Next intake opens {date}",
+    "tba": "Next intake: to be announced"
+  },
+  "footer": {
+    "label": "Footer",
+    "visit": "Visit us",
+    "contact": "Contact",
+    "phone": "Phone",
+    "email": "Email",
+    "officeHours": "Office hours",
+    "directions": "Get directions",
+    "lastUpdated": "Last updated: {date}",
+    "copyright": "© {year} IICE, IISER Bhopal",
+    "socialLabel": "IICE on {network}"
+  },
+  "map": {
+    "load": "Load the map",
+    "title": "Map showing where IICE is, at IISER Bhopal",
+    "note": "The map is provided by another service. Loading it shares your visit with them."
+  },
+  "search": {
+    "dialogLabel": "Search the site",
+    "placeholder": "Search pages, startups, events…",
+    "inputLabel": "Search",
+    "empty": "Nothing matches “{query}”. Try “apply” or “facilities”.",
+    "loading": "Loading search…",
+    "error": "Search is not available right now.",
+    "retry": "Try again",
+    "close": "Close search",
+    "recent": "Recent searches",
+    "clearRecent": "Clear recent searches",
+    "help": "Up and down to move, Enter to open, Escape to close",
+    "groups": {
+      "page": "Pages",
+      "startup": "Startups",
+      "event": "Events",
+      "opportunity": "Open calls",
+      "news": "News",
+      "document": "Documents",
+      "instrument": "Instruments",
+      "person": "People",
+      "action": "Actions"
+    },
+    "actions": {
+      "apply": "Apply for Incubation",
+      "pitch": "Pitch to us",
+      "theme": "Switch colour theme",
+      "copyEmail": "Copy the IICE email address",
+      "copied": "Email address copied"
+    },
+    "hints": {
+      "open": "Open",
+      "rolling": "Rolling",
+      "closed": "Closed",
+      "upcoming": "Not yet open"
+    }
+  },
+  "forms": {
+    "common": {
+      "required": "(required)",
+      "chooseOption": "Choose an option",
+      "sending": "Sending…",
+      "next": "Next step",
+      "back": "Back",
+      "stepOf": "Step {current} of {total}",
+      "stepsLabel": "Form steps",
+      "errorSummaryTitle": "There is a problem",
+      "honeypotLabel": "Leave this field empty",
+      "consentBefore": "I have read the ",
+      "consentLink": "privacy notice",
+      "consentAfter": " and agree that IICE may use these details to respond to me.",
+      "reviewTitle": "Check your answers",
+      "reviewEdit": "Change",
+      "reviewEmpty": "Nothing entered in this section.",
+      "draftSaved": "Draft saved on this device.",
+      "draftRestored": "We restored the draft you saved on this device.",
+      "draftClear": "Clear the draft",
+      "failureTitle": "We could not send your answers",
+      "failureBody": "What you typed is still here. Try again, or email it to the IICE team instead.",
+      "failureRetry": "Try again",
+      "failureMailto": "Email these answers to IICE",
+      "successReference": "Your reference is {id}."
+    },
+    "fallback": {
+      "body": "Our online form is not connected yet. You can email the IICE team directly and they will reply.",
+      "action": "Email {email}"
+    },
+    "errors": {
+      "required": "{field} is required.",
+      "type": "{field} is not valid.",
+      "tooShort": "{field} needs at least {limit} characters.",
+      "tooLong": "{field} can be at most {limit} characters.",
+      "tooSmall": "{field} must be at least {limit}.",
+      "tooBig": "{field} must be at most {limit}.",
+      "number": "{field} must be a number.",
+      "integer": "{field} must be a whole number.",
+      "email": "Enter a valid email address, such as name@example.in.",
+      "url": "Enter a full web address that starts with https://.",
+      "date": "Enter a valid date.",
+      "pattern": "{field} is not in the expected format.",
+      "choice": "Choose one of the listed options for {field}.",
+      "mustAgree": "You need to tick this box to continue.",
+      "tooFewItems": "Choose at least {limit} for {field}.",
+      "tooManyItems": "Choose at most {limit} for {field}.",
+      "phone": "Enter a valid phone number, for example +91 755 269 2384.",
+      "consent": "Tick the box to confirm you have read the privacy notice.",
+      "conditions": {
+        "mentorRequired": "Applicants from partner universities or outside IISER Bhopal need an IISER Bhopal faculty mentor or collaborator.",
+        "ipDocsRequired": "For technology developed at IISER Bhopal, share a link to the filed or granted patent application.",
+        "legalEntityRequired": "Choose the legal entity type.",
+        "targetRequired": "Choose a facility or an instrument."
+      }
+    },
+    "options": {
+      "contactTopic": {
+        "incubation": "Incubation",
+        "partnership-funding": "Partnership or funding",
+        "mentoring": "Mentoring",
+        "facilities-bookings": "Facilities and bookings",
+        "media": "Media",
+        "careers": "Careers",
+        "birac-edge": "BIRAC Edge",
+        "event-invite": "Invite IICE to speak or co-host an event",
+        "other": "Something else"
+      },
+      "ventureStage": {
+        "idea": "An idea",
+        "proof-of-concept": "Proof of concept",
+        "prototype": "A working prototype",
+        "early-revenue": "Early revenue",
+        "scaling": "Scaling up"
+      },
+      "legalEntity": {
+        "pvt-ltd": "Private limited company",
+        "llp": "Limited liability partnership",
+        "partnership": "Partnership firm",
+        "proprietorship": "Sole proprietorship",
+        "section-8": "Section 8 company",
+        "not-yet": "Not yet decided"
+      },
+      "ipStatus": {
+        "none": "None",
+        "in-preparation": "In preparation",
+        "filed": "Filed",
+        "granted": "Granted",
+        "licensed-in": "Licensed in"
+      },
+      "mentoringArea": {
+        "technical": "Technical",
+        "business": "Business",
+        "ip-legal": "IP and legal",
+        "regulatory": "Regulatory",
+        "fundraising": "Fundraising",
+        "marketing": "Marketing"
+      },
+      "engagement": {
+        "one-to-one": "One-to-one mentoring",
+        "workshops": "Workshops",
+        "jury-evaluation": "Jury and evaluation panels",
+        "office-hours": "Office hours",
+        "investor-connect": "Introductions to investors"
+      },
+      "partnershipType": {
+        "co-invest": "Co-invest in startups",
+        "csr": "Corporate social responsibility (CSR) support",
+        "sponsor-challenge": "Sponsor a challenge",
+        "pilot-customer": "Pilot a startup's product",
+        "academic": "Academic collaboration",
+        "mentor-network": "Join the mentor network",
+        "other": "Something else"
+      },
+      "yesNo": {
+        "true": "Yes",
+        "false": "No"
+      }
+    },
+    "steps": {
+      "applicant": {
+        "title": "About you",
+        "lead": "Tell us who is applying and what you are applying for."
+      },
+      "venture": {
+        "title": "Your venture",
+        "lead": "Describe the venture in your own words."
+      },
+      "technology": {
+        "title": "Technology and IP",
+        "lead": "Tell us about the technology and any intellectual property."
+      },
+      "needs": {
+        "title": "What you need",
+        "lead": "Tell us what support would help most."
+      },
+      "submit": {
+        "title": "Review and submit",
+        "lead": "Check what you have entered, then confirm and send."
+      }
+    },
+    "fields": {
+      "name": {
+        "label": "Your name"
+      },
+      "email": {
+        "label": "Email address"
+      },
+      "phone": {
+        "label": "Phone number",
+        "hint": "Include the country code if you are outside India."
+      },
+      "organisation": {
+        "label": "Organisation"
+      },
+      "topic": {
+        "label": "What is this about?"
+      },
+      "message": {
+        "label": "Your message"
+      },
+      "ventureName": {
+        "label": "Startup or idea name"
+      },
+      "oneLiner": {
+        "label": "Your idea in a few lines",
+        "hint": "A sentence or two, up to 200 characters."
+      },
+      "stage": {
+        "label": "How far along is it?"
+      },
+      "designation": {
+        "label": "Your designation"
+      },
+      "partnershipType": {
+        "label": "How would you like to partner?"
+      },
+      "sectorFocus": {
+        "label": "Sectors you are interested in"
+      },
+      "fundsAvailable": {
+        "label": "Funds you could commit",
+        "hint": "A rough figure or range is fine. Leave blank if it does not apply."
+      },
+      "title": {
+        "label": "Job title"
+      },
+      "linkedin": {
+        "label": "LinkedIn profile",
+        "hint": "The full address, starting with https://."
+      },
+      "types": {
+        "label": "The kinds of mentoring you can give"
+      },
+      "sectors": {
+        "label": "Sectors you know best"
+      },
+      "expertise": {
+        "label": "Your expertise",
+        "hint": "A few lines on what you can help founders with."
+      },
+      "engagement": {
+        "label": "How would you like to take part?"
+      },
+      "hoursPerMonth": {
+        "label": "Hours you could give each month"
+      },
+      "userCategory": {
+        "label": "Who is making the request?"
+      },
+      "facilitySlug": {
+        "label": "Facility"
+      },
+      "instrumentSlug": {
+        "label": "Instrument",
+        "hint": "Choose a facility, an instrument or both."
+      },
+      "preferredDates": {
+        "0": {
+          "label": "First choice of date"
+        },
+        "1": {
+          "label": "Second choice of date"
+        },
+        "2": {
+          "label": "Third choice of date"
+        }
+      },
+      "durationEstimate": {
+        "label": "How long do you need it?",
+        "hint": "For example “4 hours” or “12 samples”."
+      },
+      "sampleDetails": {
+        "label": "Samples or materials",
+        "hint": "The type, the number and any hazards."
+      },
+      "notes": {
+        "label": "Anything else we should know"
+      },
+      "context": {
+        "track": {
+          "label": "Way of working with IICE"
+        },
+        "stage": {
+          "label": "Stage you are applying for"
+        },
+        "schemeSlug": {
+          "label": "Funding scheme"
+        }
+      },
+      "applicant": {
+        "name": {
+          "label": "Your name"
+        },
+        "email": {
+          "label": "Email address"
+        },
+        "phone": {
+          "label": "Phone number"
+        },
+        "affiliation": {
+          "label": "Your connection to IISER Bhopal"
+        },
+        "institution": {
+          "label": "Institution or company"
+        },
+        "iiserbMentor": {
+          "name": {
+            "label": "IISER Bhopal faculty mentor or collaborator",
+            "hint": "Needed for applicants from partner universities and from outside IISER Bhopal."
+          },
+          "email": {
+            "label": "Mentor's email address"
+          },
+          "department": {
+            "label": "Mentor's department"
+          }
+        },
+        "linkedin": {
+          "label": "Your LinkedIn profile",
+          "hint": "The full address, starting with https://."
+        }
+      },
+      "venture": {
+        "name": {
+          "label": "Venture name"
+        },
+        "incorporated": {
+          "label": "Is the venture incorporated?"
+        },
+        "legalEntity": {
+          "label": "Legal entity"
+        },
+        "incorporationDate": {
+          "label": "Date of incorporation"
+        },
+        "website": {
+          "label": "Website",
+          "hint": "The full address, starting with https://."
+        },
+        "sector": {
+          "label": "Thrust area"
+        },
+        "stage": {
+          "label": "Stage of the venture"
+        },
+        "problem": {
+          "label": "The problem",
+          "hint": "What problem are you solving, and for whom? At least 50 characters."
+        },
+        "solution": {
+          "label": "Your solution",
+          "hint": "How does your technology solve it? At least 50 characters."
+        },
+        "market": {
+          "label": "The market",
+          "hint": "Who would buy or use it? At least 30 characters."
+        },
+        "teamSize": {
+          "label": "Team size"
+        },
+        "fundingToDate": {
+          "label": "Funding received so far",
+          "hint": "In your own words. Leave blank if none."
+        }
+      },
+      "technology": {
+        "ipStatus": {
+          "label": "Intellectual property status"
+        },
+        "developedAtIiserb": {
+          "label": "Was the technology developed at IISER Bhopal?"
+        },
+        "ipDetails": {
+          "label": "Details of the technology and IP"
+        },
+        "patentNumbers": {
+          "label": "Patent or application numbers",
+          "hint": "Separate numbers with commas or new lines."
+        },
+        "ipDocsUrl": {
+          "label": "Link to the filed or granted patent application",
+          "hint": "A shareable link. Needed for technology developed at IISER Bhopal with a filed or granted patent."
+        }
+      },
+      "documents": {
+        "businessPlanUrl": {
+          "label": "Link to your business plan",
+          "hint": "A shareable link, for example from Google Drive or OneDrive. The Business Proposal Format is on the Documents page."
+        }
+      },
+      "needs": {
+        "preferredStage": {
+          "label": "Stage you would like to join"
+        },
+        "officeSeats": {
+          "label": "Co-working seats you need"
+        },
+        "labSpace": {
+          "label": "Do you need lab space?"
+        },
+        "equipment": {
+          "label": "Equipment or instruments you need"
+        },
+        "mentoringAreas": {
+          "label": "Mentoring you would like"
+        }
+      },
+      "declarations": {
+        "infoAccurate": {
+          "label": "I confirm that the information in this application is accurate."
+        },
+        "agreeToPolicy": {
+          "label": "I have read and agree to the IICE Incubation Policy."
+        }
+      }
+    },
+    "contact": {
+      "submit": "Send message",
+      "subject": "Message from the IICE website",
+      "channel": "{label}: {contact}",
+      "successTitle": "Thank you, we have your message",
+      "successBody": "The IICE team will read it and reply by email."
+    },
+    "pitch": {
+      "submit": "Send pitch",
+      "subject": "Pitch from the IICE website",
+      "successTitle": "Thank you for your pitch",
+      "successBody": "The IICE team will read it. If it looks like a fit, they will write to you about what comes next. To apply formally, use the Apply page."
+    },
+    "application": {
+      "submit": "Submit application",
+      "subject": "Incubation application from the IICE website",
+      "successTitle": "Application received",
+      "successBody": "Keep your reference number. IICE screens each application, shortlisted teams present to the Technical Evaluation Committee, and accepted teams sign an onboarding agreement. The team will write to you at the email address you gave."
+    },
+    "booking": {
+      "submit": "Request booking",
+      "subject": "Booking request from the IICE website",
+      "successTitle": "Booking request received",
+      "successBody": "The IICE office will confirm availability and charges by email before anything is booked."
+    },
+    "mentor": {
+      "submit": "Offer to mentor",
+      "subject": "Mentor offer from the IICE website",
+      "successTitle": "Thank you for offering to mentor",
+      "successBody": "The IICE team will be in touch to talk about how you would like to help."
+    },
+    "partner": {
+      "submit": "Send enquiry",
+      "subject": "Partnership enquiry from the IICE website",
+      "successTitle": "Thank you for your interest in partnering",
+      "successBody": "The IICE team will read your enquiry and reply by email."
+    },
+    "newsletter": {
+      "submit": "Subscribe",
+      "subject": "Newsletter sign-up from the IICE website",
+      "successTitle": "You are subscribed",
+      "successBody": "You will hear from IICE about calls, events and news."
+    }
+  },
+  "status": {
+    "open": "Open · closes {date}",
+    "openEnded": "Open",
+    "rolling": "Rolling applications",
+    "upcoming": "Opens {date}",
+    "closed": "Closed",
+    "tba": "To be announced"
+  },
+  "explorer": {
+    "all": "All",
+    "clear": "Clear filters",
+    "filters": "Filters",
+    "resultCount": "{count} of {total} shown",
+    "noResultsTitle": "Nothing matches these filters",
+    "noResultsBody": "Try removing a filter or searching for something else."
+  },
+  "pages": {
+    "crumbs": {
+      "about": "About",
+      "incubation": "Incubation",
+      "funding": "Funding schemes",
+      "facilities": "Facilities",
+      "startups": "Startups",
+      "events": "Events and news",
+      "news": "News"
+    },
+    "about": {
+      "milestones": "Milestones",
+      "milestonesLead": "Moments in IICE's story so far.",
+      "press": "In the news"
+    },
+    "team": {
+      "title": "Team and committees",
+      "description": "The IICE team and the committees that guide it.",
+      "tabsLabel": "Team and committees",
+      "teamTab": "Team",
+      "asOf": "Composition as of {date}",
+      "empty": "Composition being updated. Contact {email}.",
+      "columnName": "Name",
+      "columnDesignation": "Designation",
+      "columnRole": "Role in the committee",
+      "emailPerson": "Email {name}",
+      "phonePerson": "Call {name}"
+    },
+    "impact": {
+      "title": "IICE in numbers",
+      "description": "The figures IICE can stand behind, each with where it comes from and when it was counted.",
+      "derivedNote": "Counted from the listings on this website.",
+      "asOf": "As of {date}",
+      "source": "Source: {source}"
+    },
+    "partners": {
+      "title": "Partners",
+      "description": "The organisations that fund, host and work with IICE.",
+      "partnerTitle": "Partner with us",
+      "partnerLead": "IICE works with funders, companies, hospitals, investors and institutions. Tell us how you would like to take part."
+    },
+    "press": {
+      "title": "In the news",
+      "description": "Coverage of IICE and its startups in the press and online."
+    },
+    "mentors": {
+      "title": "Mentors",
+      "description": "Experienced people who give their time to IICE's startups.",
+      "searchLabel": "Search mentors",
+      "facetType": "Kind of mentoring",
+      "facetSector": "Sector",
+      "facetLocation": "Location",
+      "linkedin": "{name} on LinkedIn",
+      "linkedinText": "LinkedIn profile",
+      "emptyTitle": "No mentors are listed yet",
+      "emptyBody": "Mentors appear here once they agree to be named. If you would like to mentor IICE's startups, use the form below.",
+      "becomeTitle": "Become a mentor",
+      "becomeLead": "Tell us about your experience and how you would like to help. The IICE team will be in touch."
+    },
+    "club": {
+      "title": "Innovation Club",
+      "description": "The student club that builds entrepreneurship on the IISER Bhopal campus.",
+      "pillars": "The three Cs",
+      "objectives": "Objectives",
+      "current": "Current members",
+      "past": "Past members",
+      "columnName": "Name",
+      "columnProgramme": "Programme",
+      "columnBatch": "Batch"
+    },
+    "incubation": {
+      "journey": "The incubation journey",
+      "tracks": "Ways to work with us",
+      "tracksLead": "Choose the way of working that fits your team.",
+      "terms": "Terms",
+      "termsTba": "To be confirmed",
+      "apply": "Apply",
+      "applyTrack": "Apply for {track}",
+      "next": "Where to next",
+      "funding": "Funding schemes",
+      "facilities": "Facilities"
+    },
+    "stage": {
+      "forWhom": "For",
+      "duration": "Duration",
+      "fundingBand": "Funding band",
+      "explore": "Explore the {stage} stage",
+      "exploreShort": "Explore stage",
+      "pageTitle": "{stage}: {phase}",
+      "apply": "Apply for {stage}",
+      "overview": "Overview",
+      "offerings": "What you get",
+      "flow": "Programme flow",
+      "outcomes": "Outcomes",
+      "schemes": "Funding schemes",
+      "selection": "How selection works",
+      "exit": "Milestones to graduate",
+      "faq": "Questions about this stage",
+      "ctaTitle": "Ready to start with {stage}?",
+      "ctaBody": "Apply online, or talk to the IICE team first.",
+      "talk": "Talk to us",
+      "otherStages": "Other stages",
+      "previous": "Previous stage: {stage}",
+      "next": "Next stage: {stage}"
+    },
+    "funding": {
+      "title": "Funding schemes",
+      "description": "Schemes that can fund IICE's startups, with who can apply and how.",
+      "support": "Up to {amount}",
+      "tbc": "To be confirmed",
+      "apply": "Apply for this scheme",
+      "glance": "At a glance",
+      "maxSupport": "Maximum support",
+      "duration": "Duration",
+      "purpose": "Purpose",
+      "agency": "Funding agency",
+      "output": "Expected output",
+      "whoCanApply": "Who can apply",
+      "benefits": "What you get",
+      "eligibility": "Eligibility",
+      "coverage": "What the grant pays for",
+      "covered": "What it covers",
+      "notCovered": "What it does not cover",
+      "important": "Important points",
+      "process": "How selection works",
+      "screening": "Screening usually takes {duration}.",
+      "documents": "Documents to have ready",
+      "cohorts": "Cohorts and beneficiaries",
+      "howToApply": "How to apply",
+      "faq": "Questions about this scheme",
+      "contact": "Contact",
+      "official": "Official scheme page",
+      "reviewed": "Last reviewed {date}"
+    },
+    "facilities": {
+      "title": "Facilities",
+      "description": "Workspace, labs, support services and campus amenities for IICE's incubatees.",
+      "space": "Incubation space",
+      "area": "Area",
+      "seats": "Seats",
+      "offices": "Private offices",
+      "meetingRooms": "Meeting rooms",
+      "access": "Access hours",
+      "explore": "Explore",
+      "exploreOn": "Explore {name}",
+      "bookingTitle": "Request a booking",
+      "bookingLead": "Tell us what you need and when. The IICE office confirms availability and charges before anything is booked.",
+      "policy": "Download the {title} (PDF)"
+    },
+    "instruments": {
+      "title": "Instruments",
+      "description": "The instruments incubatees can use, how access works and what it costs.",
+      "searchLabel": "Search instruments",
+      "facetCategory": "Category",
+      "facetAccess": "Access",
+      "uses": "Typical uses:",
+      "rates": "Rate card",
+      "ratesFor": "Rates for {name}",
+      "userCategory": "User category",
+      "rate": "Rate",
+      "perUnit": "{rate} per {unit}",
+      "onRequest": "On request",
+      "gstIncluded": "GST included",
+      "gstExtra": "plus GST",
+      "minimum": "minimum {minimum}",
+      "request": "Request booking",
+      "requestFor": "Request booking for {name}",
+      "unit": {
+        "hour": "hour",
+        "sample": "sample",
+        "day": "day",
+        "run": "run"
+      }
+    },
+    "services": {
+      "title": "Services from IISER Bhopal",
+      "description": "Help with intellectual property, testing and validation, co-development and regulation.",
+      "whoCanUse": "Who can use it",
+      "turnaround": "Typical turnaround:",
+      "howToEngage": "How to engage",
+      "related": "Related:",
+      "relatedLink": "instruments you can use"
+    },
+    "startups": {
+      "title": "Startups",
+      "description": "The startups and pre-startups incubated at IICE, IISER Bhopal.",
+      "searchLabel": "Search startups",
+      "searchHint": "By name, what they do, founders or funding scheme.",
+      "noResultsTitle": "No startups match these filters",
+      "facetStatus": "Status",
+      "facetSector": "Sector",
+      "facetStage": "Stage",
+      "facetTrack": "Way of working",
+      "facetScheme": "Funding scheme",
+      "facetYear": "Cohort year",
+      "location": "Location",
+      "affiliation": "Connection to IISER Bhopal",
+      "founded": "Founded",
+      "fundedBy": "Funded by",
+      "website": "Website",
+      "linkedinOf": "{name} on LinkedIn",
+      "facts": "At a glance",
+      "about": "About",
+      "story": "The story",
+      "problem": "Problem",
+      "approach": "Approach",
+      "outcome": "Outcome",
+      "founders": "Founders",
+      "recognitions": "Recognition",
+      "roles": "Open roles",
+      "allRoles": "All open roles",
+      "related": "In the news",
+      "moreNav": "More startups",
+      "back": "Back to all startups",
+      "next": "Next startup: {name}"
+    },
+    "events": {
+      "title": "Events",
+      "description": "Conclaves, workshops, talks and programmes run by IICE.",
+      "searchLabel": "Search events",
+      "viewLabel": "Show",
+      "upcoming": "Upcoming",
+      "past": "Past",
+      "facetType": "Type",
+      "facetSeries": "Series",
+      "facetYear": "Year",
+      "registerOpen": "Registration open",
+      "withEdition": "{title} · {edition}",
+      "noneUpcoming": "No upcoming events",
+      "noneUpcomingBody": "Check the past events, or ask IICE about what is planned.",
+      "inviteTitle": "Invite IICE",
+      "inviteBody": "Would you like IICE to speak at your event, or to co-host one?",
+      "inviteAction": "Invite IICE to speak or co-host",
+      "seriesEyebrow": "Workshop series",
+      "editions": "Editions",
+      "when": "When",
+      "where": "Where",
+      "map": "Map",
+      "mode": "Format",
+      "organisers": "Organised by",
+      "sponsor": "Sponsored by",
+      "localTime": "In your time zone: {time}",
+      "register": "Register",
+      "addIcs": "Add to calendar (.ics)",
+      "addGoogle": "Add to Google Calendar",
+      "ended": "This event has ended.",
+      "loadRecording": "Load the recording",
+      "recordingNote": "The video loads from YouTube only after you choose to play it.",
+      "recordingTitle": "Recording of {title}",
+      "watchRecording": "Watch the recording on YouTube",
+      "about": "About this event",
+      "timeline": "Timeline",
+      "agenda": "Agenda",
+      "agendaDay": "Day {day}",
+      "time": "Time",
+      "session": "Session",
+      "room": "Room",
+      "speakers": "Speakers",
+      "people": "People",
+      "numbers": "Past editions in numbers",
+      "results": "Results",
+      "gallery": "Gallery",
+      "partners": "Partners",
+      "moreNav": "More events",
+      "back": "All events",
+      "moreInSeries": "More in {series}",
+      "share": "Share by email"
+    },
+    "news": {
+      "title": "News",
+      "description": "News from IICE and its startups.",
+      "by": "By {author}",
+      "readingTime": "{minutes} min read",
+      "tags": "Tags",
+      "related": "Related",
+      "event": "Event",
+      "share": "Share by email",
+      "original": "Read the original",
+      "moreNav": "More news",
+      "newer": "Newer: {title}",
+      "older": "Older: {title}"
+    },
+    "documents": {
+      "title": "Documents",
+      "description": "Policies, by-laws, templates and reports, as PDF downloads.",
+      "searchLabel": "Search documents",
+      "facetCategory": "Category",
+      "sortLabel": "Sort by",
+      "sortNewest": "Newest first",
+      "sortOldest": "Oldest first",
+      "sortTitle": "Title, A to Z",
+      "columnTitle": "Title",
+      "columnCategory": "Category",
+      "columnDate": "Date",
+      "columnVersion": "Version",
+      "columnSize": "Size",
+      "columnDownload": "Download",
+      "pdf": "PDF",
+      "download": "Download {title}, PDF",
+      "downloadSized": "Download {title}, PDF, {size}",
+      "previous": "Previous versions ({count})",
+      "previousCaption": "Previous versions of documents"
+    },
+    "apply": {
+      "checkTitle": "Check your eligibility",
+      "checkLead": "Three quick questions. The answer is a guide only and never stops you from applying.",
+      "formTitle": "Application form",
+      "formLead": "Answer in your own words. You can save a draft on this device and come back to it.",
+      "download": "Download the {title}",
+      "faq": "Frequently asked questions",
+      "supportTitle": "Questions about applying?",
+      "check": {
+        "whoQuestion": "Who are you?",
+        "mentorQuestion": "Do you have an IISER Bhopal faculty mentor or collaborator?",
+        "thrustQuestion": "Is your venture technology-based and in one of the five thrust areas?",
+        "yes": "Yes",
+        "no": "No",
+        "unsure": "Not sure",
+        "who": {
+          "iiserb-staff": "Current or former IISER Bhopal faculty",
+          "iiserb-student": "An IISER Bhopal student or alumnus",
+          "partner": "From a partner university",
+          "outside": "A founder from outside IISER Bhopal"
+        },
+        "outcome": {
+          "incomplete": {
+            "title": "Answer the three questions",
+            "body": "Your answer will appear here."
+          },
+          "eligible": {
+            "title": "You can apply",
+            "body": "You meet the eligibility rules as you described them. The application form is below."
+          },
+          "mentor": {
+            "title": "You can apply, with a faculty mentor",
+            "body": "Applicants from partner universities and from outside IISER Bhopal need an IISER Bhopal faculty member as mentor or collaborator. Find one before you submit, and add their details in the form."
+          },
+          "fit": {
+            "title": "Check the fit first",
+            "body": "IICE supports technology ventures in five thrust areas. If yours is not one, write to the IICE team before you apply."
+          }
+        }
+      }
+    },
+    "contact": {
+      "title": "Contact",
+      "eyebrow": "Contact",
+      "description": "Write to the IICE team or find us on the IISER Bhopal campus.",
+      "formTitle": "Send us a message",
+      "addressTitle": "Visit or call",
+      "channelsTitle": "Who to contact",
+      "mapTitle": "Find us"
+    },
+    "careers": {
+      "title": "Careers",
+      "eyebrow": "Careers",
+      "description": "Open positions at IICE and at the startups it incubates.",
+      "tabsLabel": "Where to work",
+      "withIice": "Work with IICE",
+      "withStartups": "Work with incubated startups",
+      "emptyTitle": "No open positions right now",
+      "emptyBody": "You are welcome to send your CV to",
+      "closes": "Closes {date}",
+      "details": "Job description",
+      "apply": "Apply",
+      "applyFor": "Apply for {title}",
+      "email": "Apply by email",
+      "emailFor": "Apply for {title} by email",
+      "advert": "Download the advertisement (PDF)"
+    },
+    "birac": {
+      "interestTitle": "Express interest",
+      "interestLead": "Tell us how BIRAC Edge could help your venture and the IICE team will get in touch."
+    },
+    "sitemap": {
+      "title": "Sitemap",
+      "eyebrow": "Site",
+      "description": "Every page of this website, in one place.",
+      "startups": "All startups",
+      "events": "All events",
+      "news": "All news"
+    },
+    "opportunities": {
+      "title": "Open calls",
+      "description": "Applications and calls you can still act on, and the ones that have closed.",
+      "viewLabel": "Show",
+      "open": "Open calls",
+      "past": "Past calls",
+      "noneOpen": "No calls are open right now",
+      "noneOpenBody": "New calls are announced on the news and events pages. You can also send a pitch at any time.",
+      "nonePast": "No past calls yet",
+      "nonePastBody": "Calls appear here once they have closed.",
+      "closesToday": "closes within a day",
+      "closesIn": "closes in {days} days",
+      "eligibility": "Who can apply:",
+      "apply": "Apply",
+      "applyFor": "Apply for {title}",
+      "details": "Details",
+      "detailsFor": "Details of {title}"
+    }
+  },
+  "home": {
+    "stagesLabel": "The three stages",
+    "allNumbers": "See all numbers",
+    "tileMore": "Learn more about {title}",
+    "logosLabel": "Startups incubated at IICE",
+    "logosPrevious": "Show earlier startups",
+    "logosNext": "Show more startups",
+    "allStartups": "View all startups",
+    "apply": "Apply",
+    "applyFor": "Apply for {title}",
+    "upcomingEvents": "Upcoming events",
+    "recentEvents": "Recent events",
+    "addToCalendar": "Add to calendar",
+    "addToCalendarFor": "Add {title} to your calendar",
+    "allEvents": "All events",
+    "latestNews": "Latest news",
+    "allNews": "All news",
+    "testimonialsPrevious": "Show the previous testimonial",
+    "testimonialsNext": "Show the next testimonial",
+    "funders": "Funders and patrons",
+    "ecosystem": "Ecosystem partners",
+    "allPartners": "All partners and how to partner with us",
+    "pitchTemplate": "Download the pitch-deck template"
+  },
+  "notFound": {
+    "eyebrow": "Error 404",
+    "title": "Page not found",
+    "description": "The page you asked for is not on this website.",
+    "body": "The address may have been typed wrongly, or the page may have moved. Press Ctrl+K (Command+K on a Mac) to search the site, or go back to the home page.",
+    "home": "Go to the home page",
+    "contact": "Contact IICE"
+  },
+  "enums": {
+    "sector": {
+      "healthcare-bioengineering": "Healthcare & Bioengineering",
+      "environment-agriculture": "Environment & Agriculture",
+      "iot-ai": "Internet of Things & Artificial Intelligence",
+      "social-rural-development": "Social & Rural Development Technologies",
+      "computational-sciences-it": "Computational Sciences & Information Technology",
+      "other": "Other"
+    },
+    "stage": {
+      "catalyse": "Catalyse",
+      "culture": "Culture",
+      "commercialise": "Commercialise"
+    },
+    "startupStatus": {
+      "current": "Current",
+      "graduated": "Graduated",
+      "pre-startup": "Pre-startup",
+      "inactive": "Inactive",
+      "unconfirmed": "Status to be confirmed"
+    },
+    "affiliation": {
+      "iiserb-faculty": "IISER Bhopal faculty",
+      "iiserb-former-faculty": "Former IISER Bhopal faculty",
+      "iiserb-student": "IISER Bhopal student",
+      "iiserb-alumni": "IISER Bhopal alumni",
+      "partner-university": "Partner university",
+      "external": "External founder"
+    },
+    "spotlightBadge": {
+      "Incubated": "Incubated",
+      "Graduated": "Graduated",
+      "Grant Won": "Grant won",
+      "Patent": "Patent",
+      "Award": "Award",
+      "Milestone": "Milestone"
+    },
+    "track": {
+      "physical": "Physical incubation",
+      "virtual": "Virtual incubation",
+      "pre-incubation": "Pre-incubation",
+      "co-development": "Co-development with IISER Bhopal faculty"
+    },
+    "mentorType": {
+      "business": "Business",
+      "finance": "Finance",
+      "technical": "Technical",
+      "legal": "Legal",
+      "ip": "Intellectual property",
+      "regulatory": "Regulatory",
+      "clinical-domain": "Clinical and domain",
+      "marketing": "Marketing"
+    },
+    "partnerCategory": {
+      "funder-government": "Funders & government",
+      "host": "Host institute",
+      "corporate-csr": "Corporate & CSR",
+      "hospital-clinical": "Hospitals & clinical",
+      "investor": "Investors",
+      "academic": "Academic",
+      "ecosystem": "Ecosystem",
+      "media": "Media"
+    },
+    "instrumentCategory": {
+      "molecular-biology": "Molecular biology",
+      "cell-culture": "Cell culture",
+      "analytical": "Analytical",
+      "imaging": "Imaging",
+      "electronics-prototyping": "Electronics & prototyping",
+      "computing": "Computing",
+      "other": "Other"
+    },
+    "userCategory": {
+      "incubatee": "Incubatee",
+      "iiserb": "IISER Bhopal",
+      "external-academic": "External academic",
+      "industry": "Industry"
+    },
+    "opportunityKind": {
+      "cohort-intake": "Cohort intake",
+      "scheme-call": "Scheme call",
+      "challenge": "Challenge",
+      "accelerator": "Accelerator",
+      "corporate-programme": "Corporate programme",
+      "fellowship": "Fellowship"
+    },
+    "eventType": {
+      "talk": "Talk",
+      "workshop": "Workshop",
+      "webinar": "Webinar",
+      "conclave": "Conclave",
+      "programme": "Programme",
+      "outreach": "Outreach",
+      "visit": "Visit",
+      "exhibition": "Exhibition",
+      "competition": "Competition"
+    },
+    "eventMode": {
+      "in-person": "In person",
+      "online": "Online",
+      "hybrid": "Hybrid"
+    },
+    "personRole": {
+      "chief-guest": "Chief guest",
+      "guest-of-honour": "Guest of honour",
+      "speaker": "Speaker",
+      "panellist": "Panellist",
+      "moderator": "Moderator",
+      "jury": "Jury",
+      "host": "Host"
+    },
+    "documentCategory": {
+      "policy": "Policy",
+      "resolution": "Resolution",
+      "bylaws": "By-laws",
+      "template": "Forms & templates",
+      "report": "Report",
+      "annual-report": "Annual report",
+      "guideline": "Guideline",
+      "usage-policy": "Usage policy"
+    },
+    "facilityCategory": {
+      "workspace": "Workspace",
+      "labs-instruments": "Labs & instruments",
+      "support-services": "Support services",
+      "campus-amenities": "Campus amenities"
+    },
+    "instrumentAccess": {
+      "self-use-after-training": "Self-use after training",
+      "operator-assisted": "Operator-assisted",
+      "via-cif": "Via the Central Instrumentation Facility"
+    },
+    "instrumentStatus": {
+      "available": "Available",
+      "under-maintenance": "Under maintenance",
+      "retired": "Retired"
+    },
+    "serviceKind": {
+      "ip-tech-transfer": "IP & technology transfer",
+      "testing-validation": "Testing & validation",
+      "co-development": "Co-development",
+      "regulatory": "Regulatory guidance",
+      "other": "Other"
+    },
+    "jobType": {
+      "full-time": "Full-time",
+      "part-time": "Part-time",
+      "internship": "Internship",
+      "fellowship": "Fellowship",
+      "contract": "Contract"
+    },
+    "jobTrack": {
+      "work-with-iice": "Work with IICE",
+      "work-with-startups": "Work with incubated startups"
+    },
+    "pressType": {
+      "article": "Article",
+      "video": "Video",
+      "podcast": "Podcast"
+    },
+    "announcementKind": {
+      "open-call": "Open call",
+      "hiring": "Hiring",
+      "event-registration": "Event registration",
+      "notice": "Notice"
+    },
+    "mentorAvailability": {
+      "open": "Open to new mentees",
+      "limited": "Limited availability",
+      "closed": "Not taking new mentees"
+    },
+    "recognitionType": {
+      "award": "Award",
+      "grant": "Grant",
+      "patent": "Patent",
+      "funding": "Funding",
+      "other": "Other"
+    },
+    "contactIntent": {
+      "incubation": "Incubation support",
+      "partnerships-investors": "Partnerships & investors",
+      "facilities-bookings": "Facilities & bookings",
+      "media": "Media",
+      "general": "General"
+    },
+    "audience": {
+      "founders": "Founders",
+      "students": "Students",
+      "mentors": "Mentors",
+      "investors-partners": "Investors & partners"
+    }
+  }
+}

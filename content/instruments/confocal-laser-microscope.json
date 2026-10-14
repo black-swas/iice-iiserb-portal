@@ -1,0 +1,48 @@
+{
+  "_source": "IISER Bhopal Central Instrumentation Facility (CIF) Bioimaging facility",
+  "slug": "confocal-laser-microscope",
+  "name": "Laser Scanning Confocal & Fluorescence Lifetime Imaging Microscope",
+  "category": "imaging",
+  "make": "Leica Microsystems",
+  "model": "TCS SP8 Spectral Confocal with Live-Cell Stage Incubator",
+  "specs": [
+    "Multi-laser excitation (405, 488, 552, 638 nm) with high-sensitivity HyD spectral detectors",
+    "Stage-top CO2 and temperature-controlled live-cell chamber for time-lapse organelle tracking",
+    "Z-stack 3D reconstruction, FRET, FRAP, and colocalization analysis"
+  ],
+  "useCases": [
+    "Live-cell organelle-specific dye validation and phototoxicity screening (Luminojen)",
+    "Preclinical CAR-T and CAR-Macrophage immune synapse and tumour-spheroid infiltration imaging (Cytoforge Therapeutics)"
+  ],
+  "access": "operator-assisted",
+  "facilitySlug": "central-instrumentation-facility",
+  "status": "available",
+  "bookingNotes": "Biosafety Level (BSL) clearance required for live mammalian cell imaging.",
+  "rateCard": [
+    {
+      "userCategory": "iiserb",
+      "rate": 300,
+      "unit": "hour",
+      "gstIncluded": false
+    },
+    {
+      "userCategory": "incubatee",
+      "rate": 600,
+      "unit": "hour",
+      "gstIncluded": false
+    },
+    {
+      "userCategory": "external-academic",
+      "rate": 1200,
+      "unit": "hour",
+      "gstIncluded": false
+    },
+    {
+      "userCategory": "industry",
+      "rate": 2500,
+      "unit": "hour",
+      "gstIncluded": false
+    }
+  ],
+  "lastReviewed": "2026-10-12"
+}

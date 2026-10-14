@@ -1,0 +1,159 @@
+## 1. Project
+Build, from scratch, the new official website of the Innovation and Incubation Centre for Entrepreneurship (IICE), a Technology Business Incubator at IISER Bhopal. IICE has 10,000 sq ft in the main building, is supported by NSTEDB, DST (NIDHI-TBI scheme), focuses on bioscience research and entrepreneurship, has a BIRAC Edge page, and incubates faculty/student-led and external startups.
+
+Audiences, in priority order:
+1. Prospective incubatees (founders, IISERB students and faculty, external entrepreneurs)
+2. Funders, government bodies, industry partners, investors
+3. Mentors and ecosystem partners
+4. Current startups
+5. Job seekers and the general public
+
+Goals: (a) turn visitors into applicants, (b) build credibility fast (numbers, startups, partners), (c) make programs, funding and facilities easy to understand, (d) let staff update events/news/startups without a developer, (e) be fast on mid-range phones and slow networks.
+
+Problems with the old site (a Google Site) to fix:
+- Homepage is a wall of text with no stats, startups, events or application CTA.
+- Social icons point to generic twitter.com / linkedin.com / instagram.com homepages.
+- Typos (e.g. "Mision").
+- Apply and contact depend on external Google Forms.
+- Navigation is buried (committees are four separate pages).
+
+## 2. Content and pages to carry over (every one must stay reachable)
+Home; BIRAC Edge; About Us (Ecosystem, Team, Committees: Managing / Executive / Technical Evaluation / Management Advisory, Innovation Club, Support & Funding, Resolutions, Incubation Policy); Incubation (Apply, Facilities); Startups; Activities (Upcoming Events, Past Events); Careers; Contact.
+Contact details: 2nd Floor, Main Building, IISER Bhopal, Bhauri, Bhopal Bypass Road, Bhopal 462 066, Madhya Pradesh. Phone +91 755 269 2384/85/86/87. Email iice@iiserb.ac.in and office_iice@iiserb.ac.in.
+Reuse the existing vision, mission and key-functions text, with typos fixed and tightened. If you can browse, read https://iice.iiserb.ac.in/home and its sub-pages for content. Otherwise use clearly marked placeholders.
+
+## 3. Reference sites: take the IDEAS, never the assets
+Reimplement everything from scratch. Do not copy text, images, logos, code or distinctive layouts 1:1. Merge these into ONE coherent identity.
+
+IIT Mandi Catalyst (iitmandicatalyst.in)
+- Announcements block at the top of Home (open calls, hiring, event registration), driven by content with expiry dates.
+- Stage-based funding ladder: Idea to Prototype, then Prototype Development, then Deployment, each with an amount band and scheme list. Use it for the "Incubation journey" section.
+- Impact stats row and a year-by-year "Time Machine" timeline (use as an About-page milestones component).
+- Numbered "Getting Started" selection process (use on the Apply page).
+- Mega-menu grouping, an always-visible "Apply for Incubation" button, and a transparent header over the hero that turns solid on scroll.
+- News/blog cards, Patrons and Ecosystem Partners logo walls, Mentors page, Careers split into "Work with IICE" and "Work with incubated startups".
+
+BITS Pilani Hyderabad TBI (tbi.bits-hyderabad.ac.in)
+- A three-word stage strip (Ideate / Create / Elevate) with one line each.
+- Portfolio stats strip, including a student pre-startups track.
+- "Quick Tour": four cards (Host Institute, Startups, Mentors, Government/Funders).
+- Incubatee logo carousel with previous/next controls.
+- Short vision-and-goals block. Footer with map, quick links and socials. The overall feel is a fast, clean static site.
+
+AIC-CCMB (aic.ccmb.res.in)
+- Five-counter stats strip (startups incubated, funds raised, patents filed, awards, portfolio companies).
+- Program/funding cards on Home, each with a one-liner and amount.
+- "Innovation Ecosystem" icon tiles (life-science focus, idea to proof-of-concept, co-working, mentoring, networking, fundraising, workshops). Short text by default, expanded text on hover/tap.
+- Startup and partner logo carousels; branded names for recurring workshop series; a Student Innovators Program page.
+- Utility bar with socials and a startup-portal login (placeholder link).
+- Footer link groups organised by audience (About / For Startups / Ecosystem / Useful Links).
+
+DERBI Foundation (derbifoundation.com)
+- Brief branded preloader (under 1 s, never blocks content).
+- Hero headline with emphasised words, and a persistent "Pitch to Us" CTA.
+- Impact metrics including mentoring hours, sector experts and jobs created.
+- Named stages with durations and who each is for (pre-incubation, then incubation, then acceleration). Give IICE's stages equally memorable names.
+- "Our Offerings" checklist, funding-scheme cards with imagery, a startup testimonials slider, an origin-story section, a director's message page.
+- Audience quick-entry (Innovators / Mentors) and a contact form beside the address.
+- Optional muted looping video section (lazy-loaded, with a poster image).
+
+Zaid Sayyed portfolio (zaidsayyed.in)
+- The card spinbar (see section 4).
+- Numbered section eyebrows ("01 / Our Journey"), a tight type-led layout, and a command palette (Cmd/Ctrl+K) for site-wide search and jumping to pages. This is useful because IICE has many documents and pages.
+- Also noted: a custom dot cursor that expands on interactive cards, and an optional floating "Ask AI about us" chat widget (phase 2 only, answering from site content, and only if a serverless endpoint is available).
+
+## 3b. Do NOT inherit these flaws from the reference sites
+- Dead menu items: some references have nav entries that link to "#" (e.g. event series, program sub-items). Every link must resolve to a real page, or be removed.
+- Copy-pasted placeholder text: one reference reuses identical blurbs across different funding schemes. Every card needs unique, accurate copy, or an explicit TODO_CONFIRM.
+- Zoom blocking: one reference disables pinch-zoom (user-scalable=0, maximum-scale=1). Never do this.
+- Meaningless alt text: references use "logo", "web design" and "index" as alt text. Every logo and image gets a real, descriptive alt, or alt="" if purely decorative.
+- Typos in headings and body copy. Proofread everything.
+- Heavy hero assets: use a lightweight hero with a static poster fallback; no autoplay video above the fold.
+- Preloaders that block content: if a preloader exists, it must be under 1 s and skippable.
+
+## Tie-breakers where references conflict
+- Navigation: use a clean top nav with grouped dropdowns (max 7 items plus the Apply button). Do not copy IIT Mandi's 11-item funding menu.
+- Speed beats flair: if a motion effect costs more than a few KB or drops mobile frame rate, simplify it.
+- Merge homepage sections 7 and 8 into one "Choose your path" audience-card section. Keep the homepage curated, not exhaustive.
+## 4. The tilted card gallery ("card spinbar"), a reusable component
+Reference: the "02 / Where it's been tested" section on zaidsayyed.in. Build the same kind of experience from scratch.
+
+Layout and look
+- Portrait cards (about 3:4) on a staggered two-slot zig-zag path. Cards in the left slot rotate about -30 degrees (title rises to the right). Cards in the right slot rotate about +30 degrees (title descends to the right). The next cards peek in from the bottom corners.
+- The active card is larger, sharp and full colour. It shows a short description, a thin accent line along its bottom edge that doubles as a progress indicator, and a round arrow button (top-right) linking out.
+- All other cards are smaller, dimmed and softly blurred. Photo cards are greyscale until active.
+- Card anatomy: a tilted pill badge at top-left (e.g. "Incubated", "Graduated", "Grant Won", "Patent"), a bold title at bottom-left running along the tilt. Text-only cards get a dark gradient with a soft radial glow and a faint circular watermark of the badge word. Photo cards use a photo.
+- Section header: a numbered eyebrow ("02"), a large title, a muted one-line subline, and a small mono uppercase label at the right with the count, e.g. "STARTUP SPOTLIGHT (06)".
+
+Behaviour
+- Scroll-linked: pin the section while scrolling advances the cards along the path. The active card settles into the focus slot, and the others shift one position and re-blur. Use transform/opacity only, with smooth easing.
+- Custom cursor on desktop: a small dot that grows into a large circle with an arrow icon over the active card, signalling "open". Hide it on touch devices.
+- Keyboard and a11y: cards are real links in DOM order. Focus brings a card to active. Provide visible previous/next buttons and a "Showing 2 of 6" text for non-scroll users. Never trap scroll or focus.
+- prefers-reduced-motion: no tilt animation or scroll-pinning, just a simple grid of cards.
+- Mobile: reduce tilt to 8 degrees or less, or switch to a horizontal snap carousel. Avoid expensive blur on many layers.
+- Performance: 6 to 8 cards max, lazy-load images, avoid layout thrash, and use will-change sparingly.
+- Data-driven from /content (badge, title, description, optional image, link).
+- Primary use: homepage "Startup Spotlight and Recognitions". The same component can power Milestones on the About page.
+## 5. Homepage section order
+1. Utility bar: announcements ticker, socials, search / Cmd+K.
+2. Header: IICE + IISER Bhopal logos with DST/NSTEDB co-branding; transparent-to-solid on scroll; persistent "Apply for Incubation" button.
+3. Hero: strong headline, one-line sub-copy, two CTAs (Apply / Explore Startups), plus the three-stage strip.
+4. Impact stats with count-up when scrolled into view, driven by a content file.
+5. "Why IICE" ecosystem tiles (labs and co-working, mentoring, funding access, IP/legal/regulatory help, networking, training, BIRAC Edge).
+6. Incubation journey: the staged ladder with named stages and funding bands.
+7. "Choose your path" quick-entry for Founders / Students / Mentors / Investors & Partners.
+8. Quick Tour cards (host institute, startups, mentors, funders).
+9. Card spinbar: Startup Spotlight.
+10. Startup logo carousel (pause on hover) linking to the directory.
+11. Upcoming events and latest news, side by side, with date chips.
+12. Testimonials slider.
+13. Funders and partners logo wall.
+14. "Pitch to Us" CTA band with a short form.
+15. Footer: audience-grouped links, address, click-to-load map embed, socials.
+
+## 6. Internal page templates
+- Program/stage page
+- Startup directory (search, filters by sector / stage / year / status) plus startup detail pages
+- Events (upcoming/past, filters, add-to-calendar .ics, registration link)
+- Team and committees (one page with tabs)
+- Documents library for Resolutions and Policies (title, date, version, search, PDF download)
+- Apply (multi-step form, eligibility check, process steps, FAQ)
+- Facilities (gallery plus equipment list)
+- Careers
+- Contact
+- BIRAC Edge
+- News detail
+
+## 7. Design direction
+Credible, modern, science-meets-startup. It should not look like a generic template or a government PDF portal. Generous whitespace, strong typographic hierarchy, consistent card/grid system.
+- Palette: derive it from the IISER Bhopal logo when I supply it. Until then use a deep blue/teal base with one warm accent. Light theme by default, dark mode supported.
+- Type: one display face plus one text face, self-hosted, with a Devanagari-capable fallback.
+- Motion: purposeful only (section reveals, count-up, spinbar). Always respect prefers-reduced-motion.
+- Images: use aspect-ratio placeholders now. I will supply real lab, campus and event photos.
+- Icons: one consistent set (e.g. Lucide).
+
+## 8. Tech
+Defaults (change only with a one-paragraph justification):
+- Next.js (App Router) + TypeScript + Tailwind CSS; Framer Motion or GSAP for motion.
+- All content lives as typed JSON/MDX in /content (startups, events, news, team, stats, documents, announcements) so non-developers can edit it. Optionally add a Git-based CMS config (Decap or Keystatic).
+- Static export, so it can be hosted anywhere, including institute servers.
+- Forms post to a configurable endpoint set by an environment variable (Apps Script, Formspree or similar). Include client and server validation, a spam honeypot, success/error states, and no paid SDKs.
+- Self-host fonts. Map is a click-to-load embed.
+
+## 9. Quality bars (must pass before you finish)
+- Lighthouse mobile: Performance 90+, Accessibility 100, Best Practices and SEO 95+. LCP under 2.5 s, CLS under 0.1.
+- Responsive from 360 px to 1920 px, mobile-first. No hero asset above about 500 KB. Use AVIF/WebP, responsive sizes and lazy loading.
+- WCAG 2.2 AA: contrast, keyboard navigation, skip link, landmarks, alt text, focus states. Follow GIGW 3.0 (Guidelines for Indian Government Websites and Apps) where practical.
+- i18n-ready structure (English default, Hindi addable later).
+- SEO: per-page metadata, OpenGraph, sitemap.xml, robots.txt, JSON-LD (Organization, Event).
+
+## 10. Honesty rules
+- NEVER invent statistics, funding amounts, startup names, testimonials, team members or dates. Use placeholders flagged TODO_CONFIRM in /content.
+- Add an npm script that lists every remaining TODO_CONFIRM, and a dev-only banner that shows where placeholders are still live.
+- No lorem ipsum in the final output. Placeholder copy must read as plausible but be flagged.
+
+## 11. Deliverables
+1. The working codebase, with lint, typecheck and build passing.
+2. README: how to run, build and deploy; how to add a startup, event, news item, document and announcement.
+3. A handover checklist of what IICE must supply: logo SVGs, photos, startup data, team bios, real social URLs, form endpoint, analytics ID, final stats.
+4. A closing summary: what is built, what is placeholder, assumptions made, and how each reference feature (section 3) and the spinbar (section 4) was implemented.

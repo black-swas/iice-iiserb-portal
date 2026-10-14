@@ -1,0 +1,76 @@
+{
+  "_source": "DST NIDHI-EIR national programme structure for Technology Business Incubators",
+  "slug": "dst-nidhi-eir",
+  "name": "DST NIDHI Entrepreneur-in-Residence (EIR)",
+  "provider": "Department of Science & Technology (DST), Govt. of India",
+  "oneLiner": "Monthly fellowship and pre-incubation mentoring for student, doctoral, and postdoctoral innovators validating a deep-science venture.",
+  "stageSlugs": [
+    "catalyse"
+  ],
+  "sectorFocus": [
+    "healthcare-bioengineering",
+    "iot-ai",
+    "computational-it"
+  ],
+  "atAGlance": {
+    "maxSupport": {
+      "min": 120000,
+      "max": 360000,
+      "currency": "INR"
+    },
+    "duration": "Up to 12 months",
+    "purpose": "Living fellowship and concept validation support while translating laboratory research into a venture",
+    "fundingAgency": "Department of Science & Technology (DST), Government of India",
+    "expectedOutput": "Validated proof-of-concept, business model, and incorporation of a deep-tech startup",
+    "whoCanApply": "Graduating BS-MS, BS, PhD, postdoctoral researchers, and engineering/science graduates committed full-time"
+  },
+  "benefits": [
+    "Monthly fellowship grant of up to ₹30,000 per month for up to 12 months",
+    "Co-working desk at IICE and structured mentoring from IISER Bhopal faculty"
+  ],
+  "eligibility": [
+    "Citizen of India with a degree in science, engineering, medicine, or technology.",
+    "Committed full-time to pursuing an innovative technology business idea at IICE with no concurrent salary.",
+    "Supported by a Technical Evaluation Committee review at IICE, IISER Bhopal."
+  ],
+  "coveredUses": [
+    "Monthly Entrepreneur-in-Residence fellowship support as per DST NIDHI norms.",
+    "Guided access to IICE co-working desks, E-Cell workshops, and faculty advisory sessions."
+  ],
+  "nonPermittedUses": [
+    "Capital equipment purchases or international travel."
+  ],
+  "selectionSteps": [
+    {
+      "label": "Concept Submission",
+      "detail": "Submit a concept note and prototype roadmap through the IICE application portal."
+    },
+    {
+      "label": "TEC Review",
+      "detail": "Evaluation of scientific novelty and founder commitment by the Technical Evaluation Committee."
+    }
+  ],
+  "window": {
+    "opensAt": "2026-01-01T00:00:00+05:30",
+    "rolling": true
+  },
+  "cohorts": [
+    {
+      "label": "Student & Doctoral Innovators",
+      "year": 2024,
+      "beneficiaries": [
+        {
+          "name": "Protomate AI",
+          "oneLiner": "Multilingual conversational AI diagnostic assistant for early mental-health screening.",
+          "startupSlug": "protomate-ai"
+        }
+      ]
+    }
+  ],
+  "officialUrl": "https://nidhi.dst.gov.in/",
+  "contact": {
+    "email": "iice@iiserb.ac.in",
+    "phone": "+91 755 269 2384"
+  },
+  "lastReviewed": "2026-10-12"
+}

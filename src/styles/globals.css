@@ -1,0 +1,94 @@
+/* Scan src/ only: the docs and content prose are full of words that look like utility names (CSS budget, TRD §12). */
+@import "tailwindcss" source(none);
+@source "../../src";
+
+@import "./tokens.css";
+@import "./spinbar.css";
+@import "./layout.css";
+@import "./pages.css";
+@import "./forms.css";
+@import "./home.css";
+
+@layer base {
+  html {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    /* The header is sticky: keep anchor targets and focused elements clear of it (WCAG 2.4.11). */
+    scroll-padding-top: calc(var(--header-h) + 1rem);
+    /* The floating pitch pill sits at the bottom edge; a focused control must not end up behind it (WCAG 2.4.11). */
+    scroll-padding-bottom: 5rem;
+  }
+
+  /* A modal dialog (mobile menu, search) stops the page behind it from scrolling. */
+  html:has(dialog[open]) {
+    overflow: hidden;
+  }
+
+  body {
+    min-height: 100dvh;
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  h1 {
+    font-size: var(--text-h1);
+    line-height: var(--text-h1--line-height);
+    letter-spacing: var(--text-h1--letter-spacing);
+  }
+
+  h2 {
+    font-size: var(--text-h2);
+    line-height: var(--text-h2--line-height);
+    letter-spacing: var(--text-h2--letter-spacing);
+  }
+
+  h3 {
+    font-size: var(--text-h3);
+    line-height: var(--text-h3--line-height);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+
+  /* Motion is opt-in: users who ask for less get the final state straight away (SPEC §6.5). */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@utility wrapper {
+  width: 100%;
+  max-width: var(--container-content);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+@utility wrapper-wide {
+  width: 100%;
+  max-width: var(--container-wide);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+@utility py-section {
+  padding-block: var(--section-py);
+}

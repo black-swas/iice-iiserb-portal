@@ -1,0 +1,82 @@
+{
+  "_source": "IICE RAMP workshops (May 2026) with MP Laghu Udyog Nigam and Ministry of MSME A-ESDP programme (July 2026)",
+  "slug": "msme-innovative-ramp",
+  "name": "Ministry of MSME RAMP & ESDP Entrepreneurship Support",
+  "provider": "Ministry of MSME, Govt. of India & MP Laghu Udyog Nigam",
+  "oneLiner": "Skill development, prototype grant facilitation, and market access under the World Bank-supported RAMP and MSME ESDP schemes.",
+  "stageSlugs": [
+    "catalyse",
+    "culture",
+    "commercialise"
+  ],
+  "sectorFocus": [
+    "iot-ai",
+    "social-rural",
+    "environment-agriculture"
+  ],
+  "atAGlance": {
+    "maxSupport": {
+      "min": 150000,
+      "max": 1500000,
+      "currency": "INR"
+    },
+    "duration": "6 to 12 months",
+    "purpose": "Advanced entrepreneurship skill development, MSME registration, quality certification, and prototype commercialization",
+    "fundingAgency": "Ministry of MSME, Government of India & Department of MSME, Government of Madhya Pradesh",
+    "expectedOutput": "Udyam-registered enterprise, ZED/ISO certification readiness, and commercial market linkage",
+    "whoCanApply": "Aspiring entrepreneurs, STEM students, and registered MSMEs in Madhya Pradesh"
+  },
+  "benefits": [
+    "Residential Advanced ESDP training cohorts and RAMP orientation workshops at IISER Bhopal",
+    "Support for Udyam registration, prototype development grants, and IP reimbursement"
+  ],
+  "eligibility": [
+    "Innovators, students, and early-stage enterprises operating in Madhya Pradesh.",
+    "Participants in IICE-hosted RAMP orientation sessions or Advanced ESDP cohorts."
+  ],
+  "coveredUses": [
+    "Prototype development and testing under MSME Innovative Scheme norms.",
+    "Quality certification, trademark/patent reimbursement, and state procurement onboarding."
+  ],
+  "nonPermittedUses": [
+    "Working capital for pure trading or non-manufacturing retail activities."
+  ],
+  "selectionSteps": [
+    {
+      "label": "RAMP / ESDP Orientation",
+      "detail": "Participation in IICE & MP Laghu Udyog Nigam orientation and screening."
+    },
+    {
+      "label": "MSME Portal Application",
+      "detail": "Recommendation to the Ministry of MSME / State MSME Directorate portal."
+    }
+  ],
+  "window": {
+    "opensAt": "2026-05-10T00:00:00+05:30",
+    "rolling": true
+  },
+  "cohorts": [
+    {
+      "label": "Regional MSME & EdTech Ventures",
+      "year": 2026,
+      "beneficiaries": [
+        {
+          "name": "Miniguru T-Labs",
+          "oneLiner": "Hands-on STEM tinkering laboratories and experiential project-based learning platforms.",
+          "startupSlug": "miniguru-t-labs"
+        },
+        {
+          "name": "Powernet Technology",
+          "oneLiner": "Electrical engineering, power distribution, and energy-monitoring solutions.",
+          "startupSlug": "powernet-technology"
+        }
+      ]
+    }
+  ],
+  "officialUrl": "https://msme.gov.in/",
+  "contact": {
+    "email": "iice@iiserb.ac.in",
+    "phone": "+91 755 269 2384"
+  },
+  "lastReviewed": "2026-10-12"
+}

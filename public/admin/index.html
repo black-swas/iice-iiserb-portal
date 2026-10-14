@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Content Manager · IICE, IISER Bhopal</title>
+  </head>
+  <body>
+    <!--
+      The content manager (Decap CMS, TRD §9). It is a separate application: it runs only on this page, loads its own
+      script from unpkg, and reads config.yml, which `npm run cms:config` generates from the content schemas.
+      Pinned to one version, with a hash, so a changed file would be refused rather than run.
+    -->
+    <script
+      src="https://unpkg.com/decap-cms@3.16.3/dist/decap-cms.js"
+      integrity="sha384-A/Gdn928CNLufmnGWGs9RM4Q9o8bSNLeJERqBFrBjwzL7FRpoLT3MPF8Tl0+Wd2p"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

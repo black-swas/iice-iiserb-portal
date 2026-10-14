@@ -1,0 +1,83 @@
+{
+  "_source": "Industry-Academia Conclave 2.0 (8 Aug 2026) BIRAC EDGE announcement by Dr. Debasis Nayak and BIRAC Call 23 outreach at IICE",
+  "slug": "birac-big-edge",
+  "name": "BIRAC EDGE & Biotechnology Ignition Grant (BIG) Facilitation",
+  "provider": "BIRAC, Department of Biotechnology (DBT), Govt. of India",
+  "oneLiner": "Grant facilitation, proposal mentoring, and wet-lab incubation for biotechnology, biotherapeutics, and medical device innovators.",
+  "stageSlugs": [
+    "catalyse",
+    "culture"
+  ],
+  "sectorFocus": [
+    "healthcare-bioengineering",
+    "environment-agriculture"
+  ],
+  "atAGlance": {
+    "maxSupport": {
+      "min": 500000,
+      "max": 5000000,
+      "currency": "INR"
+    },
+    "duration": "Up to 18 months",
+    "purpose": "Proof-of-concept validation, preclinical studies, and prototype development in healthcare and bioengineering",
+    "fundingAgency": "Biotechnology Industry Research Assistance Council (BIRAC), DBT, Govt. of India",
+    "expectedOutput": "TRL 3-5 biotech prototype, preclinical validation dossier, and IP filing",
+    "whoCanApply": "Individual biotech innovators, faculty spin-offs, and life-science startups under 5 years of incorporation"
+  },
+  "benefits": [
+    "Grant-in-aid support up to ₹50 Lakh under BIRAC BIG norms for proof-of-concept validation",
+    "Pre-proposal review clinics with Dr. Debasis Nayak (BIRAC-EDGE Coordinator) and IISER Bhopal bioscience faculty",
+    "Wet-lab bench access and confocal/NMR/HRMS characterization at IISER Bhopal"
+  ],
+  "eligibility": [
+    "Individual scientists, clinicians, research scholars, or startups incorporated within the last 5 years.",
+    "Project proposal in healthcare, biotherapeutics, molecular diagnostics, industrial biotechnology, or clean bio-energy.",
+    "Mentored or hosted in collaboration with IISER Bhopal faculty and IICE bio-incubation facilities."
+  ],
+  "coveredUses": [
+    "Consumables, reagents, cell lines, and small laboratory equipment.",
+    "Central Instrumentation Facility (CIF) analytical testing, CRO services, and patent filing costs.",
+    "Project manpower and domestic travel for regulatory/clinical consultations."
+  ],
+  "nonPermittedUses": [
+    "Routine academic research without commercial translation milestones."
+  ],
+  "selectionSteps": [
+    {
+      "label": "Pre-Proposal Clinic",
+      "detail": "Mock review with IICE's BIRAC-EDGE Coordinator and bioscience faculty."
+    },
+    {
+      "label": "National Call Defence",
+      "detail": "Submission to BIRAC portal and technical defence before the Expert Panel."
+    }
+  ],
+  "window": {
+    "opensAt": "2026-08-08T00:00:00+05:30",
+    "rolling": true
+  },
+  "cohorts": [
+    {
+      "label": "Bio-Incubation Portfolio",
+      "year": 2025,
+      "beneficiaries": [
+        {
+          "name": "Cytoforge Therapeutics",
+          "oneLiner": "Precision cell and gene therapy venture developing CAR-T and CAR-Macrophage platforms.",
+          "startupSlug": "cytoforge-therapeutics"
+        },
+        {
+          "name": "Luminojen",
+          "oneLiner": "Organelle-specific fluorescent dyes and molecular probes for live-cell imaging.",
+          "startupSlug": "luminojen"
+        }
+      ]
+    }
+  ],
+  "officialUrl": "https://birac.nic.in/",
+  "contact": {
+    "email": "iice@iiserb.ac.in",
+    "phone": "+91 755 269 2384"
+  },
+  "lastReviewed": "2026-10-12"
+}

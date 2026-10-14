@@ -1,0 +1,45 @@
+name: Weekly external links and stale content
+
+# Links to other websites break without warning, and schemes, rate cards and rosters go out of date. Once a week this checks
+# both and opens an issue if it finds anything. It never blocks a build or a deploy (TRD §13.2).
+on:
+  schedule:
+    - cron: "30 3 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+
+      - name: External links
+        run: npm run links -- --external --report=external-links.md
+
+      - name: Stale content
+        run: npm run content:stale > stale-content.txt
+
+      - name: Open an issue if there is anything to look at
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          body=""
+          if [ -s external-links.md ]; then body="$(cat external-links.md)"$'\n\n'; fi
+          if ! grep -q "^✔" stale-content.txt; then body="${body}$(cat stale-content.txt)"; fi
+          if [ -n "$body" ]; then
+            gh issue create --title "Weekly check: links and content to review ($(date -u +%Y-%m-%d))" --body "$body"
+          fi

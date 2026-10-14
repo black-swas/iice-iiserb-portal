@@ -1,0 +1,101 @@
+name: Deploy
+
+# Rebuilds and deploys the site (TRD §15). It runs on every push to main, and every day at 00:30 IST (19:00 UTC the day
+# before) so that things that depend on the date, such as calls that have closed and events that have passed, are right in
+# the static pages even when nothing was edited. It can also be started by hand.
+#
+# The `deploy` job deploys over SSH to a server that serves a `current` symlink (Apache or Nginx on the institute's server),
+# and runs only when the repository variable DEPLOY_TARGET is `ssh`. A static host such as Vercel, Cloudflare Pages or
+# Netlify needs no job of this kind: point it at this repository with `npm run build` and the `out` folder, set the same
+# variables, and it reads the generated headers and redirects (`vercel.json`, `_redirects`, `_headers`). The daily rebuild
+# for Vercel is the `vercel-daily-rebuild` job. See docs/DEPLOY.md.
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 19 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  # Vercel builds and deploys by itself on every push (its Git integration). What it cannot do is rebuild on the date, so a
+  # daily call to a Deploy Hook (Project Settings > Git > Deploy Hooks) keeps closed calls and past events right.
+  vercel-daily-rebuild:
+    if: ${{ github.event_name != 'push' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Ask Vercel to rebuild
+        env:
+          VERCEL_DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$VERCEL_DEPLOY_HOOK" ]; then
+            echo "::notice::No VERCEL_DEPLOY_HOOK secret is set, so nothing was triggered."
+            exit 0
+          fi
+          curl --fail --silent --show-error --request POST "$VERCEL_DEPLOY_HOOK" > /dev/null
+          echo "Vercel rebuild requested."
+
+  # The institute-server route. It runs only when the repository variable DEPLOY_TARGET is `ssh`, so a project hosted on
+  # Vercel (or anywhere that builds for itself) does not fail on missing SSH secrets.
+  deploy:
+    if: ${{ vars.DEPLOY_TARGET == 'ssh' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: production
+    env:
+      # Public values, set under Settings > Secrets and variables > Actions > Variables. They end up in the pages.
+      NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL }}
+      NEXT_PUBLIC_FORM_ENDPOINT: ${{ vars.NEXT_PUBLIC_FORM_ENDPOINT }}
+      NEXT_PUBLIC_MAP_EMBED_URL: ${{ vars.NEXT_PUBLIC_MAP_EMBED_URL }}
+      NEXT_PUBLIC_ANALYTICS_PROVIDER: ${{ vars.NEXT_PUBLIC_ANALYTICS_PROVIDER }}
+      NEXT_PUBLIC_ANALYTICS_ID: ${{ vars.NEXT_PUBLIC_ANALYTICS_ID }}
+      NEXT_PUBLIC_ANALYTICS_HOST: ${{ vars.NEXT_PUBLIC_ANALYTICS_HOST }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Budgets and HTML audit
+        run: |
+          npm run size
+          npm run audit:html
+
+      - name: Set up SSH
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
+
+      # Upload to releases/<sha>, then switch the `current` symlink in one step, so a visitor never sees half a deploy.
+      # The five newest releases are kept, so a bad deploy can be undone by pointing `current` back.
+      - name: Upload and switch
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          set -euo pipefail
+          release="releases/${GITHUB_SHA}-$(date -u +%Y%m%d%H%M)"
+          ssh_opts="-i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes"
+          ssh $ssh_opts "$DEPLOY_USER@$DEPLOY_HOST" "mkdir -p '$DEPLOY_PATH/$release'"
+          rsync -az --delete -e "ssh $ssh_opts" out/ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/$release/"
+          ssh $ssh_opts "$DEPLOY_USER@$DEPLOY_HOST" "cd '$DEPLOY_PATH' && ln -sfn '$release' current.new && mv -Tf current.new current && ls -1dt releases/* | tail -n +6 | xargs -r rm -rf"

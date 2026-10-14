@@ -1,0 +1,48 @@
+{
+  "_source": "IICE & EECS i-Lab hardware prototyping facilities at IISER Bhopal",
+  "slug": "pcb-sensor-prototyping-station",
+  "name": "Flexible Electronics, Sensor & Embedded Hardware Prototyping Bench",
+  "category": "electronics-prototyping",
+  "make": "Keysight / Keithley / Bambu Lab",
+  "model": "Mixed-Signal Test & Rapid Prototyping Suite",
+  "specs": [
+    "Precision source-measure units (SMU), LCR meter, and 4-channel mixed-domain digital storage oscilloscope",
+    "Fine-pitch SMD reflow rework station, conductive ink curing oven, and multi-material 3D printers",
+    "Electrochemical workstation (potentiostat/galvanostat) for biosensor characterization"
+  ],
+  "useCases": [
+    "Rapid iteration of wearable and point-of-care sensor readouts (Intisen Technology, Beyond Limit Devices)",
+    "Enclosure fabrication and hardware-in-the-loop verification for student innovation projects"
+  ],
+  "access": "self-use-after-training",
+  "facilitySlug": "central-instrumentation-facility",
+  "status": "available",
+  "bookingNotes": "Available to resident IICE incubatees and Student Innovators Program teams after safety induction.",
+  "rateCard": [
+    {
+      "userCategory": "iiserb",
+      "rate": 100,
+      "unit": "hour",
+      "gstIncluded": false
+    },
+    {
+      "userCategory": "incubatee",
+      "rate": 250,
+      "unit": "hour",
+      "gstIncluded": false
+    },
+    {
+      "userCategory": "external-academic",
+      "rate": 500,
+      "unit": "hour",
+      "gstIncluded": false
+    },
+    {
+      "userCategory": "industry",
+      "rate": 1200,
+      "unit": "hour",
+      "gstIncluded": false
+    }
+  ],
+  "lastReviewed": "2026-10-12"
+}

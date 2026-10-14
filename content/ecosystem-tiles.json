@@ -1,0 +1,70 @@
+{
+  "items": [
+    {
+      "id": "labs-coworking",
+      "icon": "flask-conical",
+      "title": "Labs & co-working",
+      "short": "10,000 sq ft of co-working desks, cubicles, and labs on campus.",
+      "long": "Co-working offices, cubicles, and research labs on the 2nd Floor of the Main Building at IISER Bhopal, with common office equipment and high-speed campus internet.",
+      "href": "/incubation/facilities/",
+      "_source": "legacy site (iice.iiserb.ac.in), downloaded 2026-10-12"
+    },
+    {
+      "id": "mentoring",
+      "icon": "users",
+      "title": "Faculty & domain mentoring",
+      "short": "Mentoring from IISER Bhopal faculty and industry experts.",
+      "long": "Incubatees receive domain mentoring from IISER Bhopal faculty across Chemistry, Biology, Physics, Earth Sciences, and EECS as they take a technology towards market.",
+      "href": "/about/mentors/",
+      "_source": "legacy site (iice.iiserb.ac.in), downloaded 2026-10-12"
+    },
+    {
+      "id": "funding-access",
+      "icon": "landmark",
+      "title": "Seed & grant funding",
+      "short": "Access to DST NIDHI, BIRAC, and MSME funding pathways.",
+      "long": "TODO_CONFIRM: Proposal guidance and seed support across DST NIDHI-TBI, NIDHI-EIR, BIRAC BIG/EDGE biotechnology grants, and Ministry of MSME schemes.",
+      "href": "/incubation/funding/",
+      "_status": "TODO_CONFIRM",
+      "_note": "Confirm which funding schemes and investor links IICE offers (SRD Q4). The legacy site says that IICE helps with financial matters."
+    },
+    {
+      "id": "ip-legal-regulatory",
+      "icon": "scale",
+      "title": "IP, legal & regulatory",
+      "short": "Patent filing, technology transfer, and compliance support.",
+      "long": "Support with prior-art searches, patent protection, technology transfer from IISER Bhopal labs, company incorporation, and regulatory questions.",
+      "href": "/incubation/services/",
+      "_status": "TODO_CONFIRM",
+      "_note": "The legacy site supports IP protection, technology transfer and legal help. Regulatory support is unconfirmed."
+    },
+    {
+      "id": "networking",
+      "icon": "network",
+      "title": "Industry & alumni network",
+      "short": "Conclaves, demo days, and strategic R&D partnerships.",
+      "long": "Introductions to corporate R&D leaders, academia, alumni, and the wider startup ecosystem through events such as Industry–Academia Conclave 2.0.",
+      "href": "/about/partners/",
+      "_source": "legacy site (iice.iiserb.ac.in), downloaded 2026-10-12"
+    },
+    {
+      "id": "training-workshops",
+      "icon": "graduation-cap",
+      "title": "E-Cell & Startup Studio",
+      "short": "Bootcamps, A-ESDP programmes, and student innovation.",
+      "long": "Workshops, Startup Studio (Lab-to-Market) sessions, Ministry of MSME A-ESDP cohorts, and Innovation Club activities that build entrepreneurial skills.",
+      "href": "/events/",
+      "_source": "legacy site (iice.iiserb.ac.in), downloaded 2026-10-12"
+    },
+    {
+      "id": "birac-edge",
+      "icon": "dna",
+      "title": "BIRAC Edge",
+      "short": "TODO_CONFIRM: Support through the BIRAC EDGE scheme.",
+      "long": "TODO_CONFIRM: Announced at Industry–Academia Conclave 2.0, the BIRAC EDGE scheme supports translational bioscience and healthcare innovators at IICE.",
+      "href": "/birac-edge/",
+      "_status": "TODO_CONFIRM",
+      "_note": "The BIRAC EDGE scheme was announced at Industry–Academia Conclave 2.0 (8 Aug 2026). Programme details are not yet confirmed (SRD Q6)."
+    }
+  ]
+}

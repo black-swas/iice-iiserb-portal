@@ -1,0 +1,80 @@
+{
+  "items": [
+    {
+      "audience": "founders",
+      "title": "Founders",
+      "blurb": "Check your eligibility, see the incubation journey and apply.",
+      "icon": "rocket",
+      "links": [
+        {
+          "label": "Apply for incubation",
+          "href": "/apply/"
+        },
+        {
+          "label": "Incubation journey",
+          "href": "/incubation/"
+        },
+        {
+          "label": "Facilities",
+          "href": "/incubation/facilities/"
+        }
+      ]
+    },
+    {
+      "audience": "students",
+      "title": "Students",
+      "blurb": "Join the Innovation Club, attend events and turn a project into a pre-startup.",
+      "icon": "lightbulb",
+      "links": [
+        {
+          "label": "Student Innovators Program",
+          "href": "/incubation/student-innovators/"
+        },
+        {
+          "label": "Innovation Club",
+          "href": "/about/innovation-club/"
+        },
+        {
+          "label": "Events",
+          "href": "/events/"
+        }
+      ]
+    },
+    {
+      "audience": "mentors",
+      "title": "Mentors",
+      "blurb": "Share your expertise with early-stage ventures and see the startups you could help.",
+      "icon": "handshake",
+      "links": [
+        {
+          "label": "Become a mentor",
+          "href": "/about/mentors/#become-a-mentor"
+        },
+        {
+          "label": "Startups",
+          "href": "/startups/"
+        }
+      ]
+    },
+    {
+      "audience": "investors-partners",
+      "title": "Investors and partners",
+      "blurb": "Explore the startup directory and IICE's impact, or get in touch about partnering.",
+      "icon": "building-2",
+      "links": [
+        {
+          "label": "Startup directory",
+          "href": "/startups/"
+        },
+        {
+          "label": "Impact",
+          "href": "/about/impact/"
+        },
+        {
+          "label": "Contact",
+          "href": "/contact/"
+        }
+      ]
+    }
+  ]
+}
