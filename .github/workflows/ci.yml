@@ -22,7 +22,7 @@ jobs:
       # `npm run lhci` serves on. The deployed site is built by deploy.yml with the real address.
       NEXT_PUBLIC_SITE_URL: http://localhost:4175
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - uses: actions/setup-node@v4
         with:

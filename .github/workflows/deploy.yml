@@ -58,7 +58,7 @@ jobs:
       NEXT_PUBLIC_ANALYTICS_ID: ${{ vars.NEXT_PUBLIC_ANALYTICS_ID }}
       NEXT_PUBLIC_ANALYTICS_HOST: ${{ vars.NEXT_PUBLIC_ANALYTICS_HOST }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - uses: actions/setup-node@v4
         with:
