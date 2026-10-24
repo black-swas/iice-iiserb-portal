@@ -174,6 +174,19 @@
   <text x="142" y="66" font-size="10.5" font-weight="500" fill="#8a7d7a">Indian Institute of Science Education and Research Bhopal</text>
 </svg>`;
 
+/* compact lockup for phone bars — icon + seal + IICE + one badge; the two
+   long text lines of the full lockup are unreadable below ~30px tall */
+var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 238 72" width="238" height="72" font-family="'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif" role="img" aria-label="IICE IISER Bhopal">
+  <image x="0" y="7" width="58" height="58" preserveAspectRatio="xMidYMid meet" href="/assets/media/logo_iice.webp"/>
+  <rect x="67" y="12" width="1.5" height="48" rx="1" fill="#e7e2dc"/>
+  <clipPath id="sealClipM"><circle cx="103" cy="36" r="27"/></clipPath>
+  <image x="76" y="9" width="54" height="54" preserveAspectRatio="xMidYMid slice" clip-path="url(#sealClipM)" href="/assets/media/logo_iiserb.webp"/>
+  <circle cx="103" cy="36" r="26" fill="none" stroke="#e7e2dc" stroke-width="1.2"/>
+  <text x="140" y="49" font-size="34" font-weight="800" letter-spacing="0.5" fill="#6c3231">IICE</text>
+  <rect x="140" y="13" width="92" height="20" rx="10" fill="#1e3a5f"/>
+  <text x="186" y="26.5" font-size="9.5" font-weight="700" letter-spacing="1" fill="#ffffff" text-anchor="middle">IISER BHOPAL</text>
+</svg>`;
+
   /* global route transition: a brand veil sweeps across while the route
      swaps underneath, then the new page's sections rise in staggered.
      popstate (back/forward) only gets the rise. */
@@ -275,7 +288,9 @@
 
     var logo = el("a", "zlm-logo");
     logo.setAttribute("aria-label", "IICE IISER Bhopal — Home");
-    logo.innerHTML = LOGO_SVG;
+    logo.innerHTML =
+      '<span class="zlm-logo__f">' + LOGO_SVG + "</span>" +
+      '<span class="zlm-logo__m">' + LOGO_SVG_COMPACT + "</span>";
     logo.addEventListener("click", function (ev) { ev.preventDefault(); navigate("/"); });
     inner.appendChild(logo);
 
@@ -481,7 +496,7 @@
     head.appendChild(el("div", null,
       '<span class="zlm-flagship__eyebrow">Flagship Incubation Stages</span>' +
       '<h2 class="zlm-flagship__title" id="zlm-flag-title">From Idea to Enterprise</h2>' +
-      '<p class="zlm-flagship__sub">IICE runs a three-stage incubation framework that carries deep-science ventures from proof of concept to commercial scale — hover or focus a stage to open it.</p>'));
+      '<p class="zlm-flagship__sub">IICE runs a three-stage incubation framework that carries deep-science ventures from proof of concept to commercial scale — open a stage to see the funding, facilities and mentorship behind it.</p>'));
     sec.appendChild(head);
 
     var cards = el("div", "zlm-flagship__cards");
@@ -848,7 +863,7 @@
       '<div class="zlm-gw__head">' +
       '<span class="zlm-gw__eyebrow">05 / Stakeholder Gateways</span>' +
       '<h2 class="zlm-gw__title" id="zlm-gw-title">Information by Stakeholder Category</h2>' +
-      '<p class="zlm-gw__sub">Four gateways into IICE — keep scrolling to bring each one forward, or pick it from the deck below.</p>' +
+      '<p class="zlm-gw__sub">Four gateways into IICE — keep scrolling to bring each one forward, or jump straight to a gateway with the controls.</p>' +
       "</div>";
 
     if (variant === "grid") {

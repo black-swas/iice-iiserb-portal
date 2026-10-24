@@ -54,12 +54,15 @@ html { background: #5e2928; }
 @media (max-width: 700px) { .zlm-logo svg { height: 38px; } }
 @media (max-width: 480px) { .zlm-logo svg { height: 33px; } }
 
-/* phones: the 6.7:1 lockup cannot keep height-based sizing — it used to
-   overflow the bar and push the burger off-screen (unreachable menu) */
+/* phones: the full 6.7:1 lockup is illegible and overflows — swap to the
+   compact lockup (icon + seal + IICE + one badge) and compact CTA/burger */
+.zlm-logo .zlm-logo__m { display: none; }
 @media (max-width: 700px) {
   .zlm-header__inner { gap: 0.7rem; padding: 0 0.9rem; }
   .zlm-logo { flex: 0 1 auto; }
-  .zlm-logo svg { width: clamp(148px, 43vw, 205px); height: auto; }
+  .zlm-logo .zlm-logo__f { display: none; }
+  .zlm-logo .zlm-logo__m { display: block; }
+  .zlm-logo .zlm-logo__m svg { width: auto; height: 38px; }
   .zlm-cta { padding: 0.58rem 0.9rem; font-size: 0.66rem; letter-spacing: 0.05em; }
   .zlm-burger { width: 40px; padding: 8px; }
 }
@@ -332,16 +335,23 @@ html { background: #5e2928; }
 @media (max-width: 900px) {
   .zlm-flagship__cards { flex-direction: column; height: auto; gap: 14px; }
   .zlm-flip-card { height: auto; flex: none !important; }
-  .zlm-flip-back { padding: 26px 22px; min-height: 0; }
+  .zlm-flip-back { padding: 24px 20px; min-height: 0; }
   .zlm-flip-inner { transform: none !important; }
   .zlm-flip-back {
     transform: none; position: relative; border-radius: 0 0 16px 16px;
     min-height: 260px;
   }
-  .zlm-flip-front { position: relative; height: 220px; }
+  /* stacked card: taller photo presence, square seam against the back */
+  .zlm-flip-front { position: relative; height: 240px; border-radius: 16px 16px 0 0; }
   .zlm-flip-card { background: transparent; overflow: visible; }
   .zlm-flip-card .zlm-flip-inner { display: block; }
   .zlm-flip-face { position: relative; }
+}
+@media (max-width: 640px) {
+  .zlm-flip-num { top: 12px; left: 14px; font-size: 10px; padding: 3px 8px; }
+  .zlm-flip-info { padding: 16px 16px; }
+  .zlm-flip-info .zlm-flip-name { font-size: 19px; }
+  .zlm-flip-back .zlm-flip-h { font-size: 20px; }
 }
 
 /* ============================================================
@@ -1170,6 +1180,20 @@ div[class*="bg-[#09181D]"][class*="fixed"] {
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.14),
     0 24px 50px -20px rgba(0, 0, 0, 0.5);
+}
+/* phones: the toast used to cover ~40% of the screen with cramped type
+   and mismatched buttons — full-width bottom sheet, touch-sized buttons */
+@media (max-width: 700px) {
+  div[class*="bg-[#09181D]"][class*="fixed"] {
+    left: 12px !important; right: 12px !important; max-width: calc(100vw - 24px) !important;
+    margin: 0 !important; padding: 14px 16px !important;
+    font-size: 0.8rem !important; line-height: 1.5 !important;
+    border-radius: 14px;
+  }
+  div[class*="bg-[#09181D]"][class*="fixed"] button {
+    min-height: 42px; padding: 10px 16px !important; font-size: 0.78rem !important;
+    flex: 1 1 auto; border-radius: 999px;
+  }
 }
 
 /* ---- warm bands gain liquid color pools (pure background layers,
