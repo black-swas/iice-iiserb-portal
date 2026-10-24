@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 240" width="640" height="240">
+  <defs>
+    <linearGradient id="bg-cytoforge-therapeutics" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f5f2eb"/>
+      <stop offset="55%" stop-color="#fef3c7"/>
+      <stop offset="100%" stop-color="#eae4d7"/>
+    </linearGradient>
+    <pattern id="grid-cytoforge-therapeutics" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#b45309" stroke-width="0.6" stroke-opacity="0.11"/>
+    </pattern>
+  </defs>
+  <rect width="640" height="240" fill="url(#bg-cytoforge-therapeutics)"/>
+  <rect width="640" height="240" fill="url(#grid-cytoforge-therapeutics)"/>
+  <circle cx="516" cy="142" r="88" fill="#b45309" fill-opacity="0.07"/>
+  <circle cx="516" cy="142" r="56" fill="#ffffff" fill-opacity="0.86" stroke="#b45309" stroke-width="1.8" stroke-opacity="0.35"/>
+  <g transform="translate(480, 106) scale(3)">
+    <path d="M7 3c0 4.5 10 5.5 10 10s-10 5.5-10 10m10-20c0 4.5-10 5.5-10 10s10 5.5 10 10M8.5 6h7M8.5 18h7M7.5 12h9" fill="none" stroke="#b45309" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <rect x="28" y="142" width="388" height="64" rx="12" fill="#ffffff" fill-opacity="0.9" stroke="#b45309" stroke-width="1.2" stroke-opacity="0.28"/>
+  <text x="46" y="169" font-family="ui-monospace, monospace" font-size="12.5" font-weight="800" fill="#b45309" letter-spacing="0.5">CAR-T &amp; IN-VIVO CELL THERAPY</text>
+  <text x="46" y="191" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#52525b">LENTIVIRAL &amp; MACROPHAGE PLATFORMS</text>
+</svg>

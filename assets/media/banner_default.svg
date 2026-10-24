@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 520" width="1920" height="520" preserveAspectRatio="xMidYMid slice">
+  <rect width="1920" height="520" fill="#5e2928"/>
+  <rect width="1920" height="520" fill="#6c3231" opacity="0.55"/>
+  <!-- subtle dot grid -->
+  <pattern id="dots" width="44" height="44" patternUnits="userSpaceOnUse">
+    <circle cx="2" cy="2" r="1.6" fill="#ffffff" opacity="0.05"/>
+  </pattern>
+  <rect width="1920" height="520" fill="url(#dots)"/>
+  <!-- orbit motif, right side -->
+  <g transform="translate(1540, 260)" stroke="#ffffff" fill="none" opacity="0.12">
+    <ellipse rx="210" ry="78" stroke-width="2" transform="rotate(-28)"/>
+    <ellipse rx="210" ry="78" stroke-width="2" transform="rotate(28)"/>
+    <circle r="96" stroke-width="2.4"/>
+    <circle r="150" stroke-width="1" stroke-dasharray="3 7"/>
+  </g>
+  <!-- flask silhouette, right side -->
+  <g transform="translate(1540, 260)" fill="#ffffff" opacity="0.10">
+    <path d="M-16-78h32v10l-7 9v13l15 23a7 7 0 0 1-6 11h-36a7 7 0 0 1-6-11l15-23v-13l-7-9v-10z"/>
+    <circle cx="0" cy="26" r="5" fill="#ff8a40" opacity="0.5"/>
+  </g>
+  <!-- corner accents -->
+  <path d="M0 500 L180 500 L180 512 L12 512 L12 520 L0 520 Z" fill="#ff8a40" opacity="0.85"/>
+  <rect x="0" y="512" width="180" height="8" fill="#ff8a40" opacity="0.9"/>
+  <rect x="1884" y="0" width="36" height="36" fill="none" stroke="#ff8a40" stroke-width="3" opacity="0.5"/>
+</svg>

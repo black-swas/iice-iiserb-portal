@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160">
+  <rect width="160" height="160" rx="32" fill="#fef3c7" stroke="#b45309" stroke-width="3"/>
+  <rect x="14" y="14" width="132" height="132" rx="22" fill="#ffffff" stroke="#b45309" stroke-width="1.5" stroke-opacity="0.25"/>
+  <circle cx="80" cy="64" r="32" fill="#fef3c7"/>
+  <g transform="translate(56, 40) scale(2)">
+    <path d="M7 3c0 4.5 10 5.5 10 10s-10 5.5-10 10m10-20c0 4.5-10 5.5-10 10s10 5.5 10 10M8.5 6h7M8.5 18h7M7.5 12h9" fill="none" stroke="#b45309" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="80" y="118" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="800" fill="#18181b">CYTOFORGE</text>
+  <text x="80" y="135" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9.5" font-weight="600" fill="#b45309">CAR-T &amp; CELL THERAPY</text>
+</svg>

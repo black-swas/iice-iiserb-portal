@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160">
+  <rect width="160" height="160" rx="32" fill="#fff7ed" stroke="#9a3412" stroke-width="3"/>
+  <rect x="14" y="14" width="132" height="132" rx="22" fill="#ffffff" stroke="#9a3412" stroke-width="1.5" stroke-opacity="0.25"/>
+  <circle cx="80" cy="64" r="32" fill="#fff7ed"/>
+  <g transform="translate(56, 40) scale(2)">
+    <path d="M15 3l3 3-2 2-3-3 2-2zM4 18l7-7 4 4-7 7H4v-4zm9-9l2-2 3 3-2 2-3-3z" fill="none" stroke="#9a3412" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="80" y="118" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="800" fill="#18181b">MBIOSYS</text>
+  <text x="80" y="135" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9.5" font-weight="600" fill="#9a3412">BIO-DIAGNOSTICS</text>
+</svg>

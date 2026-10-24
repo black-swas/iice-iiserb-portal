@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+      <defs>
+        <linearGradient id="fbg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#18181b"/>
+          <stop offset="50%" stop-color="#2d415c"/>
+          <stop offset="100%" stop-color="#9a3412"/>
+        </linearGradient>
+        <pattern id="fgrid" width="32" height="32" patternUnits="userSpaceOnUse">
+          <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#ffffff" stroke-width="0.6" stroke-opacity="0.1"/>
+        </pattern>
+      </defs>
+      <rect width="800" height="500" rx="20" fill="url(#fbg)"/>
+      <rect width="800" height="500" rx="20" fill="url(#fgrid)"/>
+      <circle cx="660" cy="140" r="140" fill="#ff8a40" fill-opacity="0.18"/>
+      <rect x="44" y="42" width="340" height="36" rx="18" fill="#ffffff" fill-opacity="0.14" stroke="#ffffff" stroke-opacity="0.3"/>
+      <text x="66" y="65" font-family="ui-monospace, monospace" font-size="13" font-weight="700" fill="#ff8a40">IICE · IISER BHOPAL INFRASTRUCTURE</text>
+      <text x="44" y="170" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="34" font-weight="800" fill="#ffffff">Scientific Outreach, Conclaves &amp; Media Showcase</text>
+      <text x="44" y="216" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="18" font-weight="500" fill="#e2e8f0">Industry–Academia Conclave · IISF Startup Pavilion · Press Desk</text>
+      <rect x="44" y="280" width="712" height="160" rx="18" fill="#ffffff" fill-opacity="0.95"/>
+      <text x="72" y="328" font-family="ui-monospace, monospace" font-size="13" font-weight="800" fill="#9a3412">TECHNICAL SPECIFICATIONS &amp; ACCESS</text>
+      <text x="72" y="366" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="18" font-weight="700" fill="#18181b">Showcasing IISER Bhopal Spin-Offs Across National Platforms</text>
+      <text x="72" y="402" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="14" font-weight="500" fill="#52525b">2nd Floor, Main Building &amp; Central Instrumentation Facility (CIF), IISER Bhopal</text>
+    </svg>

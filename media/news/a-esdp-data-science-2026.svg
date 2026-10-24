@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <defs>
+    <linearGradient id="g-news-a-esdp-data-science-2026.svg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#faf9f6"/>
+      <stop offset="50%" stop-color="#f0fdf4"/>
+      <stop offset="100%" stop-color="#ede8dc"/>
+    </linearGradient>
+    <pattern id="p-news-a-esdp-data-science-2026.svg" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#15803d" stroke-width="0.7" stroke-opacity="0.1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="420" rx="18" fill="url(#g-news-a-esdp-data-science-2026.svg)"/>
+  <rect width="800" height="420" rx="18" fill="url(#p-news-a-esdp-data-science-2026.svg)"/>
+  <rect x="0" y="0" width="800" height="8" fill="#15803d"/>
+  <circle cx="670" cy="180" r="125" fill="#15803d" fill-opacity="0.08"/>
+  <circle cx="670" cy="180" r="82" fill="#ffffff" stroke="#15803d" stroke-width="2" stroke-opacity="0.3"/>
+  <g transform="translate(622, 132) scale(4)">
+    <path d="M12 3L2 8l10 5 10-5-10-5zM2 14l10 5 10-5M2 18l10 5 10-5" fill="none" stroke="#15803d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <rect x="44" y="44" width="320" height="34" rx="17" fill="#ffffff" stroke="#15803d" stroke-width="1.5"/>
+  <text x="64" y="66" font-family="ui-monospace, monospace" font-size="12" font-weight="700" fill="#15803d">FEB 2026 · DEPT OF EECS &amp; IICE</text>
+  <text x="44" y="155" font-family="system-ui, -apple-system, sans-serif" font-size="31" font-weight="800" fill="#18181b">MSME A-ESDP: DATA SCIENCE &amp; AI</text>
+  <text x="44" y="198" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="500" fill="#52525b">One-Week Advanced Entrepreneurship &amp; Skill Development Programme</text>
+  <rect x="44" y="250" width="500" height="118" rx="14" fill="#ffffff" fill-opacity="0.92" stroke="#e5e2dc" stroke-width="1.5"/>
+  <text x="68" y="286" font-family="ui-monospace, monospace" font-size="12" font-weight="700" fill="#15803d">HOSTED BY IICE · IISER BHOPAL (DST NIDHI-TBI)</text>
+  <text x="68" y="314" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="700" fill="#18181b">2nd Floor, Main Building · Bhauri Campus, Bhopal 462066</text>
+  <text x="68" y="342" font-family="system-ui, -apple-system, sans-serif" font-size="13.5" font-weight="500" fill="#52525b">Office of the Dean (R&amp;D) &amp; Innovation and Incubation Centre for Entrepreneurship</text>
+</svg>

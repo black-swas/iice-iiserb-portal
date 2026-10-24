@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 240" width="640" height="240">
+  <defs>
+    <linearGradient id="bg-protomate-ai" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f5f2eb"/>
+      <stop offset="55%" stop-color="#fef2f2"/>
+      <stop offset="100%" stop-color="#eae4d7"/>
+    </linearGradient>
+    <pattern id="grid-protomate-ai" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#7c2d12" stroke-width="0.6" stroke-opacity="0.11"/>
+    </pattern>
+  </defs>
+  <rect width="640" height="240" fill="url(#bg-protomate-ai)"/>
+  <rect width="640" height="240" fill="url(#grid-protomate-ai)"/>
+  <circle cx="516" cy="142" r="88" fill="#7c2d12" fill-opacity="0.07"/>
+  <circle cx="516" cy="142" r="56" fill="#ffffff" fill-opacity="0.86" stroke="#7c2d12" stroke-width="1.8" stroke-opacity="0.35"/>
+  <g transform="translate(480, 106) scale(3)">
+    <path d="M12 3a7 7 0 0 0-7 7c0 2.4 1.2 4.5 3 5.7V19a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-3.3c1.8-1.2 3-3.3 3-5.7a7 7 0 0 0-7-7zm-1 11v-3H9l4-5v3h2l-4 5z" fill="none" stroke="#7c2d12" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <rect x="28" y="142" width="388" height="64" rx="12" fill="#ffffff" fill-opacity="0.9" stroke="#7c2d12" stroke-width="1.2" stroke-opacity="0.28"/>
+  <text x="46" y="169" font-family="ui-monospace, monospace" font-size="12.5" font-weight="800" fill="#7c2d12" letter-spacing="0.5">MANOMITRA · CLINICAL AI SCREENING</text>
+  <text x="46" y="191" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#52525b">MULTILINGUAL CONVERSATIONAL TRIAGE</text>
+</svg>

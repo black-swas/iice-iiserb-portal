@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160">
+  <rect width="160" height="160" rx="32" fill="#eef2ff" stroke="#4338ca" stroke-width="3"/>
+  <rect x="14" y="14" width="132" height="132" rx="22" fill="#ffffff" stroke="#4338ca" stroke-width="1.5" stroke-opacity="0.25"/>
+  <circle cx="80" cy="64" r="32" fill="#eef2ff"/>
+  <g transform="translate(56, 40) scale(2)">
+    <path d="M12 8a4 4 0 1 0 4 4 4 4 0 0 0-4-4zm8.9 3a9 9 0 0 0-.6-2l1.5-1.8-2-2-1.8 1.5a9 9 0 0 0-2-.6L15.2 4h-2.8l-.8 2.1a9 9 0 0 0-2 .6L7.8 5.2l-2 2 1.5 1.8a9 9 0 0 0-.6 2L4.6 12v2.8l2.1.8a9 9 0 0 0 .6 2l-1.5 1.8 2 2 1.8-1.5a9 9 0 0 0 2 .6l.8 2.1h2.8l.8-2.1a9 9 0 0 0 2-.6l1.8 1.5 2-2-1.5-1.8a9 9 0 0 0 .6-2l2.1-.8V12z" fill="none" stroke="#4338ca" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="80" y="118" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="800" fill="#18181b">KONARQ</text>
+  <text x="80" y="135" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9.5" font-weight="600" fill="#4338ca">APPLIED ENGINEERING</text>
+</svg>

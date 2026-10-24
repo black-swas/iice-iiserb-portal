@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 260" width="260" height="260">
+  <defs>
+    <linearGradient id="pbg-VR" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#faf9f6"/>
+      <stop offset="55%" stop-color="#fff7ed"/>
+      <stop offset="100%" stop-color="#e7e2d8"/>
+    </linearGradient>
+  </defs>
+  <rect width="260" height="260" fill="url(#pbg-VR)"/>
+  <circle cx="215" cy="45" r="65" fill="#9a3412" fill-opacity="0.08"/>
+  <circle cx="130" cy="96" r="46" fill="#ffffff" stroke="#9a3412" stroke-width="2.5"/>
+  <text x="130" y="106" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="28" font-weight="800" fill="#9a3412">VR</text>
+  <path d="M62 216c10-38 36-58 68-58s58 20 68 58" fill="#9a3412" fill-opacity="0.12" stroke="#9a3412" stroke-width="2.2" stroke-linecap="round"/>
+  <rect x="18" y="196" width="224" height="46" rx="12" fill="#09181d"/>
+  <text x="130" y="216" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700" fill="#ff8a40">CO-FOUNDER, PLABELTECH</text>
+  <text x="130" y="232" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="10" font-weight="600" fill="#e2e8f0">Dept. of Chemistry, IISERB</text>
+</svg>
