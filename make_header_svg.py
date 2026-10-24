@@ -1,0 +1,45 @@
+#!/usr/bin/env python3
+"""Regenerate assets/logo_header.svg — the static twin of the inline header
+lockup (sprout mark + IISERB seal + vector text in Plus Jakarta Sans)."""
+import os
+
+ROOT = os.path.dirname(os.path.abspath(__file__))
+
+MARK = '''
+  <defs>
+    <linearGradient id="zlmLmT" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8a403d"/><stop offset="0.55" stop-color="#6c3231"/><stop offset="1" stop-color="#472019"/>
+    </linearGradient>
+    <linearGradient id="zlmLmA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffc247"/><stop offset="1" stop-color="#ff8a40"/>
+    </linearGradient>
+    <clipPath id="sealClip"><circle cx="103" cy="36" r="27"/></clipPath>
+  </defs>
+  <g transform="translate(0,7) scale(0.11328)">
+    <rect x="20" y="20" width="472" height="472" rx="108" fill="url(#zlmLmT)"/>
+    <rect x="36" y="34" width="440" height="228" rx="104" fill="#ffffff" opacity="0.045"/>
+    <rect x="20" y="20" width="472" height="472" rx="108" fill="none" stroke="#ffffff" stroke-opacity="0.24" stroke-width="5"/>
+    <path d="M256 402 C252 348 254 302 257 252" stroke="#ffe9d8" stroke-width="23" stroke-linecap="round" fill="none"/>
+    <path d="M254 252 C206 244 162 210 146 152 C212 160 250 198 256 250 Z" fill="url(#zlmLmA)"/>
+    <path d="M262 244 C296 218 316 180 318 126 C268 142 246 188 254 246 Z" fill="#fff3e8"/>
+    <circle cx="354" cy="116" r="15" fill="#ff8a40" opacity="0.95"/>
+    <circle cx="392" cy="168" r="8" fill="#ffc247" opacity="0.8"/>
+  </g>
+  <rect x="67" y="12" width="1.5" height="48" rx="1" fill="#e7e2dc"/>
+  <image x="76" y="9" width="54" height="54" preserveAspectRatio="xMidYMid slice" clip-path="url(#sealClip)" href="/assets/media/logo_iiserb.webp"/>
+  <circle cx="103" cy="36" r="26" fill="none" stroke="#e7e2dc" stroke-width="1.2"/>
+  <text x="142" y="33" font-size="27" font-weight="800" letter-spacing="0.5" fill="#6c3231">IICE</text>
+  <rect x="205" y="9" width="102" height="21" rx="10.5" fill="#1e3a5f"/>
+  <text x="256" y="23" font-size="10.5" font-weight="700" letter-spacing="1.1" fill="#ffffff" text-anchor="middle">IISER BHOPAL</text>
+  <rect x="316" y="9" width="107" height="21" rx="10.5" fill="#fff7f0" stroke="#e2701e" stroke-width="1.3"/>
+  <text x="369.5" y="23" font-size="10.5" font-weight="700" letter-spacing="1" fill="#e2701e" text-anchor="middle">DST NIDHI&#8211;TBI</text>
+  <text x="142" y="51" font-size="12.5" font-weight="700" fill="#3d3733">Innovation &amp; Incubation Centre for Entrepreneurship</text>
+  <text x="142" y="66" font-size="10.5" font-weight="500" fill="#8a7d7a">Indian Institute of Science Education and Research Bhopal</text>'''
+
+SVG = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 483 72" width="483" height="72" '
+       'font-family="\'Plus Jakarta Sans\',\'Segoe UI\',system-ui,sans-serif" role="img" '
+       'aria-label="IICE IISER Bhopal">' + MARK + '</svg>')
+
+with open(os.path.join(ROOT, "assets", "logo_header.svg"), "w", encoding="utf-8") as f:
+    f.write(SVG)
+print("written assets/logo_header.svg", len(SVG), "bytes")

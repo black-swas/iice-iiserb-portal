@@ -157,10 +157,32 @@
   }
   function isExternal(u) { return /^https?:/.test(u) && u.indexOf(location.origin) !== 0; }
 
-  /* Crisp vector lockup (real IICE icon + IISERB seal + live text) — inline so
-     the site's Plus Jakarta Sans applies; /assets/logo_header.svg is the static twin. */
+  /* Crisp vector lockup (IICE sprout mark + IISERB seal + live text) — inline
+     so the site's Plus Jakarta Sans applies; /assets/logo_header.svg is the
+     static twin. The sprout mark: maroon glass tile + growth sprout
+     (incubation), amber/cream in the brand palette; raster twins are
+     assets/media/logo_iice.webp + assets/favicon.png (make_logo.py). */
+  var LOGO_MARK_DEFS = '<defs>' +
+    '<linearGradient id="zlmLmT" x1="0" y1="0" x2="1" y2="1">' +
+    '<stop offset="0" stop-color="#8a403d"/><stop offset="0.55" stop-color="#6c3231"/><stop offset="1" stop-color="#472019"/>' +
+    '</linearGradient>' +
+    '<linearGradient id="zlmLmA" x1="0" y1="0" x2="1" y2="1">' +
+    '<stop offset="0" stop-color="#ffc247"/><stop offset="1" stop-color="#ff8a40"/>' +
+    '</linearGradient>' +
+    '</defs>';
+  var LOGO_MARK =
+    '<rect x="20" y="20" width="472" height="472" rx="108" fill="url(#zlmLmT)"/>' +
+    '<rect x="36" y="34" width="440" height="228" rx="104" fill="#ffffff" opacity="0.045"/>' +
+    '<rect x="20" y="20" width="472" height="472" rx="108" fill="none" stroke="#ffffff" stroke-opacity="0.24" stroke-width="5"/>' +
+    '<path d="M256 402 C252 348 254 302 257 252" stroke="#ffe9d8" stroke-width="23" stroke-linecap="round" fill="none"/>' +
+    '<path d="M254 252 C206 244 162 210 146 152 C212 160 250 198 256 250 Z" fill="url(#zlmLmA)"/>' +
+    '<path d="M262 244 C296 218 316 180 318 126 C268 142 246 188 254 246 Z" fill="#fff3e8"/>' +
+    '<circle cx="354" cy="116" r="15" fill="#ff8a40" opacity="0.95"/>' +
+    '<circle cx="392" cy="168" r="8" fill="#ffc247" opacity="0.8"/>';
+  var LOGO_MARK_G = '<g transform="translate(0,7) scale(0.11328)">' + LOGO_MARK_DEFS + LOGO_MARK + "</g>";
+
   var LOGO_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 483 72" width="483" height="72" font-family="'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif" role="img" aria-label="IICE IISER Bhopal">
-  <image x="0" y="7" width="58" height="58" preserveAspectRatio="xMidYMid meet" href="/assets/media/logo_iice.webp"/>
+  ${LOGO_MARK_G}
   <rect x="67" y="12" width="1.5" height="48" rx="1" fill="#e7e2dc"/>
   <clipPath id="sealClip"><circle cx="103" cy="36" r="27"/></clipPath>
   <image x="76" y="9" width="54" height="54" preserveAspectRatio="xMidYMid slice" clip-path="url(#sealClip)" href="/assets/media/logo_iiserb.webp"/>
@@ -174,10 +196,10 @@
   <text x="142" y="66" font-size="10.5" font-weight="500" fill="#8a7d7a">Indian Institute of Science Education and Research Bhopal</text>
 </svg>`;
 
-/* compact lockup for phone bars — icon + seal + IICE only; badges and the
+/* compact lockup for phone bars — mark + seal + IICE only; badges and the
    two long text lines of the full lockup are unreadable below ~30px tall */
 var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 72" width="210" height="72" font-family="'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif" role="img" aria-label="IICE IISER Bhopal">
-  <image x="0" y="7" width="58" height="58" preserveAspectRatio="xMidYMid meet" href="/assets/media/logo_iice.webp"/>
+  ${LOGO_MARK_G}
   <rect x="67" y="12" width="1.5" height="48" rx="1" fill="#e7e2dc"/>
   <clipPath id="sealClipM"><circle cx="103" cy="36" r="27"/></clipPath>
   <image x="76" y="9" width="54" height="54" preserveAspectRatio="xMidYMid slice" clip-path="url(#sealClipM)" href="/assets/media/logo_iiserb.webp"/>
