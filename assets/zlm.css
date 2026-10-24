@@ -944,6 +944,21 @@ html { background: #5e2928; }
 .rfm-marquee-container { overflow: hidden !important; max-width: 100%; }
 body { overflow-x: clip; }
 
+/* phones: the announcement carousel wrapped to 4-5 lines and crowded the
+   header — one compact line (badge + link), the sentence dropped */
+@media (max-width: 700px) {
+  aside[class*="bg-primary"] { font-size: 0.68rem; }
+  aside[class*="bg-primary"] [data-slot="carousel-item"] > div {
+    flex-wrap: nowrap !important;
+    gap: 0.55rem !important;
+    min-height: 0 !important;
+    padding: 6px 44px 6px 12px !important;
+    text-align: left !important;
+  }
+  aside[class*="bg-primary"] [data-slot="carousel-item"] p { display: none !important; }
+  aside[class*="bg-primary"] [data-slot="carousel-item"] a { white-space: nowrap; }
+}
+
 /* ============================================================
    9. Global route transition — brand veil sweep + staggered rise
    The veil covers the page while the route swaps underneath

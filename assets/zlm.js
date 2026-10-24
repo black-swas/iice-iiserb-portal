@@ -174,17 +174,15 @@
   <text x="142" y="66" font-size="10.5" font-weight="500" fill="#8a7d7a">Indian Institute of Science Education and Research Bhopal</text>
 </svg>`;
 
-/* compact lockup for phone bars — icon + seal + IICE + one badge; the two
-   long text lines of the full lockup are unreadable below ~30px tall */
-var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 238 72" width="238" height="72" font-family="'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif" role="img" aria-label="IICE IISER Bhopal">
+/* compact lockup for phone bars — icon + seal + IICE only; badges and the
+   two long text lines of the full lockup are unreadable below ~30px tall */
+var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 72" width="210" height="72" font-family="'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif" role="img" aria-label="IICE IISER Bhopal">
   <image x="0" y="7" width="58" height="58" preserveAspectRatio="xMidYMid meet" href="/assets/media/logo_iice.webp"/>
   <rect x="67" y="12" width="1.5" height="48" rx="1" fill="#e7e2dc"/>
   <clipPath id="sealClipM"><circle cx="103" cy="36" r="27"/></clipPath>
   <image x="76" y="9" width="54" height="54" preserveAspectRatio="xMidYMid slice" clip-path="url(#sealClipM)" href="/assets/media/logo_iiserb.webp"/>
   <circle cx="103" cy="36" r="26" fill="none" stroke="#e7e2dc" stroke-width="1.2"/>
-  <text x="140" y="49" font-size="34" font-weight="800" letter-spacing="0.5" fill="#6c3231">IICE</text>
-  <rect x="140" y="13" width="92" height="20" rx="10" fill="#1e3a5f"/>
-  <text x="186" y="26.5" font-size="9.5" font-weight="700" letter-spacing="1" fill="#ffffff" text-anchor="middle">IISER BHOPAL</text>
+  <text x="138" y="47" font-size="34" font-weight="800" letter-spacing="0.5" fill="#6c3231">IICE</text>
 </svg>`;
 
   /* global route transition: a brand veil sweeps across while the route
@@ -621,7 +619,7 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 238
      Segments tuned down from the 70/45svh of the port — a 4-card strip
      used to eat 380svh of scroll (the "scrolling sucks" complaint). --- */
   var RING_STEP = 30, RING_HIDE = 75, RING_R_AT_1280 = 520;
-  var RING_SEG = 52, DECK_SEG = 34, DECK_EXTRA = 18;
+  var RING_SEG = 52, DECK_SEG = 34, DECK_EXTRA = 30;
 
   function clampN(n, a, b) { return Math.min(b, Math.max(a, n)); }
   function lerpN(a, b, t) { return a + (b - a) * t; }
@@ -698,18 +696,22 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 238
       lastRaw = raw;
       var adjTop = top + tailSlack;
       if (variant === "deck" && n > 3 && maxSticky < maxCard) {
-        var pivot = 2.1 * segment, scrolled = -adjTop;
-        if (scrolled > pivot) {
-          var usableEnd = Math.max(pivot + 1, maxSticky - 16);
-          var t = clampN((scrolled - pivot) / (usableEnd - pivot), 0, 1);
-          return clampN(-(pivot + t * (maxCard - pivot)) / segment, 0, n - 1);
-        }
+        /* the pinned travel (maxSticky) is shorter than the full card
+           distance — map the available scroll linearly over all cards.
+           (The old pivot remap produced a NEGATIVE progress that clamped
+           to 0, so cards past ~2 were unreachable and the engine could
+           even report NaN on mobile.) */
+        var scrolled = -adjTop;
+        var usable = Math.max(1, maxSticky - 16);
+        var t = clampN(scrolled / usable, 0, 1);
+        return clampN((t * maxCard) / segment, 0, n - 1);
       }
       return clampN(-adjTop / segment, 0, n - 1);
     }
     function draw() {
       hooks.render({ ps: ps, radius: radius, moving: moving });
       var a = clampN(Math.round(ps), 0, n - 1);
+      if (!isFinite(a)) a = 0;
       if (a !== active) { active = a; hooks.onActive(a); }
     }
     function frame(now) {
@@ -717,6 +719,8 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 238
       var dt = lastT ? Math.min(now - lastT, 100) : 16;
       lastT = now;
       p = readProgress();
+      if (!isFinite(p)) p = ps;
+      if (!isFinite(ps)) ps = 0;
       /* tighter follow than the port's 200/260ms — the ring used to lag
          a full beat behind the scroll wheel */
       var tau = p >= n - 1.5 ? 150 : 185;
@@ -726,10 +730,13 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 238
     }
     function schedule() { if (!raf) raf = requestAnimationFrame(frame); }
     /* slightly under-damped spring for button/focus jumps: settles with a
-       soft overshoot so card swaps feel liquid instead of mechanical */
+       soft overshoot so card swaps feel liquid instead of mechanical.
+       On the touch deck the spring is critically damped with a longer
+       settle wait — an under-damped snap fights the finger's momentum. */
     function startSpring(target) {
       stopSpring();
-      var x = ps, v = 0, k = 235, c = 2 * Math.sqrt(k) * 0.82, prev = performance.now();
+      var touchy = variant === "deck";
+      var x = ps, v = 0, k = touchy ? 150 : 235, c = 2 * Math.sqrt(k) * (touchy ? 1 : 0.82), prev = performance.now();
       moving = true;
       spring = requestAnimationFrame(function step(now) {
         var dt = Math.min((now - prev) / 1000, 0.05);
@@ -760,8 +767,24 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 238
       moving = true;
       stopSpring();
       clearTimeout(settleTimer);
-      settleTimer = setTimeout(settle, 85);
+      settleTimer = setTimeout(settle, variant === "deck" ? 150 : 85);
       schedule();
+    }
+    /* Some embedded/InApp browsers never dispatch window scroll events (and
+       may never fire IntersectionObserver) even though the viewport scrolls
+       — so the engine must not depend on either. A rAF poll watches the
+       track's position from construction and feeds onScroll whenever it
+       moves. One rect read per frame; destroyed with the engine. */
+    var pollRaf = 0, lastTopSeen = 0;
+    function poll() {
+      pollRaf = 0;
+      if (!track.isConnected) return;
+      var top = track.getBoundingClientRect().top;
+      if (Math.abs(top - lastTopSeen) > 0.5) {
+        lastTopSeen = top;
+        onScroll();
+      }
+      pollRaf = requestAnimationFrame(poll);
     }
     function attach() {
       if (attached) return;
@@ -769,6 +792,7 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 238
       measure();
       p = ps = readProgress();
       draw();
+      lastTopSeen = track.getBoundingClientRect().top;
       window.addEventListener("scroll", onScroll, { passive: true });
     }
     function detach() {
@@ -783,6 +807,8 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 238
     measure();
     p = ps = readProgress();
     draw();
+    lastTopSeen = track.getBoundingClientRect().top;
+    pollRaf = requestAnimationFrame(poll);
 
     var ro = new ResizeObserver(function () {
       measure();
@@ -804,8 +830,10 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 238
         tailSlack = 0;
         var target = Math.round(trackTop - pin + idx * segment);
         if (variant === "deck" && maxSticky < (n - 1) * segment) {
-          var maxAllowed = Math.round(trackTop - pin + maxSticky - 12);
-          target = idx === n - 1 ? maxAllowed : Math.min(target, maxAllowed);
+          /* compressed deck: invert the linear remap so each card sits at
+             its own scroll position (idx * usable / (n - 1)) */
+          var usable = Math.max(1, maxSticky - 16);
+          target = Math.round(trackTop - pin + idx * usable / (n - 1));
         }
         clearTimeout(settleTimer);
         cancelAnimationFrame(raf); raf = 0; lastT = 0;
@@ -813,7 +841,11 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 238
         startSpring(idx);
         window.scrollTo({ top: target, behavior: "smooth" });
       },
-      destroy: function () { detach(); ro.disconnect(); io.disconnect(); },
+      destroy: function () {
+        detach();
+        if (pollRaf) { cancelAnimationFrame(pollRaf); pollRaf = 0; }
+        ro.disconnect(); io.disconnect();
+      },
     };
   }
 

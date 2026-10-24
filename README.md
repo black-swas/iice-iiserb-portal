@@ -31,15 +31,21 @@ python server.py 3000      # open http://localhost:3000
 # or: PORT=8080 python server.py
 ```
 
-## Deploy on Render (one shot)
-The repo ships a Render **Blueprint** (`render.yaml`) — a single Python web
-service serving the whole site with SPA route fallback:
+## Deploy on Vercel (one shot)
+`vercel.json` ships with the repo: every route rewrites to `index.html`
+(SPA fallback — filesystem still wins, so all real assets serve directly),
+the hashed bundle and fonts cache immutably, other assets cache a day.
 
-1. Render dashboard → **New → Blueprint**
-2. Pick this repository (`black-swas/iice-iiserb-portal`) — the blueprint is detected automatically
-3. **Apply** — build (`pip install -r requirements.txt`) and start (`python server.py`) are preconfigured; the server binds `0.0.0.0:$PORT` and passes Render's health check at `/`
+1. Vercel → **Add New → Project** → import `black-swas/iice-iiserb-portal`
+2. Framework Preset **Other** — no build command, no output directory, nothing to set
+3. **Deploy**
 
-No environment variables, no build output directory, nothing else to set.
+## Deploy on Render (alternative)
+A Render **Blueprint** (`render.yaml`) is also included — a single Python web
+service (`python server.py`, stdlib only) serving the site with SPA fallback:
+
+1. Render dashboard → **New → Blueprint** → pick this repository
+2. **Apply** — build/start are preconfigured; the server binds `0.0.0.0:$PORT` and passes the health check at `/`
 
 ## Structure
 - `assets/index-*.js|css` — SPA bundle (patched: people photos, events, programs, boot, redirects)
