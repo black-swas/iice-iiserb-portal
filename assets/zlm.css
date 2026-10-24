@@ -461,7 +461,7 @@ html { background: #5e2928; }
   position: relative;
   padding: 3.5rem 0 0;
   --spin-card-w: min(23.5rem, 84vw);
-  --spin-card-h: 24rem;
+  --spin-card-h: 23.5rem;
   font-family: "Plus Jakarta Sans", system-ui, sans-serif;
 }
 .zlm-gw__head { max-width: 90rem; margin: 0 auto 1rem; padding: 0 2rem; }
@@ -512,13 +512,10 @@ html { background: #5e2928; }
    side cards desaturate through --gray (ring variant) */
 .spin-card__photo {
   position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover;
-  filter: grayscale(var(--gray, 0)) sepia(0.08) saturate(1.05);
-  transition: filter 260ms ease, transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
-  transform: scale(1.02);
+  object-fit: cover; object-position: center bottom;
+  filter: grayscale(var(--gray, 0));
+  transition: filter 240ms ease;
 }
-.spin-card[data-active="true"] .spin-card__photo,
-.spin-card:hover .spin-card__photo { filter: grayscale(0) sepia(0); transform: scale(1.07); }
 .spin-card__scrim {
   position: absolute; inset: 0;
   background:
@@ -607,8 +604,8 @@ html { background: #5e2928; }
   display: flex; flex-direction: column; align-items: center; justify-content: center;
 }
 .spin-stage[data-variant="ring"] {
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 84%, rgba(0, 0, 0, 0.35) 96%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 84%, rgba(0, 0, 0, 0.35) 96%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 78%, rgba(0, 0, 0, 0.35) 94%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 78%, rgba(0, 0, 0, 0.35) 94%, transparent 100%);
 }
 .spin-list { position: relative; width: 100%; height: 100%; margin: 0; padding: 0; list-style: none; }
 .spin-slot {
@@ -616,32 +613,33 @@ html { background: #5e2928; }
   left: calc(50% - var(--spin-card-w) / 2);
   transform-origin: 50% 50%; backface-visibility: hidden;
 }
-.spin-stage[data-variant="ring"] .spin-slot { top: calc(50% - var(--spin-card-h) / 2 + var(--ring-r, 520px)); }
-.spin-stage[data-variant="deck"] .spin-slot { top: calc(50% - var(--spin-card-h) / 2); }
+.spin-stage[data-variant="ring"] .spin-slot { top: calc(44% - var(--spin-card-h) / 2 + var(--ring-r, 520px)); }
+.spin-stage[data-variant="deck"] .spin-slot { top: calc(43% - var(--spin-card-h) / 2); }
 .spin-stage .spin-card { height: 100%; }
+/* original card behavior: quick transform/border/shadow response, no
+   permanent stagger, active card marked by border + soft shadow only */
+.spin-stage .spin-card {
+  height: 100%;
+  transition:
+    transform 240ms ease-out,
+    border-color 220ms ease-out,
+    box-shadow 220ms ease-out;
+}
 .spin-stage .spin-card[data-active="true"] {
   border-color: #ff8a40; border-width: 1.5px;
+  box-shadow: 0 22px 44px -10px rgba(24, 24, 27, 0.16);
+}
+/* entry: scale-in without per-index delay so the last slide never lags */
+.spin-stage[data-entered="false"] .spin-card { transform: scale(0.9); }
+.spin-stage[data-entered="true"] .spin-card { transform: scale(1); transition-delay: 0ms; }
+.spin-stage .spin-card[data-preview="true"] {
   transform: translateY(-8px);
-  box-shadow:
-    0 30px 60px -18px rgba(63, 26, 25, 0.38),
-    0 0 0 1px rgba(255, 138, 64, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition-delay: 0ms;
+  border-color: #cbbfb9;
 }
-/* entry: cards rise in with a per-card stagger (--i inherits from the slot) */
-.spin-stage .spin-card {
-  transition:
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.55s ease,
-    border-color 0.24s ease,
-    box-shadow 0.3s ease;
-}
-.spin-stage[data-entered="false"] .spin-card {
-  opacity: 0;
-  transform: scale(0.9) translateY(28px);
-  transition-delay: calc(var(--i, 0) * 70ms);
-}
-.spin-stage[data-entered="true"] .spin-card { transition-delay: 0ms; }
-.spin-stage .spin-card[data-active="true"] .spin-card__desc, .spin-stage .spin-card:hover .spin-card__desc { opacity: 1; }
+.spin-stage .spin-card__desc { opacity: 0; }
+.spin-stage .spin-card[data-active="true"] .spin-card__desc,
+.spin-stage .spin-card[data-preview="true"] .spin-card__desc { opacity: 1; }
 
 @media (prefers-reduced-transparency: reduce), (max-width: 1023.98px) {
   .spin-stage[data-variant="ring"] .spin-slot { filter: none !important; }
@@ -711,28 +709,55 @@ html { background: #5e2928; }
 .spin-record button span { font-size: 0.7rem; opacity: 0.7; flex-shrink: 0; font-variant-numeric: tabular-nums; }
 .spin-record button[aria-current="true"] { background: #faf6f3; color: #23201e; }
 
-/* ── mobile deck proportions ── */
+/* ── mobile deck proportions (original: desktop ring untouched) ── */
 @media (max-width: 639.98px) {
-  .zlm-gateways { --spin-card-w: min(21rem, 88vw); --spin-card-h: 18.5rem; }
-  .spin-stage[data-variant="deck"] .spin-slot { top: calc(50% - var(--spin-card-h) / 2); }
+  .zlm-gateways { --spin-card-w: min(21.5rem, 88vw); --spin-card-h: 20rem; }
+  .spin-stage[data-variant="deck"] .spin-slot { top: calc(41% - var(--spin-card-h) / 2); }
   .spin-stage .spin-card { padding: 1.05rem; }
-  .spin-stage .spin-card__media { height: 6rem; margin: -1.05rem -1.05rem 0.75rem; padding: 0.65rem 1.05rem; }
-  /* fully opaque deck cards: they stack during the scrub — any
-     translucency ghosts the card behind through the active one
-     (the [data-active] form must out-rank the §7 active rule) */
-  .spin-stage[data-variant="deck"] .spin-card,
-  .spin-stage[data-variant="deck"] .spin-card[data-active="true"] {
-    background: linear-gradient(130deg, #ffffff, #fffdf8 55%, #ffffff);
-  }
-  .spin-stage .spin-card__body { justify-content: center; }
+  .spin-stage .spin-card__media { height: 5.75rem; margin: -1.05rem -1.05rem 0.75rem; padding: 0.65rem 1.05rem; }
   .spin-stage .spin-card__title { font-size: 1.12rem; }
-  .spin-stage .spin-card__desc { font-size: 0.8125rem; line-height: 1.46; }
+  .spin-stage .spin-card__desc {
+    font-size: 0.8125rem; line-height: 1.46;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
   .spin-stage .spin-card__links { display: none; }
   .spin-segments { bottom: 4.25rem; }
   .spin-segments span { width: 1.25rem; }
   .spin-segments span[data-active="true"] { width: 1.85rem; }
   .spin-controls { bottom: 0.9rem; padding: 0.3rem 0.55rem; gap: 0.6rem; }
   .zlm-gw__head { padding: 0 1.25rem; }
+}
+
+/* ── custom dot / "Open" cursor (desktop ring) ── */
+.spin-stage[data-cursor="on"],
+.spin-stage[data-cursor="on"] a,
+.spin-stage[data-cursor="on"] button { cursor: none; }
+.spin-cursor {
+  position: fixed; top: 0; left: 0; z-index: 60;
+  width: 0.85rem; height: 0.85rem; border-radius: 999px;
+  background: #ff8a40; color: #ffffff;
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: none; opacity: 0;
+  box-shadow: 0 10px 25px -5px rgba(24, 24, 27, 0.28);
+  transition:
+    width 200ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    height 200ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 180ms ease,
+    opacity 150ms ease;
+}
+.spin-cursor span {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+  opacity: 0; transform: scale(0.6);
+  transition: opacity 160ms ease, transform 180ms ease;
+}
+.spin-cursor[data-state="open"] {
+  width: 4.25rem; height: 4.25rem;
+  background: #09181d; color: #ffffff;
+  border: 2px solid #ffb377;
+}
+.spin-cursor[data-state="open"] span { opacity: 1; transform: scale(1); }
+@media (prefers-reduced-motion: reduce) {
+  .spin-cursor { display: none; }
 }
 
 /* ============================================================

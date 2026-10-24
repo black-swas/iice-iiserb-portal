@@ -157,32 +157,10 @@
   }
   function isExternal(u) { return /^https?:/.test(u) && u.indexOf(location.origin) !== 0; }
 
-  /* Crisp vector lockup (IICE sprout mark + IISERB seal + live text) — inline
-     so the site's Plus Jakarta Sans applies; /assets/logo_header.svg is the
-     static twin. The sprout mark: maroon glass tile + growth sprout
-     (incubation), amber/cream in the brand palette; raster twins are
-     assets/media/logo_iice.webp + assets/favicon.png (make_logo.py). */
-  var LOGO_MARK_DEFS = '<defs>' +
-    '<linearGradient id="zlmLmT" x1="0" y1="0" x2="1" y2="1">' +
-    '<stop offset="0" stop-color="#8a403d"/><stop offset="0.55" stop-color="#6c3231"/><stop offset="1" stop-color="#472019"/>' +
-    '</linearGradient>' +
-    '<linearGradient id="zlmLmA" x1="0" y1="0" x2="1" y2="1">' +
-    '<stop offset="0" stop-color="#ffc247"/><stop offset="1" stop-color="#ff8a40"/>' +
-    '</linearGradient>' +
-    '</defs>';
-  var LOGO_MARK =
-    '<rect x="20" y="20" width="472" height="472" rx="108" fill="url(#zlmLmT)"/>' +
-    '<rect x="36" y="34" width="440" height="228" rx="104" fill="#ffffff" opacity="0.045"/>' +
-    '<rect x="20" y="20" width="472" height="472" rx="108" fill="none" stroke="#ffffff" stroke-opacity="0.24" stroke-width="5"/>' +
-    '<path d="M256 402 C252 348 254 302 257 252" stroke="#ffe9d8" stroke-width="23" stroke-linecap="round" fill="none"/>' +
-    '<path d="M254 252 C206 244 162 210 146 152 C212 160 250 198 256 250 Z" fill="url(#zlmLmA)"/>' +
-    '<path d="M262 244 C296 218 316 180 318 126 C268 142 246 188 254 246 Z" fill="#fff3e8"/>' +
-    '<circle cx="354" cy="116" r="15" fill="#ff8a40" opacity="0.95"/>' +
-    '<circle cx="392" cy="168" r="8" fill="#ffc247" opacity="0.8"/>';
-  var LOGO_MARK_G = '<g transform="translate(0,7) scale(0.11328)">' + LOGO_MARK_DEFS + LOGO_MARK + "</g>";
-
+  /* Crisp vector lockup (real IICE icon + IISERB seal + live text) — inline so
+     the site's Plus Jakarta Sans applies; /assets/logo_header.svg is the static twin. */
   var LOGO_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 483 72" width="483" height="72" font-family="'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif" role="img" aria-label="IICE IISER Bhopal">
-  ${LOGO_MARK_G}
+  <image x="0" y="7" width="58" height="58" preserveAspectRatio="xMidYMid meet" href="/assets/media/logo_iice.webp"/>
   <rect x="67" y="12" width="1.5" height="48" rx="1" fill="#e7e2dc"/>
   <clipPath id="sealClip"><circle cx="103" cy="36" r="27"/></clipPath>
   <image x="76" y="9" width="54" height="54" preserveAspectRatio="xMidYMid slice" clip-path="url(#sealClip)" href="/assets/media/logo_iiserb.webp"/>
@@ -196,10 +174,10 @@
   <text x="142" y="66" font-size="10.5" font-weight="500" fill="#8a7d7a">Indian Institute of Science Education and Research Bhopal</text>
 </svg>`;
 
-/* compact lockup for phone bars — mark + seal + IICE only; badges and the
+/* compact lockup for phone bars — icon + seal + IICE only; badges and the
    two long text lines of the full lockup are unreadable below ~30px tall */
 var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 72" width="210" height="72" font-family="'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif" role="img" aria-label="IICE IISER Bhopal">
-  ${LOGO_MARK_G}
+  <image x="0" y="7" width="58" height="58" preserveAspectRatio="xMidYMid meet" href="/assets/media/logo_iice.webp"/>
   <rect x="67" y="12" width="1.5" height="48" rx="1" fill="#e7e2dc"/>
   <clipPath id="sealClipM"><circle cx="103" cy="36" r="27"/></clipPath>
   <image x="76" y="9" width="54" height="54" preserveAspectRatio="xMidYMid slice" clip-path="url(#sealClipM)" href="/assets/media/logo_iiserb.webp"/>
@@ -641,7 +619,7 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
      Segments tuned down from the 70/45svh of the port — a 4-card strip
      used to eat 380svh of scroll (the "scrolling sucks" complaint). --- */
   var RING_STEP = 30, RING_HIDE = 75, RING_R_AT_1280 = 520;
-  var RING_SEG = 52, DECK_SEG = 34, DECK_EXTRA = 30;
+  var RING_SEG = 70, DECK_SEG = 45, DECK_EXTRA = 30;
 
   function clampN(n, a, b) { return Math.min(b, Math.max(a, n)); }
   function lerpN(a, b, t) { return a + (b - a) * t; }
@@ -670,25 +648,25 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
       blur: d <= 2 ? 3 * Math.min(d, 1) : 0,
       gray: Math.min(d, 1),
       active: Math.round(ps) === i,
+      animating: d <= 2,
     };
   }
+  /* original deck choreography (ported 1:1 from the previous iteration's
+     geometry.ts): the outgoing card flies UP and away (-58%, -4deg) while
+     still fully opaque, dimming only near the end; the waiting card sits
+     beneath at 0.6 brightness and rises as the active one lifts off */
   function deckPose(i, ps, n) {
     var o = ps - i;
     return {
-      /* incoming card rises under the active one; the outgoing card lifts
-         away above and is fully faded before the half-step park, so a
-         paused scrub never shows two cards at once */
-      ty: piecewise(o, [[-1, 12], [0, 0], [1, -30]]),
-      scale: piecewise(o, [[-1, 0.9], [0, 1], [1, 0.98]]),
-      rot: piecewise(o, [[-1, 1.6], [0, 0], [1, -2.5]]),
-      opacity: piecewise(o, [[0.12, 1], [0.42, 0]]),
-      brightness: piecewise(o, [[-1, 0.86], [0, 1]]),
-      visible: o > -1.6 && o < 1,
+      ty: piecewise(o, [[-1, 8], [0, 0], [1, -58]]),
+      scale: piecewise(o, [[-1, 0.92], [0, 1], [1, 1.02]]),
+      rot: piecewise(o, [[-1, 1.5], [0, 0], [1, -4]]),
+      opacity: piecewise(o, [[0.55, 1], [1, 0]]),
+      brightness: piecewise(o, [[-1, 0.6], [0, 1]]),
+      visible: o > -2.5 && o < 1,
       active: Math.round(ps) === i,
-      /* incoming card rises UNDER the active one (a parked half-step must
-         not ghost over it); it takes the top slot the moment it becomes
-         active and the previous card lifts away above it */
-      zIndex: o >= 0 ? n + 2 : n - i,
+      animating: Math.abs(o) <= 2,
+      zIndex: n - i,
     };
   }
 
@@ -710,23 +688,28 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
       var top = track.getBoundingClientRect().top - pin;
       var raw = -top;
       var maxCard = Math.max(0, (n - 1) * segment);
+      /* tail slack (original): lets the ring's last slide release its
+         overshoot immediately when scrolling back up */
       if (raw > maxCard) {
         tailSlack = Math.min(Math.max(0, maxSticky - maxCard), Math.max(tailSlack, raw - maxCard));
       } else if (raw < lastRaw && tailSlack > 0) {
-        tailSlack = raw <= 0 ? 0 : Math.max(0, tailSlack - (lastRaw - raw) * 0.35);
+        var deltaUp = lastRaw - raw;
+        if (raw <= 0) tailSlack = 0;
+        else tailSlack = Math.max(0, tailSlack - deltaUp * 0.35);
       } else if (raw <= 0) tailSlack = 0;
       lastRaw = raw;
       var adjTop = top + tailSlack;
+      /* deck compression (original): when the pinned travel is shorter than
+         the full card distance, remap the remaining scroll so the last card
+         still settles before the stage unpins */
       if (variant === "deck" && n > 3 && maxSticky < maxCard) {
-        /* the pinned travel (maxSticky) is shorter than the full card
-           distance — map the available scroll linearly over all cards.
-           (The old pivot remap produced a NEGATIVE progress that clamped
-           to 0, so cards past ~2 were unreachable and the engine could
-           even report NaN on mobile.) */
-        var scrolled = -adjTop;
-        var usable = Math.max(1, maxSticky - 16);
-        var t = clampN(scrolled / usable, 0, 1);
-        return clampN((t * maxCard) / segment, 0, n - 1);
+        var pivot = 2.1 * segment, scrolled = -adjTop;
+        if (scrolled > pivot) {
+          var usableEnd = Math.max(pivot + 1, maxSticky - 16);
+          var t = Math.min(1, (scrolled - pivot) / (usableEnd - pivot));
+          var mapped = pivot + t * (maxCard - pivot);
+          return clampN(mapped / segment, 0, n - 1);
+        }
       }
       return clampN(-adjTop / segment, 0, n - 1);
     }
@@ -743,22 +726,18 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
       p = readProgress();
       if (!isFinite(p)) p = ps;
       if (!isFinite(ps)) ps = 0;
-      /* tighter follow than the port's 200/260ms — the ring used to lag
-         a full beat behind the scroll wheel */
-      var tau = p >= n - 1.5 ? 150 : 185;
+      /* original scrub: 240ms tau, slightly faster near the last slide */
+      var tau = p >= n - 1.5 ? 190 : 240;
       ps += (p - ps) * (1 - Math.exp(-dt / tau));
       if (Math.abs(p - ps) > 0.001) { draw(); schedule(); }
       else { ps = p; lastT = 0; draw(); }
     }
     function schedule() { if (!raf) raf = requestAnimationFrame(frame); }
-    /* slightly under-damped spring for button/focus jumps: settles with a
-       soft overshoot so card swaps feel liquid instead of mechanical.
-       On the touch deck the spring is critically damped with a longer
-       settle wait — an under-damped snap fights the finger's momentum. */
+    /* original spring for button/focus jumps: stiffness 195, damping 28 —
+       critically damped, zero overshoot, silky card swaps */
     function startSpring(target) {
       stopSpring();
-      var touchy = variant === "deck";
-      var x = ps, v = 0, k = touchy ? 150 : 235, c = 2 * Math.sqrt(k) * (touchy ? 1 : 0.82), prev = performance.now();
+      var x = ps, v = 0, k = 195, c = 28, prev = performance.now();
       moving = true;
       spring = requestAnimationFrame(function step(now) {
         var dt = Math.min((now - prev) / 1000, 0.05);
@@ -789,23 +768,28 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
       moving = true;
       stopSpring();
       clearTimeout(settleTimer);
-      settleTimer = setTimeout(settle, variant === "deck" ? 150 : 85);
+      settleTimer = setTimeout(settle, 115);
       schedule();
     }
     /* Some embedded/InApp browsers never dispatch window scroll events (and
-       may never fire IntersectionObserver) even though the viewport scrolls
-       — so the engine must not depend on either. A rAF poll watches the
-       track's position from construction and feeds onScroll whenever it
-       moves. One rect read per frame; destroyed with the engine. */
-    var pollRaf = 0, lastTopSeen = 0;
-    function poll() {
-      pollRaf = 0;
+       may never fire IntersectionObserver, and pause rAF while occluded)
+       even though the viewport scrolls — so the engine must not depend on
+       any of them. The track's position is watched from construction by a
+       rAF poll PLUS a 250ms interval fallback (rAF freezes in occluded
+       frames; the interval survives, throttled to 1s in background tabs).
+       One rect read per tick; destroyed with the engine. */
+    var pollRaf = 0, ivPoll = 0, lastTopSeen = 0;
+    function pollCheck() {
       if (!track.isConnected) return;
       var top = track.getBoundingClientRect().top;
       if (Math.abs(top - lastTopSeen) > 0.5) {
         lastTopSeen = top;
         onScroll();
       }
+    }
+    function poll() {
+      pollRaf = 0;
+      pollCheck();
       pollRaf = requestAnimationFrame(poll);
     }
     function attach() {
@@ -824,13 +808,17 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
       cancelAnimationFrame(raf); raf = 0;
       clearTimeout(settleTimer);
       stopSpring();
+      /* settle cleanly at the nearest card when the section scrolls out */
+      p = ps = clampN(Math.round(readProgress()), 0, n - 1);
       moving = false; lastT = 0;
+      draw();
     }
     measure();
     p = ps = readProgress();
     draw();
     lastTopSeen = track.getBoundingClientRect().top;
     pollRaf = requestAnimationFrame(poll);
+    ivPoll = setInterval(pollCheck, 250);
 
     var ro = new ResizeObserver(function () {
       measure();
@@ -852,10 +840,11 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
         tailSlack = 0;
         var target = Math.round(trackTop - pin + idx * segment);
         if (variant === "deck" && maxSticky < (n - 1) * segment) {
-          /* compressed deck: invert the linear remap so each card sits at
-             its own scroll position (idx * usable / (n - 1)) */
-          var usable = Math.max(1, maxSticky - 16);
-          target = Math.round(trackTop - pin + idx * usable / (n - 1));
+          /* original: the last card goes to the end of the pinned travel,
+             earlier cards cap at it so the stage never unpins mid-move */
+          var maxAllowed = Math.round(trackTop - pin + maxSticky - 12);
+          if (idx === n - 1) target = maxAllowed;
+          else target = Math.min(target, maxAllowed);
         }
         clearTimeout(settleTimer);
         cancelAnimationFrame(raf); raf = 0; lastT = 0;
@@ -866,6 +855,7 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
       destroy: function () {
         detach();
         if (pollRaf) { cancelAnimationFrame(pollRaf); pollRaf = 0; }
+        if (ivPoll) { clearInterval(ivPoll); ivPoll = 0; }
         ro.disconnect(); io.disconnect();
       },
     };
@@ -1000,15 +990,15 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
               st.visibility = pose.visible || reachable ? "visible" : "hidden";
               st.zIndex = String(100 - Math.round(Math.abs(i - f.ps) * 10));
               st.setProperty("--gray", previewing ? "0" : String(pose.gray));
-              st.willChange = pose.active || Math.abs(i - f.ps) <= 1 ? "transform" : "";
+              st.willChange = pose.animating && f.moving ? "transform" : "";
             } else {
               var d = deckPose(i, f.ps, n);
               st.transform = "translateY(" + d.ty.toFixed(2) + "%) rotate(" + d.rot.toFixed(2) + "deg) scale(" + d.scale.toFixed(3) + ")";
               st.filter = d.brightness < 1 ? "brightness(" + d.brightness.toFixed(3) + ")" : "none";
               st.opacity = String(d.opacity);
               st.visibility = d.visible ? "visible" : "hidden";
-              st.zIndex = String(d.zIndex);
-              st.willChange = d.visible ? "transform" : "";
+              st.zIndex = String(d.active ? n + 2 : d.zIndex);
+              st.willChange = d.animating && f.moving ? "transform" : "";
               st.setProperty("--gray", "0");
             }
             st.setProperty("--fill", String(segFill(i, f.ps)));
@@ -1043,6 +1033,14 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
       /* hover preview + keyboard focus bring-to-front */
       function setPreview(idx) {
         previewIdx = idx;
+        var cards = stage.querySelectorAll(".spin-card");
+        for (var i = 0; i < cards.length; i++) {
+          if (idx != null && i === idx && cards[i].getAttribute("data-active") !== "true") {
+            cards[i].setAttribute("data-preview", "true");
+          } else {
+            cards[i].removeAttribute("data-preview");
+          }
+        }
         engine.redraw();
       }
       list.addEventListener("mouseover", function (ev) {
@@ -1070,8 +1068,8 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
         if (g) { ev.preventDefault(); navigate(g.href); }
       });
 
-      /* entry animation */
-      setTimeout(function () { stage.setAttribute("data-entered", "true"); }, 250);
+      /* entry animation (original): plays once at 20% visibility, 4s fallback */
+      setTimeout(function () { stage.setAttribute("data-entered", "true"); }, 4000);
       var entryIO = new IntersectionObserver(function (entries) {
         if (entries[0].isIntersecting) {
           stage.setAttribute("data-entered", "true");
@@ -1079,6 +1077,31 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
         }
       }, { threshold: 0.2 });
       entryIO.observe(stage);
+
+      /* the ring's custom dot cursor (original SpinbarCursor): a small
+         accent dot that follows the mouse and grows to "Open" over the
+         active card; native cursor hidden inside the stage only */
+      if (variant === "ring") {
+        var cursor = el("div", "spin-cursor", "<span>Open</span>");
+        cursor.setAttribute("aria-hidden", "true");
+        document.body.appendChild(cursor);
+        var cx = 0, cy = 0, cInside = false, cOver = false, cRaf = 0;
+        var cPaint = function () {
+          cRaf = 0;
+          cursor.style.transform = "translate3d(" + cx + "px," + cy + "px,0) translate(-50%,-50%)";
+          cursor.setAttribute("data-state", cOver ? "open" : "dot");
+          cursor.style.opacity = cInside ? "1" : "0";
+        };
+        var cSched = function () { if (!cRaf) cRaf = requestAnimationFrame(cPaint); };
+        stage.addEventListener("pointermove", function (ev) {
+          if (ev.pointerType !== "mouse") return;
+          cx = ev.clientX; cy = ev.clientY; cInside = true;
+          cOver = !!(ev.target && ev.target.closest && ev.target.closest('.spin-card[data-active="true"]'));
+          cSched();
+        });
+        stage.addEventListener("pointerleave", function () { cInside = false; cSched(); });
+        sec.__gwCursor = cursor;
+      }
 
       function currentPs() {
         /* engine keeps its own ps private; derive from the active card */
@@ -1595,6 +1618,7 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
       var f = document.querySelector(".zlm-flagship"); if (f) f.remove();
       var v = document.querySelector(".zlm-gateways");
       if (v) { if (v.__gwDestroy) v.__gwDestroy(); v.remove(); }
+      var vc = document.querySelector(".spin-cursor"); if (vc) vc.remove();
       var vo = document.querySelector(".zlm-ventures"); if (vo) vo.remove();
       var pr = (function(){ var hs = document.querySelectorAll("h2"); for (var q = 0; q < hs.length; q++) if (hs[q].textContent.trim() === "Our Pride") return hs[q].closest("section"); })(); if (pr) pr.style.display = "";
       var b = document.querySelector(".zlm-bento"); if (b) b.remove();

@@ -31,7 +31,7 @@ python server.py 3000      # open http://localhost:3000
 # or: PORT=8080 python server.py
 ```
 
-## Deploy on Vercel (one shot)
+## Deploy on Vercel
 `vercel.json` ships with the repo: every route rewrites to `index.html`
 (SPA fallback — filesystem still wins, so all real assets serve directly),
 the hashed bundle and fonts cache immutably, other assets cache a day.
@@ -40,12 +40,8 @@ the hashed bundle and fonts cache immutably, other assets cache a day.
 2. Framework Preset **Other** — no build command, no output directory, nothing to set
 3. **Deploy**
 
-## Deploy on Render (alternative)
-A Render **Blueprint** (`render.yaml`) is also included — a single Python web
-service (`python server.py`, stdlib only) serving the site with SPA fallback:
-
-1. Render dashboard → **New → Blueprint** → pick this repository
-2. **Apply** — build/start are preconfigured; the server binds `0.0.0.0:$PORT` and passes the health check at `/`
+Local development still uses the Python server (`python server.py 3000`);
+it is not part of the deployment.
 
 ## Structure
 - `assets/index-*.js|css` — SPA bundle (patched: people photos, events, programs, boot, redirects)

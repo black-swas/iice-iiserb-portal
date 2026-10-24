@@ -1,2 +1,0 @@
-# Static SPA server — Python standard library only, no dependencies.
-# This file exists so Render (and friends) detect the Python runtime.
