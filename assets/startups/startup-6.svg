@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" width="600" height="500">
   <rect width="600" height="500" fill="#ffffff"/>
   <g transform="translate(272,132.0)">
-    <rect x="0" y="0" width="12" height="34" rx="2" fill="#6c3231"/>
+    <rect x="0" y="0" width="12" height="34" rx="2" fill="#322b28"/>
     <rect x="18" y="8" width="6" height="26" rx="2" fill="#ff8a40"/>
-    <rect x="30" y="0" width="12" height="34" rx="2" fill="#6c3231" opacity="0.55"/>
+    <rect x="30" y="0" width="12" height="34" rx="2" fill="#322b28" opacity="0.55"/>
     <rect x="48" y="8" width="6" height="26" rx="2" fill="#ff8a40" opacity="0.55"/>
   </g>
   <text x="300" y="228" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="52" font-weight="800" letter-spacing="1" fill="#23201e">ADIT BIOSCIENCE</text>
