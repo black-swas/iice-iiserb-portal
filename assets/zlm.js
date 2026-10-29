@@ -570,6 +570,9 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
 
     window.addEventListener("scroll", function () {
       header.classList.toggle("is-scrolled", window.scrollY > 8);
+      /* sub-categories are NOT sticky: any open mega-menu collapses the
+         moment the page scrolls (the header itself stays pinned) */
+      closeAllPopovers();
     }, { passive: true });
 
     document.addEventListener("keydown", function (ev) {

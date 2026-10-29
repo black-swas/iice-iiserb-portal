@@ -109,9 +109,10 @@ html.zlm-theming, html.zlm-theming *, html.zlm-theming *::before, html.zlm-themi
 .zlm-on div.min-h-\[82px\].bg-white\/95.backdrop-blur-md { display: none !important; }
 html { background: var(--t-brand-2); }
 
-/* ---------- 2. Hinge header (glass) — NOT sticky: scrolls away with the page ---------- */
+/* ---------- 2. Hinge header (glass, sticky) ---------- */
 .zlm-header {
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 60;
   background: rgba(255, 255, 255, 0.88);
   -webkit-backdrop-filter: blur(18px) saturate(1.5);
@@ -697,8 +698,8 @@ html { background: var(--t-brand-2); }
 /* ── pinned track & stage ── */
 .spin-track { position: relative; width: 100%; }
 .spin-stage {
-  position: sticky; top: 0;
-  height: 100svh;
+  position: sticky; top: 76px;
+  height: calc(100svh - 76px);
   width: 100%; overflow: hidden;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
 }
