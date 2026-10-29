@@ -623,13 +623,10 @@ html { background: var(--t-brand-2); }
     linear-gradient(135deg, color-mix(in srgb, var(--t-line) 55%, white) 0%, color-mix(in srgb, var(--t-line) 60%, var(--t-band-b)) 100%);
   border-bottom: 1px solid var(--t-line); color: var(--t-brand); overflow: hidden; flex-shrink: 0;
 }
-/* real photography inside the media band: warm scrim keeps the palette,
-   side cards desaturate through --gray (ring variant) */
+/* real photography inside the media band: crisp hardware composition */
 .spin-card__photo {
   position: absolute; inset: 0; width: 100%; height: 100%;
   object-fit: cover; object-position: center bottom;
-  filter: grayscale(var(--gray, 0));
-  transition: filter 240ms ease;
 }
 .spin-card__scrim {
   position: absolute; inset: 0;
@@ -705,7 +702,6 @@ html { background: var(--t-brand-2); }
 .spin-card__fill {
   display: block; height: 100%; width: 100%; background: var(--t-accent);
   transform-origin: left center; transform: scaleX(var(--fill, 0.35));
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }
 .spin-grid .spin-card:hover .spin-card__fill { transform: scaleX(1); }
@@ -718,35 +714,33 @@ html { background: var(--t-brand-2); }
   width: 100%; overflow: hidden;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
 }
-.spin-stage[data-variant="ring"] {
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 78%, rgba(0, 0, 0, 0.35) 94%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 78%, rgba(0, 0, 0, 0.35) 94%, transparent 100%);
-}
 .spin-list { position: relative; width: 100%; height: 100%; margin: 0; padding: 0; list-style: none; }
 .spin-slot {
   position: absolute; width: var(--spin-card-w); height: var(--spin-card-h);
   left: calc(50% - var(--spin-card-w) / 2);
   transform-origin: 50% 50%; backface-visibility: hidden;
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
+  contain: layout style;
 }
 .spin-stage[data-variant="ring"] .spin-slot { top: calc(44% - var(--spin-card-h) / 2 + var(--ring-r, 520px)); }
 .spin-stage[data-variant="deck"] .spin-slot { top: calc(43% - var(--spin-card-h) / 2); }
-.spin-stage .spin-card { height: 100%; }
-/* original card behavior: quick transform/border/shadow response, no
-   permanent stagger, active card marked by border + soft shadow only */
 .spin-stage .spin-card {
   height: 100%;
   transition:
-    transform 240ms ease-out,
-    border-color 220ms ease-out,
-    box-shadow 220ms ease-out;
+    border-color 180ms ease-out,
+    box-shadow 180ms ease-out;
 }
 .spin-stage .spin-card[data-active="true"] {
   border-color: var(--t-accent); border-width: 1.5px;
   box-shadow: 0 22px 44px -10px rgba(24, 24, 27, 0.16);
 }
-/* entry: scale-in without per-index delay so the last slide never lags */
-.spin-stage[data-entered="false"] .spin-card { transform: scale(0.9); }
-.spin-stage[data-entered="true"] .spin-card { transform: scale(1); transition-delay: 0ms; }
+/* entry: fast scale-in */
+.spin-stage[data-entered="false"] .spin-card { transform: scale(0.92); opacity: 0.8; }
+.spin-stage[data-entered="true"] .spin-card {
+  transform: scale(1); opacity: 1;
+  transition: transform 240ms ease-out, opacity 240ms ease-out, border-color 180ms ease-out, box-shadow 180ms ease-out;
+}
 .spin-stage .spin-card[data-preview="true"] {
   transform: translateY(-8px);
   transition-delay: 0ms;
@@ -755,10 +749,6 @@ html { background: var(--t-brand-2); }
 .spin-stage .spin-card__desc { opacity: 0; }
 .spin-stage .spin-card[data-active="true"] .spin-card__desc,
 .spin-stage .spin-card[data-preview="true"] .spin-card__desc { opacity: 1; }
-
-@media (prefers-reduced-transparency: reduce), (max-width: 1023.98px) {
-  .spin-stage[data-variant="ring"] .spin-slot { filter: none !important; }
-}
 
 /* ── controls bar ── */
 .spin-controls {
@@ -1256,6 +1246,8 @@ body::before {
 /* ---- tinted glass cards (JS-tagged) ---- */
 .zlm-gl {
   --gl-tint: 255 253 249;
+  position: relative !important;
+  overflow: hidden !important;
   background-color: rgba(255, 255, 255, 0.42);
   background-image: linear-gradient(135deg,
     rgb(var(--gl-tint) / 0.74), rgb(var(--gl-tint) / 0.52) 46%, rgb(var(--gl-tint) / 0.7));
@@ -1266,6 +1258,7 @@ body::before {
     inset 0 1px 0 rgba(255, 255, 255, 0.82),
     inset 0 -1px 0 color-mix(in srgb, var(--t-brand) 5%, transparent),
     0 16px 38px -18px color-mix(in srgb, var(--t-dark) 18%, transparent);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .zlm-gl--amber { --gl-tint: 255 243 226; }
 .zlm-gl--rose { --gl-tint: 255 241 237; }
@@ -1293,20 +1286,34 @@ body::before {
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
-/* specular hover sheen — transform-only, clipped to the card's own
-   radius via clip-path (set by glassify), never escapes the card */
+/* specular hover sheen — smooth sweeping glare / reflection line across cards */
 .zlm-gl__sheen {
-  position: absolute; inset: 0; z-index: 3; pointer-events: none;
+  position: absolute;
+  top: -20%;
+  bottom: -20%;
+  left: -20%;
+  right: -20%;
+  width: 140%;
+  height: 140%;
+  z-index: 10;
+  pointer-events: none;
   border-radius: inherit;
-  clip-path: inset(0 round 14px);
-  background: linear-gradient(105deg,
-    transparent 26%, rgba(255, 255, 255, 0.42) 46%,
-    color-mix(in srgb, var(--t-accent) 22%, transparent) 53%, transparent 74%);
-  transform: translateX(-150%);
-  transition: transform 0.9s cubic-bezier(0.3, 0.55, 0.25, 1);
+  background: linear-gradient(
+    108deg,
+    transparent 28%,
+    rgba(255, 255, 255, 0.45) 46%,
+    color-mix(in srgb, var(--t-accent, #e66a1f) 35%, white) 50%,
+    rgba(255, 255, 255, 0.45) 54%,
+    transparent 72%
+  );
+  transform: translateX(-160%) skewX(-18deg);
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
 .zlm-gl:hover > .zlm-gl__sheen,
-.zlm-gl:focus-within > .zlm-gl__sheen { transform: translateX(150%); }
+.zlm-gl:focus-within > .zlm-gl__sheen {
+  transform: translateX(160%) skewX(-18deg);
+}
 
 /* maroon gradient pill buttons → same liquid material as .zlm-cta */
 main a[class*="from-[#6c3231]"], main button[class*="from-[#6c3231]"] {
@@ -1383,7 +1390,6 @@ main .zlm-tone--a:nth-child(even) {
     backdrop-filter: blur(9px) saturate(1.3);
   }
   .zlm-gl--flat { background-color: rgba(255, 255, 255, 0.78); }
-  .zlm-gl__sheen { display: none; }
 }
 @media (prefers-reduced-transparency: reduce) {
   /* the new layers: opaque tinted glass instead of pure white —
@@ -1781,8 +1787,63 @@ p[class*="border-orange-500"] {
   font-weight: 800;
 }
 
-/* Stage Item Container */
+/* Stage Item Container & Connecting Reflection Line */
+#start {
+  position: relative;
+}
+#start::before {
+  content: "";
+  position: absolute;
+  top: 58px;
+  left: 8%;
+  right: 8%;
+  height: 2.5px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--t-line) 75%, var(--t-brand) 25%) 12%,
+    color-mix(in srgb, var(--t-accent) 55%, transparent) 50%,
+    color-mix(in srgb, var(--t-line) 75%, var(--t-brand) 25%) 88%,
+    transparent 100%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+#start::after {
+  content: "";
+  position: absolute;
+  top: 57px;
+  left: 8%;
+  right: 8%;
+  height: 4.5px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--t-accent) 70%, transparent) 35%,
+    #ffffff 50%,
+    color-mix(in srgb, var(--t-accent) 70%, transparent) 65%,
+    transparent 100%
+  );
+  filter: drop-shadow(0 0 6px var(--t-accent));
+  z-index: 0;
+  pointer-events: none;
+  animation: zlm-stage-line-glare 5s ease-in-out infinite;
+}
+@media (max-width: 767.98px) {
+  #start::before, #start::after {
+    display: none !important;
+  }
+}
+@keyframes zlm-stage-line-glare {
+  0% { transform: translateX(-60%); opacity: 0; }
+  25% { opacity: 1; }
+  75% { opacity: 1; }
+  100% { transform: translateX(60%); opacity: 0; }
+}
+
 .zlm-journey-stage {
+  position: relative;
+  z-index: 1;
   cursor: pointer;
   user-select: none;
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
@@ -1811,7 +1872,7 @@ p[class*="border-orange-500"] {
   border: 2.5px solid color-mix(in srgb, var(--t-accent) 65%, transparent);
   box-shadow:
     0 10px 24px -6px color-mix(in srgb, color-mix(in srgb, var(--t-brand-3) 80%, black) 40%, transparent),
-    inset 0 1px 2px rgba(255, 255, 255, 0.35),
+    inset 0 1px 2px rgba(255, 255, 255, 0.4),
     inset 0 -2px 6px rgba(0, 0, 0, 0.25);
   transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
 }
@@ -1820,7 +1881,7 @@ p[class*="border-orange-500"] {
   position: absolute;
   inset: -6px;
   border-radius: 50%;
-  background: radial-gradient(circle, color-mix(in srgb, var(--t-accent) 45%, transparent) 0%, transparent 70%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--t-accent) 50%, transparent) 0%, transparent 70%);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.35s ease, transform 0.35s ease;
@@ -1835,8 +1896,8 @@ p[class*="border-orange-500"] {
     inset 0 1px 2px rgba(255, 255, 255, 0.5);
 }
 .zlm-journey-stage:hover .zlm-journey-orb__glow {
-  opacity: 0.8;
-  transform: scale(1.05);
+  opacity: 0.85;
+  transform: scale(1.06);
 }
 
 .zlm-journey-stage.is-active .zlm-journey-orb__bg {
@@ -1970,14 +2031,11 @@ p[class*="border-orange-500"] {
 .zlm-timeline-card {
   position: relative;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 10% 12%, color-mix(in srgb, var(--t-accent) 7%, transparent) 0%, transparent 45%),
-    radial-gradient(circle at 90% 88%, color-mix(in srgb, var(--t-brand) 6%, transparent) 0%, transparent 45%),
-    linear-gradient(155deg, rgba(255, 255, 255, 0.96) 0%, color-mix(in srgb, var(--t-cream) 45%, white) 100%);
+  background: rgba(255, 255, 255, 0.97);
   border: 1.5px solid color-mix(in srgb, var(--t-line) 85%, var(--t-accent) 25%);
   border-radius: 24px;
   box-shadow:
-    0 24px 50px -18px color-mix(in srgb, color-mix(in srgb, var(--t-brand-3) 80%, black) 14%, transparent),
+    0 20px 45px -15px color-mix(in srgb, color-mix(in srgb, var(--t-brand-3) 80%, black) 12%, transparent),
     inset 0 1px 0 #ffffff;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -2018,17 +2076,89 @@ p[class*="border-orange-500"] {
   background: var(--t-accent);
 }
 
-/* Track Beam on Desktop */
-.zlm-timeline-beam {
+/* Incubation Timeline Organic Curvy Wave & Energy Animation */
+.zlm-timeline-track {
+  position: relative;
+  min-height: 250px;
+}
+
+.zlm-timeline-wave {
   position: absolute;
-  top: 32px;
-  left: 12%;
-  right: 12%;
-  height: 3.5px;
-  background: linear-gradient(90deg, var(--t-brand), var(--t-accent) 50%, var(--t-brand-2));
-  box-shadow: 0 0 14px color-mix(in srgb, var(--t-accent) 45%, transparent);
-  border-radius: 999px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 180px;
+  pointer-events: none;
   z-index: 1;
+  overflow: visible;
+}
+
+/* Translucent dashed background guide track */
+.zlm-wave-base {
+  stroke: color-mix(in srgb, var(--t-line) 75%, var(--t-brand) 25%);
+  stroke-width: 1.5px;
+  stroke-dasharray: 5 5;
+  opacity: 0.5;
+  stroke-linecap: round;
+  transition: d 0.45s ease;
+}
+
+/* Ambient theme glow filter layer behind curve */
+.zlm-wave-glow {
+  stroke: url(#zlmWaveGrad);
+  stroke-width: 8px;
+  stroke-linecap: round;
+  opacity: 0.35;
+  filter: blur(5px);
+  transition: d 0.45s ease;
+}
+
+/* Primary continuous theme-reactive Bezier curve */
+.zlm-wave-line {
+  stroke: url(#zlmWaveGrad);
+  stroke-width: 3.5px;
+  stroke-linecap: round;
+  filter: drop-shadow(0 2px 6px color-mix(in srgb, var(--t-brand) 25%, transparent));
+  transition: d 0.45s ease;
+}
+
+/* Smooth flowing energy pulse along wave */
+.zlm-wave-flow {
+  stroke: url(#zlmPulseGrad);
+  stroke-width: 3.5px;
+  stroke-linecap: round;
+  stroke-dasharray: 70 250;
+  animation: zlm-wave-flow 3.5s linear infinite;
+  filter: drop-shadow(0 0 6px var(--t-accent));
+  transition: d 0.45s ease;
+}
+
+/* Bright energy spark comet — traveling reflection highlight */
+.zlm-wave-spark {
+  stroke: #ffffff;
+  stroke-width: 5px;
+  stroke-linecap: round;
+  stroke-dasharray: 12 340;
+  animation: zlm-wave-flow 3.5s linear infinite;
+  filter: drop-shadow(0 0 4px #ffffff) drop-shadow(0 0 10px var(--t-accent));
+  transition: d 0.45s ease;
+}
+
+@keyframes zlm-wave-flow {
+  from {
+    stroke-dashoffset: 720;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Desktop Milestone Vertical Positioning (smooth transition per stage) */
+@media (min-width: 768px) {
+  .zlm-timeline-node {
+    padding-top: var(--node-pt, 30px);
+    transition: padding-top 0.45s cubic-bezier(0.22, 1, 0.36, 1), transform 0.25s ease;
+  }
 }
 
 /* Milestone Node */
@@ -2037,34 +2167,63 @@ p[class*="border-orange-500"] {
   transition: transform 0.25s ease;
 }
 .zlm-timeline-node:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
 }
 
+/* Compact jewel-like milestone node bubble (reduced size for maximum curviness) */
 .zlm-timeline-node__orb {
-  background: radial-gradient(circle at 35% 32%, var(--t-brand) 0%, var(--t-brand-2) 100%);
-  color: #ffffff;
+  width: 42px !important;
+  height: 42px !important;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 32%, #ffffff 0%, color-mix(in srgb, var(--t-cream) 60%, white) 100%);
+  color: var(--t-brand);
   border: 2.5px solid var(--t-accent);
   box-shadow:
-    0 10px 22px -6px color-mix(in srgb, color-mix(in srgb, var(--t-brand-3) 80%, black) 50%, transparent),
-    0 0 0 4px color-mix(in srgb, var(--t-accent) 22%, transparent),
-    inset 0 1px 2px rgba(255, 255, 255, 0.4);
-  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    0 8px 18px -4px color-mix(in srgb, var(--t-brand-3) 25%, transparent),
+    inset 0 1px 2px rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   user-select: none;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  z-index: 2;
+  position: relative;
 }
 .zlm-timeline-node:hover .zlm-timeline-node__orb {
-  background: radial-gradient(circle at 35% 32%, var(--t-accent) 0%, var(--t-accent-2) 100%);
+  background: linear-gradient(135deg, var(--t-accent) 0%, var(--t-accent-2) 100%);
+  color: #ffffff;
   border-color: #ffffff;
   box-shadow:
-    0 14px 28px -6px color-mix(in srgb, var(--t-accent-2) 60%, transparent),
-    0 0 0 5px color-mix(in srgb, var(--t-accent) 35%, transparent),
-    inset 0 2px 4px rgba(255, 255, 255, 0.6);
+    0 10px 24px -4px color-mix(in srgb, var(--t-accent) 55%, transparent),
+    0 0 0 4px color-mix(in srgb, var(--t-accent) 25%, transparent);
+  transform: scale(1.15);
+}
+
+.zlm-timeline-node__ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid var(--t-accent);
+  opacity: 0;
+  pointer-events: none;
+  animation: zlm-ring-pulse 3.2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+.zlm-timeline-node:nth-child(1) .zlm-timeline-node__ring { animation-delay: 0s; }
+.zlm-timeline-node:nth-child(2) .zlm-timeline-node__ring { animation-delay: 0.8s; }
+.zlm-timeline-node:nth-child(3) .zlm-timeline-node__ring { animation-delay: 1.6s; }
+.zlm-timeline-node:nth-child(4) .zlm-timeline-node__ring { animation-delay: 2.4s; }
+
+@keyframes zlm-ring-pulse {
+  0% { transform: scale(0.92); opacity: 0.8; }
+  50%, 100% { transform: scale(1.35); opacity: 0; }
 }
 
 .zlm-timeline-node__num {
   font-family: inherit;
   font-weight: 800;
-  letter-spacing: 0.04em;
-  color: #ffffff;
+  font-size: 0.82rem;
+  line-height: 1;
+  color: inherit;
 }
 
 .zlm-timeline-node__title {
@@ -2123,6 +2282,15 @@ p[class*="border-orange-500"] {
 
 /* Responsive adjustment for Mobile (<768px) */
 @media (max-width: 767.98px) {
+  .zlm-timeline-node {
+    padding-top: 0 !important;
+  }
+  [class*="zlm-node-stagger-"] {
+    padding-top: 0 !important;
+  }
+  .zlm-timeline-wave {
+    display: none !important;
+  }
   .zlm-timeline-card {
     padding: 1.25rem 1rem !important;
   }
@@ -2156,3 +2324,752 @@ p[class*="border-orange-500"] {
   }
 }
 
+/* ============================================================
+   Landing Page Hero: Cursor-Activated Scribble & Highlight
+   Directly linked to the dynamic theme system via --t-accent
+   Starts un-drawn (not pre-rendered); scribbles with cursor; stays persistent
+   ============================================================ */
+.zlm-hero-highlight {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  padding: 0 0.16em;
+  margin: 0 -0.04em;
+  isolation: isolate;
+  vertical-align: baseline;
+  cursor: pointer;
+}
+
+/* 1. Highlight Wash — un-rendered initially, draws in on cursor activation */
+.zlm-hero-highlight-bg {
+  position: absolute;
+  inset: 8% -8px 5% -8px;
+  background: linear-gradient(105deg,
+    color-mix(in srgb, var(--t-accent) 26%, transparent) 0%,
+    color-mix(in srgb, var(--t-accent) 14%, transparent) 100%
+  );
+  border-radius: 5px 8px 4px 7px;
+  transform: scaleX(0) rotate(-0.5deg);
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+  transform-origin: left center;
+  box-shadow: 0 2px 18px color-mix(in srgb, var(--t-accent) 16%, transparent);
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+}
+
+/* 2. Text styling */
+.zlm-hero-highlight-text {
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+  font-weight: 800;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+}
+
+/* 3. Scribble SVG Underline — hidden initially, draws in with cursor */
+.zlm-hero-scribble {
+  position: absolute;
+  left: -6px;
+  right: -6px;
+  bottom: -5px;
+  width: calc(100% + 12px);
+  height: 18px;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.zlm-hero-scribble path {
+  stroke: var(--t-accent);
+  stroke-width: 3.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400; /* Hidden initially: un-drawn */
+  opacity: 0;
+  filter: drop-shadow(0 2px 6px color-mix(in srgb, var(--t-accent) 40%, transparent));
+  transition: stroke-dashoffset 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+}
+
+.zlm-scribble-stroke-2 {
+  opacity: 0;
+  transition-delay: 0.12s !important;
+}
+
+/* Cursor Activated & Persistent state */
+.zlm-hero-highlight:hover .zlm-hero-highlight-bg,
+.zlm-hero-highlight.zlm-active .zlm-hero-highlight-bg {
+  transform: scaleX(1) rotate(-0.5deg);
+  opacity: 1;
+}
+
+.zlm-hero-highlight:hover .zlm-hero-scribble path,
+.zlm-hero-highlight.zlm-active .zlm-hero-scribble path {
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
+
+.zlm-hero-highlight:hover .zlm-scribble-stroke-2,
+.zlm-hero-highlight.zlm-active .zlm-scribble-stroke-2 {
+  opacity: 0.85;
+}
+
+/* Once activated, subtle warm glow enhancement on hover */
+.zlm-hero-highlight.zlm-active:hover .zlm-hero-highlight-bg {
+  background: linear-gradient(105deg,
+    color-mix(in srgb, var(--t-accent) 32%, transparent) 0%,
+    color-mix(in srgb, var(--t-accent) 18%, transparent) 100%
+  );
+  box-shadow: 0 4px 22px color-mix(in srgb, var(--t-accent) 25%, transparent);
+}
+
+@media (max-width: 639.98px) {
+  .zlm-hero-scribble {
+    bottom: -4px;
+    height: 15px;
+  }
+  .zlm-hero-scribble path {
+    stroke-width: 3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zlm-hero-highlight-bg,
+  .zlm-hero-scribble path {
+    transition: none !important;
+  }
+}
+
+
+
+
+
+/* ==========================================================================
+   Who We Are — High-Res Main Building Showcase
+   ========================================================================== */
+.zlm-building-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.zlm-building-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  min-height: 220px;
+  border-radius: 1.5rem;
+  box-sizing: border-box;
+}
+
+@media (min-width: 640px) {
+  .zlm-building-container {
+    aspect-ratio: 16 / 10;
+    min-height: 320px;
+    border-radius: 1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .zlm-building-container {
+    aspect-ratio: 16 / 11;
+    min-height: 360px;
+  }
+}
+
+.zlm-building-backdrop {
+  position: absolute;
+  inset: 0.5rem;
+  background: linear-gradient(135deg, rgba(255, 138, 64, 0.18) 0%, rgba(15, 23, 42, 0.05) 50%, rgba(200, 200, 200, 0.3) 100%);
+  border-radius: inherit;
+  transform: rotate(-1deg);
+  transition: transform 0.4s ease;
+  z-index: 1;
+}
+
+.zlm-building-wrapper:hover .zlm-building-backdrop {
+  transform: rotate(0deg);
+}
+
+.zlm-building-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  overflow: hidden;
+  border: 3.5px solid #ffffff;
+  background-color: #0f172a;
+  box-shadow: 0 20px 45px -12px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(0, 0, 0, 0.06);
+  z-index: 2;
+  cursor: pointer;
+}
+
+.zlm-building-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 36%;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.zlm-building-wrapper:hover .zlm-building-img {
+  transform: scale(1.045);
+}
+
+.zlm-building-vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(9, 24, 29, 0.85) 0%, rgba(9, 24, 29, 0.25) 30%, transparent 60%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Corner accent brackets */
+.zlm-building-bracket-tl {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: 48px;
+  height: 48px;
+  border-top: 4px solid #ff8a40;
+  border-left: 4px solid #ff8a40;
+  border-top-left-radius: 1rem;
+  z-index: 5;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.zlm-building-bracket-br {
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  width: 48px;
+  height: 48px;
+  border-bottom: 4px solid #ff8a40;
+  border-right: 4px solid #ff8a40;
+  border-bottom-right-radius: 1rem;
+  z-index: 5;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+@media (min-width: 640px) {
+  .zlm-building-bracket-tl {
+    top: -12px;
+    left: -12px;
+    width: 68px;
+    height: 68px;
+  }
+  .zlm-building-bracket-br {
+    bottom: -12px;
+    right: -12px;
+    width: 68px;
+    height: 68px;
+  }
+}
+
+.zlm-building-wrapper:hover .zlm-building-bracket-tl {
+  transform: translate(-3px, -3px);
+}
+
+.zlm-building-wrapper:hover .zlm-building-bracket-br {
+  transform: translate(3px, 3px);
+}
+
+/* Info badges overlay */
+.zlm-building-badge-loc {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  z-index: 4;
+  background: rgba(9, 24, 29, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 0.85rem;
+  padding: 6px 12px;
+  color: #ffffff;
+  pointer-events: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+@media (min-width: 640px) {
+  .zlm-building-badge-loc {
+    bottom: 16px;
+    left: 16px;
+    padding: 8px 16px;
+    border-radius: 1rem;
+  }
+}
+
+.zlm-building-badge-loc .zlm-badge-sub {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ff8a40;
+  display: block;
+  line-height: 1.2;
+}
+
+.zlm-building-badge-loc .zlm-badge-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  display: block;
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+@media (min-width: 640px) {
+  .zlm-building-badge-loc .zlm-badge-sub {
+    font-size: 11px;
+  }
+  .zlm-building-badge-loc .zlm-badge-title {
+    font-size: 14px;
+  }
+}
+
+.zlm-building-badge-sqft {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 9999px;
+  padding: 4px 10px;
+  color: #09181d;
+  font-size: 11px;
+  font-weight: 800;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+@media (min-width: 640px) {
+  .zlm-building-badge-sqft {
+    top: 16px;
+    right: 16px;
+    padding: 5px 12px;
+    font-size: 12px;
+  }
+}
+
+.zlm-building-badge-sqft .zlm-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+  background-color: #10b981;
+  animation: zlmPulseDot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes zlmPulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+
+/* ============================================================
+   §16. USP SECTION — Institutional Value Proposition & Bento Matrix
+   Dynamic Theme-aware, research-focused, highly relevant graphics.
+   ============================================================ */
+
+.zlm-usp-section {
+  width: 100%;
+  padding: 3.5rem 1rem;
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .zlm-usp-section {
+    padding: 5rem 2rem;
+  }
+}
+
+.zlm-usp-container {
+  max-width: 80rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .zlm-usp-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3.5rem;
+  }
+}
+
+/* Left Content Column */
+.zlm-usp-content {
+  flex: 1;
+  max-width: 36rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.zlm-usp-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: color-mix(in srgb, var(--t-accent, #e66a1f) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--t-accent, #e66a1f) 28%, transparent);
+  color: var(--t-accent-text, #b34506);
+  margin-bottom: 1rem;
+}
+
+.zlm-usp-eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--t-accent, #e66a1f);
+}
+
+.zlm-usp-heading {
+  font-size: 2.25rem;
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--t-ink, #23201e);
+  margin-bottom: 0.85rem;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+  .zlm-usp-heading {
+    font-size: 2.75rem;
+  }
+}
+
+.zlm-usp-highlight {
+  font-weight: 800;
+  color: var(--t-accent-text, #b34506);
+  position: relative;
+}
+
+.zlm-usp-subheading {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--t-ink-2, #3d3733);
+  margin-bottom: 1.15rem;
+  line-height: 1.45;
+}
+
+.zlm-usp-lead {
+  font-size: 0.95rem;
+  color: var(--t-ink-soft, #6b5e5c);
+  line-height: 1.65;
+  margin-bottom: 1.75rem;
+}
+
+.zlm-usp-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  width: 100%;
+}
+
+.zlm-usp-pillar-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--t-cream, #fff6ee) 75%, transparent);
+  border: 1px solid color-mix(in srgb, var(--t-line, #e7e2dc) 85%, transparent);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.zlm-usp-pillar-item:hover {
+  background: color-mix(in srgb, var(--t-cream, #fff6ee) 95%, white);
+  border-color: color-mix(in srgb, var(--t-accent, #e66a1f) 40%, transparent);
+  transform: translateX(4px);
+  box-shadow: 0 4px 14px -4px color-mix(in srgb, var(--t-accent, #e66a1f) 15%, transparent);
+}
+
+.zlm-usp-pillar-icon {
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 0.65rem;
+  background: color-mix(in srgb, var(--t-accent, #e66a1f) 14%, transparent);
+  color: var(--t-accent-text, #b34506);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+  border: 1px solid color-mix(in srgb, var(--t-accent, #e66a1f) 22%, transparent);
+}
+
+.zlm-usp-pillar-title {
+  font-size: 0.925rem;
+  font-weight: 700;
+  color: var(--t-ink, #23201e);
+  margin-bottom: 0.15rem;
+}
+
+.zlm-usp-pillar-desc {
+  font-size: 0.825rem;
+  color: var(--t-ink-soft, #6b5e5c);
+  line-height: 1.45;
+}
+
+/* Right Bento Matrix */
+.zlm-usp-bento {
+  flex: 1;
+  width: 100%;
+  max-width: 38rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.15rem;
+}
+
+@media (min-width: 640px) {
+  .zlm-usp-bento {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.zlm-usp-card {
+  position: relative;
+  background: color-mix(in srgb, var(--t-cream, #fff6ee) 90%, var(--t-bg, #f3ece3));
+  border: 1px solid color-mix(in srgb, var(--t-brand, #6c3231) 14%, var(--t-line, #e7e2dc));
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 8px 24px -10px color-mix(in srgb, var(--t-brand, #6c3231) 10%, transparent);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.zlm-usp-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 130px;
+  height: 130px;
+  background: radial-gradient(circle at top right, color-mix(in srgb, var(--t-accent, #e66a1f) 18%, transparent), transparent 70%);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.zlm-usp-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--t-accent, #e66a1f) 45%, transparent);
+  box-shadow: 0 16px 36px -12px color-mix(in srgb, var(--t-accent, #e66a1f) 25%, transparent);
+}
+
+.zlm-usp-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.zlm-usp-card-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.6rem;
+  border-radius: 0.5rem;
+  background: color-mix(in srgb, var(--t-accent, #e66a1f) 12%, transparent);
+  color: var(--t-accent-text, #b34506);
+  border: 1px solid color-mix(in srgb, var(--t-accent, #e66a1f) 22%, transparent);
+}
+
+.zlm-usp-card-graphic {
+  width: 100%;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.85rem;
+  border-radius: 0.75rem;
+  background: color-mix(in srgb, var(--t-bg, #f3ece3) 45%, white);
+  border: 1px dashed color-mix(in srgb, var(--t-brand, #6c3231) 14%, var(--t-line, #e7e2dc));
+  padding: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.zlm-usp-card-graphic svg {
+  width: 100%;
+  height: 100%;
+}
+
+.zlm-usp-card-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--t-ink, #23201e);
+  margin-bottom: 0.35rem;
+  line-height: 1.25;
+}
+
+.zlm-usp-card-desc {
+  font-size: 0.795rem;
+  color: var(--t-ink-soft, #6b5e5c);
+  line-height: 1.45;
+}
+
+/* --- Dual Leadership Spotlight (/our-team) --- */
+.zlm-leadership-duo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.8rem;
+  max-width: 90rem;
+  margin: 0 0 2.6rem;
+  align-items: stretch;
+}
+.zlm-leadership-duo .zlm-ceo {
+  margin: 0;
+  height: 100%;
+}
+.zlm-ceo--duo {
+  padding: 1.6rem;
+  gap: 1.4rem;
+}
+.zlm-ceo--duo .zlm-ceo__photo {
+  flex: 0 0 170px;
+  min-height: 220px;
+}
+.zlm-ceo--duo .zlm-ceo__name {
+  font-size: clamp(1.2rem, 1.6vw, 1.55rem);
+}
+.zlm-ceo--duo .zlm-ceo__role {
+  font-size: 0.82rem;
+  margin-bottom: 0.45rem;
+}
+.zlm-ceo--duo .zlm-ceo__bio {
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+@media (max-width: 1024px) {
+  .zlm-leadership-duo {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+@media (max-width: 640px) {
+  .zlm-ceo--duo {
+    flex-direction: column;
+    padding: 1.25rem;
+  }
+  .zlm-ceo--duo .zlm-ceo__photo {
+    flex-basis: auto;
+    width: 100%;
+    min-height: 260px;
+  }
+}
+
+/* ==========================================================================
+   Bhopal Ecosystem Page — Aesthetic Campus Photo Showcase
+   ========================================================================== */
+.zlm-bhopal-card-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.zlm-bhopal-hero-card {
+  position: relative;
+  width: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  background-color: #0f172a;
+}
+
+@media (min-width: 640px) {
+  .zlm-bhopal-hero-card {
+    border-radius: 1.25rem;
+  }
+}
+
+.zlm-bhopal-hero-img {
+  width: 100%;
+  height: 460px;
+  object-fit: cover;
+  object-position: center 82%;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+@media (min-width: 640px) {
+  .zlm-bhopal-hero-img {
+    height: 500px;
+    object-position: center 80%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .zlm-bhopal-hero-img {
+    height: 540px;
+    object-position: center 80%;
+  }
+}
+
+.zlm-bhopal-card-wrapper:hover .zlm-bhopal-hero-img {
+  transform: scale(1.04);
+}
+
+.zlm-bhopal-hero-vignette {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 10rem;
+  background: linear-gradient(to top, rgba(9, 24, 29, 0.85) 0%, rgba(9, 24, 29, 0.35) 45%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.zlm-bhopal-hero-caption {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 3;
+  color: #ffffff;
+  pointer-events: none;
+}
+
+.zlm-bhopal-hero-caption h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #ffffff;
+}
+
+.zlm-bhopal-hero-caption p {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+/* Suppress duplicate smaller cards under Our Leadership */
+div:has(#our-leadership) > .max-w-8xl,
+.zlm-dup-leadership-hidden {
+  display: none !important;
+}

@@ -14,7 +14,7 @@
       <circle cx="660" cy="140" r="140" fill="var(--t-accent, #e66a1f)" fill-opacity="0.18"/>
       <rect x="44" y="42" width="340" height="36" rx="18" fill="#ffffff" fill-opacity="0.14" stroke="#ffffff" stroke-opacity="0.3"/>
       <text x="66" y="65" font-family="ui-monospace, monospace" font-size="13" font-weight="700" fill="var(--t-accent, #e66a1f)">IICE · IISER BHOPAL INFRASTRUCTURE</text>
-      <text x="44" y="170" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="34" font-weight="800" fill="#ffffff">IISER Bhopal 200-Acre Research Ecosystem</text>
+      <text x="44" y="170" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="34" font-weight="800" fill="#ffffff">IISER Bhopal 252-Acre Research Ecosystem</text>
       <text x="44" y="216" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="18" font-weight="500" fill="#e2e8f0">11 Academic Departments · CREATES &amp; CS2 Centres of Excellence</text>
       <rect x="44" y="280" width="712" height="160" rx="18" fill="#ffffff" fill-opacity="0.95"/>
       <text x="72" y="328" font-family="ui-monospace, monospace" font-size="13" font-weight="800" fill="var(--t-accent-text, #9a3412)">TECHNICAL SPECIFICATIONS &amp; ACCESS</text>
