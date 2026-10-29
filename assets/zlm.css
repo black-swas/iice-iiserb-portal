@@ -14,9 +14,10 @@
   --t-brand: #6c3231;      /* primary: buttons, pills, links, poster duotone */
   --t-brand-2: #5e2928;    /* deep brand: gradient ends, overscroll */
   --t-brand-3: #4a1f1e;    /* deepest brand: poster scrims, hover shade */
-  --t-accent: #ff8a40;     /* highlight: amber glow, eyebrows, badges */
-  --t-accent-2: #e2701e;   /* deep accent: hovers, conic ring, edges */
-  --t-accent-soft: color-mix(in srgb, var(--t-accent) 62%, white);
+  --t-accent: #e66a1f;     /* vibrant warm amber-copper */
+  --t-accent-2: #c85310;   /* deep amber: hovers, active */
+  --t-accent-text: #b34506; /* WCAG AA 5.57:1 text contrast on light cream/white */
+  --t-accent-soft: #fed7aa; /* soft amber-peach tint */
   --t-secondary: #2d415c;  /* template secondary blue + navy inks */
   --t-bg: #f3ece3;         /* page body base */
   --t-band-a: #f8eee0;     /* tone--a band gradient start */
@@ -30,7 +31,9 @@
 }
 html[data-zlm-theme="navy"] {
   --t-brand: #1e3a5f; --t-brand-2: #152e4d; --t-brand-3: #0d2240;
-  --t-accent: #ffab4d; --t-accent-2: #d9821f;
+  --t-accent: #f59e0b; --t-accent-2: #d97706;
+  --t-accent-text: #92400e; /* WCAG AA 7.09:1 text contrast */
+  --t-accent-soft: #fde68a;
   --t-secondary: #2f5d50;
   --t-bg: #eef0f4; --t-band-a: #ecf2fa; --t-band-b: #dee9f4;
   --t-dark: #0b1526;
@@ -39,7 +42,9 @@ html[data-zlm-theme="navy"] {
 }
 html[data-zlm-theme="emerald"] {
   --t-brand: #14584a; --t-brand-2: #0e463a; --t-brand-3: #08312a;
-  --t-accent: #f0a832; --t-accent-2: #cf8514;
+  --t-accent: #eab308; --t-accent-2: #ca8a04;
+  --t-accent-text: #854d0e; /* WCAG AA 6.85:1 text contrast */
+  --t-accent-soft: #fef08a;
   --t-secondary: #275c72;
   --t-bg: #edf3ee; --t-band-a: #eaf4eb; --t-band-b: #dcecdf;
   --t-dark: #07201a;
@@ -48,7 +53,9 @@ html[data-zlm-theme="emerald"] {
 }
 html[data-zlm-theme="indigo"] {
   --t-brand: #3f3a9e; --t-brand-2: #322d80; --t-brand-3: #241f5e;
-  --t-accent: #ff9d5c; --t-accent-2: #e0701f;
+  --t-accent: #f43f5e; --t-accent-2: #e11d48;
+  --t-accent-text: #be123c; /* WCAG AA 6.29:1 text contrast */
+  --t-accent-soft: #fecdd3;
   --t-secondary: #6e3f7c;
   --t-bg: #efedf7; --t-band-a: #efedfa; --t-band-b: #e2dff4;
   --t-dark: #131030;
@@ -57,7 +64,9 @@ html[data-zlm-theme="indigo"] {
 }
 html[data-zlm-theme="terracotta"] {
   --t-brand: #9c4a2f; --t-brand-2: #7e3722; --t-brand-3: #5e2717;
-  --t-accent: #e9b44c; --t-accent-2: #c98d20;
+  --t-accent: #e59819; --t-accent-2: #c97e0c;
+  --t-accent-text: #8f4e04; /* WCAG AA 6.44:1 text contrast */
+  --t-accent-soft: #fde68a;
   --t-secondary: #405c50;
   --t-bg: #f6eee4; --t-band-a: #f8f0e1; --t-band-b: #f0e2cd;
   --t-dark: #241209;
@@ -66,7 +75,9 @@ html[data-zlm-theme="terracotta"] {
 }
 html[data-zlm-theme="teal"] {
   --t-brand: #0e5f66; --t-brand-2: #0a4b51; --t-brand-3: #063539;
-  --t-accent: #ff8a5c; --t-accent-2: #dd5f30;
+  --t-accent: #ff6b6b; --t-accent-2: #e05353;
+  --t-accent-text: #c92a2a; /* WCAG AA 5.46:1 text contrast */
+  --t-accent-soft: #ffd8d8;
   --t-secondary: #34566b;
   --t-bg: #eaf2f2; --t-band-a: #e8f4f2; --t-band-b: #d8eae7;
   --t-dark: #052124;
@@ -75,7 +86,9 @@ html[data-zlm-theme="teal"] {
 }
 html[data-zlm-theme="plum"] {
   --t-brand: #6d2f5e; --t-brand-2: #57244a; --t-brand-3: #3e1935;
-  --t-accent: #ffb36b; --t-accent-2: #e2853a;
+  --t-accent: #fb923c; --t-accent-2: #ea580c;
+  --t-accent-text: #9a3412; /* WCAG AA 7.31:1 text contrast */
+  --t-accent-soft: #fed7aa;
   --t-secondary: #46396e;
   --t-bg: #f4edf3; --t-band-a: #f6eef4; --t-band-b: #eddeeb;
   --t-dark: #1e0e1a;
@@ -84,7 +97,9 @@ html[data-zlm-theme="plum"] {
 }
 html[data-zlm-theme="graphite"] {
   --t-brand: #3a4552; --t-brand-2: #2c3540; --t-brand-3: #1f262e;
-  --t-accent: #ff8a40; --t-accent-2: #e2701e;
+  --t-accent: #0ea5e9; --t-accent-2: #0284c7;
+  --t-accent-text: #0369a1; /* WCAG AA 5.93:1 text contrast */
+  --t-accent-soft: #bae6fd;
   --t-secondary: #4f6455;
   --t-bg: #f0f1f0; --t-band-a: #eff1ef; --t-band-b: #e2e8e4;
   --t-dark: #0f151b;
@@ -411,7 +426,7 @@ html { background: var(--t-brand-2); }
 }
 .zlm-flip-back .zlm-flip-cat {
   font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase;
-  color: #ffc247; margin-bottom: 10px;
+  color: var(--t-accent-soft); margin-bottom: 10px;
 }
 .zlm-flip-back .zlm-flip-h { font-size: 24px; font-weight: 700; line-height: 1.2; margin: 0 0 12px; }
 .zlm-flip-back .zlm-flip-p { font-size: 14px; line-height: 1.6; color: rgba(255, 255, 255, 0.9); margin: 0 0 8px; }
@@ -428,7 +443,7 @@ html { background: var(--t-brand-2); }
   text-decoration: underline; text-underline-offset: 4px; text-decoration-color: rgba(255, 255, 255, 0.5);
   transition: text-decoration-color 0.2s ease;
 }
-.zlm-flip-back .zlm-flip-cta:hover { text-decoration-color: #ffc247; }
+.zlm-flip-back .zlm-flip-cta:hover { text-decoration-color: var(--t-accent); }
 
 .zlm-flip-card:focus-visible { outline: 2px solid var(--t-accent); outline-offset: 3px; }
 
@@ -1603,3 +1618,541 @@ main .zlm-tone--a:nth-child(even) {
   .zlm-studio__card, .zlm-studio__nav, .zlm-studio__shuffle, .zlm-studio__trigger, .zlm-studio__panelwrap { transition: none; }
   .zlm-studio__card:hover, .zlm-studio__nav:hover, .zlm-studio__shuffle:hover, .zlm-studio__trigger:hover { transform: none; }
 }
+
+/* ============================================================
+   13. Dynamic Theme System — Universal Accent & Contrast Bridging
+   Remaps all hardcoded orange utility classes and arbitrary values
+   to the active theme's tokens (--t-accent, --t-accent-2,
+   --t-accent-text, --t-accent-soft) with guaranteed WCAG contrast.
+   ============================================================ */
+
+/* Text accents — high contrast text ensures crisp readability on white & cream */
+.text-orange-500,
+.text-orange-600,
+.text-orange-700,
+.text-\[\#ff8a40\] {
+  color: var(--t-accent-text, var(--t-accent)) !important;
+}
+.text-orange-800 {
+  color: color-mix(in srgb, var(--t-accent-text, var(--t-accent-2)) 80%, black) !important;
+}
+.text-orange-200,
+.text-orange-300,
+.group-hover\/card\:text-orange-200:is(:where(.group\/card):hover *),
+.group:hover .group-hover\:text-orange-200 {
+  color: var(--t-accent-soft) !important;
+}
+.hover\:text-orange-600:hover,
+.hover\:text-orange-700:hover,
+.hover\:text-\[\#ff8a40\]:hover,
+.group-hover\:text-orange-600:hover {
+  color: var(--t-accent-2) !important;
+}
+
+/* Backgrounds & pills */
+.bg-orange-500,
+.bg-\[\#ff8a40\] {
+  background-color: var(--t-accent) !important;
+}
+.bg-orange-600,
+.hover\:bg-\[\#e8621a\]:hover,
+.hover\:bg-orange-600:hover {
+  background-color: var(--t-accent-2) !important;
+}
+.bg-orange-700,
+.hover\:bg-orange-700:hover {
+  background-color: color-mix(in srgb, var(--t-accent-2) 85%, black) !important;
+}
+.bg-orange-50 {
+  background-color: color-mix(in srgb, var(--t-accent) 12%, var(--t-bg, white)) !important;
+}
+.bg-orange-50\/40 {
+  background-color: color-mix(in srgb, var(--t-accent) 10%, transparent) !important;
+}
+.bg-orange-100 {
+  background-color: color-mix(in srgb, var(--t-accent) 18%, var(--t-bg, white)) !important;
+}
+.bg-orange-200 {
+  background-color: color-mix(in srgb, var(--t-accent) 28%, var(--t-bg, white)) !important;
+}
+
+/* Borders */
+.border-orange-500,
+.border-\[\#ff8a40\] {
+  border-color: var(--t-accent) !important;
+}
+.border-orange-600 {
+  border-color: var(--t-accent-2) !important;
+}
+.border-orange-200 {
+  border-color: var(--t-accent-soft) !important;
+}
+
+/* Gradients */
+.from-orange-500,
+.from-\[\#ff8a40\],
+.hover\:from-\[\#ff8a40\]:hover {
+  --tw-gradient-from: var(--t-accent) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, color-mix(in srgb, var(--t-accent) 0%, transparent)) !important;
+}
+.via-orange-600 {
+  --tw-gradient-via: var(--t-accent) !important;
+}
+.to-orange-500 {
+  --tw-gradient-to: var(--t-accent) !important;
+}
+.hover\:to-\[\#e8621a\]:hover {
+  --tw-gradient-to: var(--t-accent-2) !important;
+}
+
+/* Focus rings & glows */
+.focus\:ring-\[\#ff8a40\]:focus {
+  --tw-ring-color: var(--t-accent) !important;
+}
+.shadow-\[0_0_0\.4rem_\#ff8a40\] {
+  box-shadow: 0 0 0.4rem var(--t-accent) !important;
+}
+
+/* SVG fills & strokes inside HTML */
+.fill-\[\#FF8A40\] {
+  fill: var(--t-accent) !important;
+}
+.stroke-\[\#FF8A40\] {
+  stroke: var(--t-accent) !important;
+}
+.group-hover\:fill-\[\#FF8A40\]:is(:where(.group):hover *) {
+  fill: var(--t-accent) !important;
+}
+.group-focus-visible\:fill-\[\#FF8A40\]:is(:where(.group):focus-visible *) {
+  fill: var(--t-accent) !important;
+}
+
+/* Team cards & Domain Head badge adaptation */
+.from-amber-500.via-orange-600.to-amber-500 {
+  background-image: linear-gradient(to right, var(--t-brand), var(--t-accent-2), var(--t-brand)) !important;
+}
+
+/* Template highlight tokens */
+.text-primary-highlight {
+  color: var(--t-accent-text, var(--t-accent)) !important;
+}
+.bg-primary-highlight {
+  background-color: var(--t-accent) !important;
+}
+.border-primary-highlight {
+  border-color: var(--t-accent) !important;
+}
+
+/* Ensure CIF booking and callout side-borders match active theme accent */
+.border-l-4.border-orange-500,
+p[class*="border-orange-500"] {
+  border-left-color: var(--t-accent) !important;
+}
+
+/* ============================================================
+   14. Know Your Journey — Dynamic Themed Journey & Timeline Map
+   ============================================================ */
+
+/* Main Section Frame */
+#containerClass {
+  position: relative;
+}
+#containerClass > div.rounded-3xl {
+  background:
+    radial-gradient(circle at 12% 14%, color-mix(in srgb, var(--t-accent) 6%, transparent) 0%, transparent 48%),
+    radial-gradient(circle at 88% 86%, color-mix(in srgb, var(--t-brand) 5%, transparent) 0%, transparent 52%),
+    linear-gradient(160deg, rgba(255, 255, 255, 0.94) 0%, color-mix(in srgb, var(--t-cream) 45%, white) 100%);
+  border: 1.5px solid color-mix(in srgb, var(--t-line) 85%, var(--t-brand) 18%) !important;
+  box-shadow:
+    0 24px 60px -20px color-mix(in srgb, color-mix(in srgb, var(--t-brand-3) 80%, black) 16%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+#knowYourJourney {
+  color: var(--t-ink) !important;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+#knowYourJourney span {
+  color: var(--t-accent) !important;
+  font-weight: 800;
+}
+
+/* Stage Item Container */
+.zlm-journey-stage {
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.zlm-journey-stage:hover {
+  transform: translateY(-3px);
+}
+
+/* The Stage Orb */
+.zlm-journey-orb {
+  position: relative;
+  width: 114px;
+  height: 114px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.zlm-journey-orb__bg {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 32%, color-mix(in srgb, var(--t-brand) 92%, white) 0%, color-mix(in srgb, var(--t-brand-2) 95%, black) 100%);
+  border: 2.5px solid color-mix(in srgb, var(--t-accent) 65%, transparent);
+  box-shadow:
+    0 10px 24px -6px color-mix(in srgb, color-mix(in srgb, var(--t-brand-3) 80%, black) 40%, transparent),
+    inset 0 1px 2px rgba(255, 255, 255, 0.35),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.25);
+  transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+}
+
+.zlm-journey-orb__glow {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--t-accent) 45%, transparent) 0%, transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.zlm-journey-stage:hover .zlm-journey-orb__bg {
+  border-color: var(--t-accent);
+  transform: scale(1.04);
+  box-shadow:
+    0 16px 32px -8px color-mix(in srgb, var(--t-accent) 45%, transparent),
+    0 0 0 3px color-mix(in srgb, var(--t-accent) 25%, transparent),
+    inset 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+.zlm-journey-stage:hover .zlm-journey-orb__glow {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+.zlm-journey-stage.is-active .zlm-journey-orb__bg {
+  background: radial-gradient(circle at 35% 30%, var(--t-accent) 0%, var(--t-accent-2) 100%);
+  border-color: #ffffff;
+  transform: scale(1.07);
+  box-shadow:
+    0 18px 36px -8px color-mix(in srgb, var(--t-accent-2) 65%, transparent),
+    0 0 0 4px color-mix(in srgb, var(--t-accent) 40%, transparent),
+    inset 0 2px 4px rgba(255, 255, 255, 0.6);
+}
+.zlm-journey-stage.is-active .zlm-journey-orb__glow {
+  opacity: 1;
+  transform: scale(1.12);
+}
+
+/* Floating step badge on orb */
+.zlm-journey-orb__badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  z-index: 12;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: var(--t-dark);
+  color: #ffffff;
+  border: 1.5px solid var(--t-accent);
+  box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.4);
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+.zlm-journey-stage.is-active .zlm-journey-orb__badge {
+  background: #ffffff;
+  color: var(--t-brand);
+  border-color: var(--t-brand);
+  transform: scale(1.08);
+}
+
+/* Center icon inside orb */
+.zlm-journey-orb__icon {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: transform 0.3s ease;
+}
+.zlm-journey-stage:hover .zlm-journey-orb__icon {
+  transform: scale(1.08);
+}
+.zlm-journey-stage.is-active .zlm-journey-orb__icon {
+  transform: scale(1.1);
+}
+
+/* Stage Button */
+.zlm-journey-btn {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 0.65rem 1.1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1.5px solid color-mix(in srgb, var(--t-line) 80%, var(--t-brand) 18%);
+  box-shadow:
+    0 4px 12px -2px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 #ffffff;
+  cursor: pointer;
+  transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease, color 0.22s ease;
+  font-family: inherit;
+}
+.zlm-journey-btn__title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--t-ink);
+  letter-spacing: -0.01em;
+  transition: color 0.2s ease;
+}
+.zlm-journey-btn__trl {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--t-ink-soft);
+  transition: color 0.2s ease;
+}
+
+.zlm-journey-stage:hover .zlm-journey-btn,
+.zlm-journey-btn:hover {
+  background: #ffffff;
+  border-color: var(--t-accent);
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 20px -4px color-mix(in srgb, var(--t-brand) 20%, transparent),
+    inset 0 1px 0 #ffffff;
+}
+.zlm-journey-stage:hover .zlm-journey-btn__title {
+  color: var(--t-brand);
+}
+
+.zlm-journey-stage.is-active .zlm-journey-btn,
+.zlm-journey-btn.is-active {
+  background: linear-gradient(135deg, var(--t-brand) 0%, var(--t-brand-2) 100%) !important;
+  border-color: var(--t-accent) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 26px -6px color-mix(in srgb, color-mix(in srgb, var(--t-brand-3) 80%, black) 60%, transparent),
+    0 0 0 2px var(--t-accent-soft),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+.zlm-journey-stage.is-active .zlm-journey-btn__title,
+.zlm-journey-btn.is-active .zlm-journey-btn__title {
+  color: #ffffff !important;
+}
+.zlm-journey-stage.is-active .zlm-journey-btn__trl,
+.zlm-journey-btn.is-active .zlm-journey-btn__trl {
+  color: color-mix(in srgb, var(--t-accent-soft) 85%, white) !important;
+}
+
+/* ============================================================
+   Timeline Map — Theme Native & Responsive
+   ============================================================ */
+.zlm-timeline-card {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 10% 12%, color-mix(in srgb, var(--t-accent) 7%, transparent) 0%, transparent 45%),
+    radial-gradient(circle at 90% 88%, color-mix(in srgb, var(--t-brand) 6%, transparent) 0%, transparent 45%),
+    linear-gradient(155deg, rgba(255, 255, 255, 0.96) 0%, color-mix(in srgb, var(--t-cream) 45%, white) 100%);
+  border: 1.5px solid color-mix(in srgb, var(--t-line) 85%, var(--t-accent) 25%);
+  border-radius: 24px;
+  box-shadow:
+    0 24px 50px -18px color-mix(in srgb, color-mix(in srgb, var(--t-brand-3) 80%, black) 14%, transparent),
+    inset 0 1px 0 #ffffff;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.zlm-timeline-header {
+  border-bottom: 1px solid color-mix(in srgb, var(--t-line) 85%, transparent);
+}
+.zlm-timeline-pulse {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--t-accent);
+  box-shadow: 0 0 10px var(--t-accent);
+  display: inline-block;
+  animation: zlm-pulse 2s infinite ease-in-out;
+}
+@keyframes zlm-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(0.85); }
+}
+
+.zlm-timeline-eyebrow {
+  color: var(--t-accent-2);
+  letter-spacing: 0.14em;
+}
+
+.zlm-timeline-badge {
+  background: color-mix(in srgb, var(--t-accent) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--t-accent) 35%, transparent);
+  color: var(--t-brand);
+}
+.zlm-timeline-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--t-accent);
+}
+
+/* Track Beam on Desktop */
+.zlm-timeline-beam {
+  position: absolute;
+  top: 32px;
+  left: 12%;
+  right: 12%;
+  height: 3.5px;
+  background: linear-gradient(90deg, var(--t-brand), var(--t-accent) 50%, var(--t-brand-2));
+  box-shadow: 0 0 14px color-mix(in srgb, var(--t-accent) 45%, transparent);
+  border-radius: 999px;
+  z-index: 1;
+}
+
+/* Milestone Node */
+.zlm-timeline-node {
+  position: relative;
+  transition: transform 0.25s ease;
+}
+.zlm-timeline-node:hover {
+  transform: translateY(-4px);
+}
+
+.zlm-timeline-node__orb {
+  background: radial-gradient(circle at 35% 32%, var(--t-brand) 0%, var(--t-brand-2) 100%);
+  color: #ffffff;
+  border: 2.5px solid var(--t-accent);
+  box-shadow:
+    0 10px 22px -6px color-mix(in srgb, color-mix(in srgb, var(--t-brand-3) 80%, black) 50%, transparent),
+    0 0 0 4px color-mix(in srgb, var(--t-accent) 22%, transparent),
+    inset 0 1px 2px rgba(255, 255, 255, 0.4);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  user-select: none;
+}
+.zlm-timeline-node:hover .zlm-timeline-node__orb {
+  background: radial-gradient(circle at 35% 32%, var(--t-accent) 0%, var(--t-accent-2) 100%);
+  border-color: #ffffff;
+  box-shadow:
+    0 14px 28px -6px color-mix(in srgb, var(--t-accent-2) 60%, transparent),
+    0 0 0 5px color-mix(in srgb, var(--t-accent) 35%, transparent),
+    inset 0 2px 4px rgba(255, 255, 255, 0.6);
+}
+
+.zlm-timeline-node__num {
+  font-family: inherit;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+}
+
+.zlm-timeline-node__title {
+  color: var(--t-ink);
+  font-size: 0.94rem;
+  line-height: 1.35;
+  transition: color 0.2s ease;
+}
+.zlm-timeline-node:hover .zlm-timeline-node__title {
+  color: var(--t-brand);
+}
+
+.zlm-timeline-node__desc {
+  color: var(--t-ink-soft);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  max-width: 24ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Close Drawer Button */
+#containerClass button.rounded-full.p-2.text-primary {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border: 1px solid color-mix(in srgb, var(--t-line) 85%, transparent) !important;
+  color: var(--t-brand) !important;
+  box-shadow: 0 4px 12px -3px rgba(0, 0, 0, 0.1) !important;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease !important;
+}
+#containerClass button.rounded-full.p-2.text-primary:hover {
+  background: #ffffff !important;
+  color: var(--t-accent) !important;
+  transform: rotate(90deg) scale(1.1) !important;
+}
+
+/* Value Tiles */
+#containerClass div[class*="bg-[rgba(227,227,227,0.4)]"] {
+  background: rgba(255, 255, 255, 0.82) !important;
+  border: 1px solid color-mix(in srgb, var(--t-line) 85%, var(--t-brand) 12%) !important;
+  box-shadow: 0 6px 18px -4px rgba(0, 0, 0, 0.05) !important;
+  border-radius: 18px !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important;
+}
+#containerClass div[class*="bg-[rgba(227,227,227,0.4)]"]:hover {
+  transform: translateY(-4px) !important;
+  border-color: var(--t-accent) !important;
+  box-shadow: 0 12px 24px -6px color-mix(in srgb, var(--t-brand) 18%, transparent) !important;
+}
+#containerClass div[class*="border-primary-highlight"] {
+  border-color: var(--t-accent) !important;
+}
+#containerClass div[class*="bg-[rgba(227,227,227,0.4)]"] p {
+  color: var(--t-ink) !important;
+  font-weight: 700;
+}
+
+/* Responsive adjustment for Mobile (<768px) */
+@media (max-width: 767.98px) {
+  .zlm-timeline-card {
+    padding: 1.25rem 1rem !important;
+  }
+  .zlm-timeline-track {
+    padding-left: 0.5rem;
+  }
+  .zlm-timeline-node {
+    flex-direction: row !important;
+    text-align: left !important;
+    gap: 1rem;
+    align-items: center !important;
+    padding: 0.75rem;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid color-mix(in srgb, var(--t-line) 90%, transparent);
+  }
+  .zlm-timeline-node__orb {
+    width: 48px !important;
+    height: 48px !important;
+    flex-shrink: 0;
+    font-size: 0.9rem !important;
+  }
+  .zlm-timeline-node__title {
+    margin-top: 0 !important;
+    font-size: 0.92rem;
+  }
+  .zlm-timeline-node__desc {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: none;
+  }
+}
+

@@ -23,7 +23,7 @@
   <circle cx="120" cy="103" r="58" fill="none" stroke="#ffffff" stroke-opacity="0.2" stroke-width="1.2"/>
   <circle cx="120" cy="103" r="50" fill="#ffffff" fill-opacity="0.05" stroke="#f2a565" stroke-opacity="0.55" stroke-width="1.8"/>
   <text x="120" y="126" text-anchor="middle" font-family="'Segoe UI','Plus Jakarta Sans',Arial,sans-serif" font-size="52" font-weight="700" letter-spacing="2" fill="#ffffff">PC</text>
-  <rect x="88" y="180" width="64" height="3" rx="1.5" fill="#ff8a40" opacity="0.9"/>
+  <rect x="88" y="180" width="64" height="3" rx="1.5" fill="var(--t-accent, #94a3b8)" opacity="0.9"/>
   <text x="120" y="205" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="600" letter-spacing="1.6" fill="#ffd9bd" opacity="0.85">PREETI</text>
   <rect x="6" y="6" width="228" height="228" rx="12" fill="none" stroke="#ffffff" stroke-opacity="0.22" stroke-width="1.4"/>
 </svg>

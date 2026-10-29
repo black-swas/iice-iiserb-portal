@@ -172,22 +172,22 @@
      Selection persists in localStorage("zlm-theme"). */
   var THEME_KEY = "zlm-theme";
   var THEMES = [
-    { id: "signature", name: "Signature Maroon", tag: "The IICE classic — heritage maroon on warm cream",
-      sw: ["#6C3231", "#5E2928", "#FF8A40", "#F3ECE3", "#23201E", "#09181D"] },
+    { id: "signature", name: "Signature Maroon", tag: "The IICE classic — heritage maroon, warm copper amber",
+      sw: ["#6C3231", "#5E2928", "#E66A1F", "#F3ECE3", "#23201E", "#09181D"] },
     { id: "navy", name: "Institute Navy", tag: "Academic navy, gold spark — formal, campus-grade",
-      sw: ["#1E3A5F", "#152E4D", "#FFAB4D", "#EEF0F4", "#1A2430", "#0B1526"] },
-    { id: "emerald", name: "Emerald Campus", tag: "Deep greens, harvest amber — growth and energy",
-      sw: ["#14584A", "#0E463A", "#F0A832", "#EDF3EE", "#15241E", "#07201A"] },
-    { id: "indigo", name: "Royal Indigo", tag: "Scholarly indigo, sunset coral — modern research",
-      sw: ["#3F3A9E", "#322D80", "#FF9D5C", "#EFEDF7", "#201C3A", "#131030"] },
-    { id: "terracotta", name: "Terracotta Dusk", tag: "Baked clay and honey — earthy incubator warmth",
-      sw: ["#9C4A2F", "#7E3722", "#E9B44C", "#F6EEE4", "#2B1D14", "#241209"] },
-    { id: "teal", name: "Teal Lagoon", tag: "Deep teal with a coral flare — fresh and technical",
-      sw: ["#0E5F66", "#0A4B51", "#FF8A5C", "#EAF2F2", "#12302F", "#052124"] },
-    { id: "plum", name: "Plum Orchard", tag: "Berry plum with apricot — distinctive and warm",
-      sw: ["#6D2F5E", "#57244A", "#FFB36B", "#F4EDF3", "#2A1A26", "#1E0E1A"] },
-    { id: "graphite", name: "Graphite Slate", tag: "Ink graphite, ember accent — minimal, product-grade",
-      sw: ["#3A4552", "#2C3540", "#FF8A40", "#F0F1F0", "#1B232B", "#0F151B"] },
+      sw: ["#1E3A5F", "#152E4D", "#F59E0B", "#EEF0F4", "#1A2430", "#0B1526"] },
+    { id: "emerald", name: "Emerald Campus", tag: "Deep greens, citrine spark — growth and energy",
+      sw: ["#14584A", "#0E463A", "#EAB308", "#EDF3EE", "#15241E", "#07201A"] },
+    { id: "indigo", name: "Royal Indigo", tag: "Scholarly indigo, electric rose spark — modern research",
+      sw: ["#3F3A9E", "#322D80", "#F43F5E", "#EFEDF7", "#201C3A", "#131030"] },
+    { id: "terracotta", name: "Terracotta Dusk", tag: "Baked clay, warm honey — earthy incubator warmth",
+      sw: ["#9C4A2F", "#7E3722", "#E59819", "#F6EEE4", "#2B1D14", "#241209"] },
+    { id: "teal", name: "Teal Lagoon", tag: "Deep teal, tropical sea-coral flare — fresh and technical",
+      sw: ["#0E5F66", "#0A4B51", "#FF6B6B", "#EAF2F2", "#12302F", "#052124"] },
+    { id: "plum", name: "Plum Orchard", tag: "Berry plum, ripe apricot blossom — distinctive and warm",
+      sw: ["#6D2F5E", "#57244A", "#FB923C", "#F4EDF3", "#2A1A26", "#1E0E1A"] },
+    { id: "graphite", name: "Graphite Slate", tag: "Ink graphite, electric cyan spark — minimal, product-grade",
+      sw: ["#3A4552", "#2C3540", "#0EA5E9", "#F0F1F0", "#1B232B", "#0F151B"] },
   ];
   function themeIndex() {
     var id = document.documentElement.getAttribute("data-zlm-theme") || "signature";
@@ -223,6 +223,8 @@
     html.setAttribute("data-zlm-theme", id);
     try { localStorage.setItem(THEME_KEY, id); } catch (e) {}
     syncStudio();
+    themeSvgPass();
+    inlineThemedImages();
   }
   function cycleTheme(dir) {
     var n = THEMES.length;
@@ -234,29 +236,72 @@
     var r = s.getBoundingClientRect();
     return r.top < (window.innerHeight || document.documentElement.clientHeight) && r.bottom > 0;
   }
-  /* SVG presentation attributes can't hold var() — the bundle keeps literal
-     fills there, so rewrite them to themed inline styles on every pass. */
+  /* SVG presentation attributes can't hold var() — rewrite them to themed
+     CSS variable inline styles on every pass with coverage for all theme shades. */
   var SVG_ATTR_MAP = {
     "#6c3231": "var(--t-brand)", "#5e2928": "var(--t-brand-2)",
     "#522322": "color-mix(in srgb, var(--t-brand) 76%, black)",
     "#4a1f1e": "color-mix(in srgb, var(--t-brand) 68%, black)",
     "#8a3f3d": "color-mix(in srgb, var(--t-brand) 90%, var(--t-accent))",
     "#ff8a40": "var(--t-accent)", "#e8621a": "var(--t-accent-2)",
-    "#ffc07a": "var(--t-accent-soft)",
-    "#09181d": "var(--t-dark)", "#2d415c": "var(--t-secondary)",
+    "#e2701e": "var(--t-accent-2)", "#c2410c": "var(--t-accent-2)",
+    "#ea580c": "var(--t-accent-2)", "#f97316": "var(--t-accent)",
+    "#9a3412": "var(--t-accent-text)", "#d97706": "var(--t-accent-2)",
+    "#f59e0b": "var(--t-accent)", "#eab308": "var(--t-accent)",
+    "#f43f5e": "var(--t-accent)",
+    "#ffab4d": "var(--t-accent)", "#ffc07a": "var(--t-accent-soft)",
+    "#ffc247": "var(--t-accent-soft)", "#fdba74": "var(--t-accent-soft)",
+    "#fb923c": "var(--t-accent)", "#f0a832": "var(--t-accent)",
+    "#ff9d5c": "var(--t-accent)", "#e9b44c": "var(--t-accent)",
+    "#e59819": "var(--t-accent)", "#ff8a5c": "var(--t-accent)",
+    "#ff6b6b": "var(--t-accent)", "#ffb36b": "var(--t-accent)",
+    "#0ea5e9": "var(--t-accent)", "#09181d": "var(--t-dark)",
+    "#2d415c": "var(--t-secondary)",
     "#17233c": "color-mix(in srgb, var(--t-secondary) 60%, black)",
     "#0b1b3a": "color-mix(in srgb, var(--t-secondary) 45%, black)",
   };
   function themeSvgPass() {
-    var nodes = document.querySelectorAll("svg [fill], svg [stroke]");
+    var nodes = document.querySelectorAll("svg, svg *, [data-theme-svg]");
     Array.prototype.forEach.call(nodes, function (n) {
-      if (n.dataset.zlmSvg === "1") return;
-      var hit = false;
-      ["fill", "stroke"].forEach(function (attr) {
-        var v = (n.getAttribute(attr) || "").toLowerCase();
-        if (v && SVG_ATTR_MAP[v]) { n.style.setProperty(attr, SVG_ATTR_MAP[v]); hit = true; }
+      ["fill", "stroke", "stop-color"].forEach(function (attr) {
+        var v = (n.getAttribute(attr) || "").toLowerCase().trim();
+        if (v && SVG_ATTR_MAP[v]) { n.style.setProperty(attr, SVG_ATTR_MAP[v]); }
       });
-      if (hit) n.dataset.zlmSvg = "1";
+      if (n.style) {
+        if (n.style.fill && SVG_ATTR_MAP[n.style.fill.toLowerCase()]) {
+          n.style.fill = SVG_ATTR_MAP[n.style.fill.toLowerCase()];
+        }
+        if (n.style.stroke && SVG_ATTR_MAP[n.style.stroke.toLowerCase()]) {
+          n.style.stroke = SVG_ATTR_MAP[n.style.stroke.toLowerCase()];
+        }
+        if (n.style.stopColor && SVG_ATTR_MAP[n.style.stopColor.toLowerCase()]) {
+          n.style.stopColor = SVG_ATTR_MAP[n.style.stopColor.toLowerCase()];
+        }
+      }
+    });
+  }
+  function inlineThemedImages() {
+    var imgs = document.querySelectorAll('img[src*="KnowYourJourney"], img[src*="Branding"], img[src*="knowUsGradient"], img[src*="gradient.svg"], img[src*="hover-icons"], img[src*="Approval"], img[src*="BoardOfDirectors"], img[src*="OurTeam"], img[src*="WhoWeAre"], img[src*="OfficeSpace"], img[src*="noida-office"], img[src*="Labs"], img[src*="UpcomingEvents"], img[src*="IPR"], img[src*="Careers"], img[src*="avatar_"], img[src*="banner_"], img[src*="cover_"], img[src*="iice-building-hero"]');
+    Array.prototype.forEach.call(imgs, function (img) {
+      if (img.dataset.zlmInlined === "1") return;
+      var src = img.getAttribute("src");
+      if (!src || src.indexOf(".svg") === -1) return;
+      img.dataset.zlmInlined = "1";
+      fetch(src)
+        .then(function (res) { return res.ok ? res.text() : ""; })
+        .then(function (svgText) {
+          if (!svgText || svgText.indexOf("<svg") === -1) return;
+          var parser = new DOMParser();
+          var doc = parser.parseFromString(svgText, "image/svg+xml");
+          var svg = doc.querySelector("svg");
+          if (!svg || !img.parentNode) return;
+          if (img.className) svg.setAttribute("class", (svg.getAttribute("class") || "") + " " + img.className);
+          if (img.id) svg.id = img.id;
+          svg.setAttribute("data-theme-svg", "1");
+          img.parentNode.replaceChild(svg, img);
+          themeSvgPass();
+        })
+        .catch(function () {});
     });
   }
   function buildThemeStudio() {
@@ -1812,7 +1857,12 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
 
   function refresh() {
     takeover();
-    if (location.pathname === "/") { buildFlagship(); buildGateways(); buildBento(); }
+    if (location.pathname === "/") {
+      buildFlagship();
+      buildGateways();
+      buildBento();
+      if (window.mountFocusDomains) window.mountFocusDomains();
+    }
     else {
       var f = document.querySelector(".zlm-flagship"); if (f) f.remove();
       var v = document.querySelector(".zlm-gateways");
@@ -1821,6 +1871,9 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
       var vo = document.querySelector(".zlm-ventures"); if (vo) vo.remove();
       var pr = (function(){ var hs = document.querySelectorAll("h2"); for (var q = 0; q < hs.length; q++) if (hs[q].textContent.trim() === "Our Pride") return hs[q].closest("section"); })(); if (pr) pr.style.display = "";
       var b = document.querySelector(".zlm-bento"); if (b) b.remove();
+      var fd = document.querySelector(".zlm-focus-domains"); if (fd) fd.remove();
+      var og = document.querySelectorAll(".zlm-old-grid-hidden");
+      og.forEach(function (g) { g.style.display = ""; g.classList.remove("zlm-old-grid-hidden"); });
     }
     if (location.pathname === "/our-team") buildCeoSpotlight();
     else { var cs = document.querySelector(".zlm-ceo"); if (cs) cs.remove(); }
@@ -1829,6 +1882,7 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
     scheduleGlass();
     buildThemeStudio();
     themeSvgPass();
+    inlineThemedImages();
     syncActive();
     closeMobile();
     closeAllPopovers();
@@ -1842,12 +1896,18 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
     buildMobile();
     takeover();
     takeoverRetry();
-    if (location.pathname === "/") { buildFlagship(); buildGateways(); buildBento(); }
+    if (location.pathname === "/") {
+      buildFlagship();
+      buildGateways();
+      buildBento();
+      if (window.mountFocusDomains) window.mountFocusDomains();
+    }
     if (location.pathname === "/our-team") buildCeoSpotlight();
     revealPass();
     scheduleGlass();
     buildThemeStudio();
     themeSvgPass();
+    inlineThemedImages();
 
     /* Coolors-style cycling: Space / ← / → cycle palettes whenever the
        studio is on screen (and the keystroke isn't meant for a field). */
@@ -1889,6 +1949,9 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
         if (!document.querySelector(".zlm-flagship")) { buildFlagship(); built = true; }
         if (!document.querySelector(".zlm-gateways")) { buildGateways(); built = true; }
         if (!document.querySelector(".zlm-bento")) { buildBento(); built = true; }
+        if (window.mountFocusDomains && !document.querySelector(".zlm-focus-domains")) {
+          if (window.mountFocusDomains()) built = true;
+        }
         if (built) revealPass();
       }
       if (location.pathname === "/our-team" && !document.querySelector(".zlm-ceo")) { buildCeoSpotlight(); revealPass(); }
@@ -1899,7 +1962,8 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
       scheduleTints();
       scheduleGlass();
       buildThemeStudio();
-    themeSvgPass();
+      themeSvgPass();
+      inlineThemedImages();
     });
     pageTransition.lastPath = location.pathname;
     mo.observe(document.body, { childList: true, subtree: true });

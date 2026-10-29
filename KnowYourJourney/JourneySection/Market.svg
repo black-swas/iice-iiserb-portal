@@ -1,20 +1,71 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="220" viewBox="0 0 900 220">
-    <rect width="900" height="220" rx="20" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
-    <line x1="120" y1="110" x2="780" y2="110" stroke="#ff8a40" stroke-width="4" stroke-dasharray="8 6"/>
-    
-        <circle cx="135" cy="110" r="32" fill="#6c3231" stroke="#ff8a40" stroke-width="4"/>
-        <text x="135" y="116" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-size="18" font-weight="bold">01</text>
-        <text x="135" y="172" text-anchor="middle" fill="#1e293b" font-family="sans-serif" font-size="14" font-weight="bold">Commercialization</text>
-        
-        <circle cx="345" cy="110" r="32" fill="#6c3231" stroke="#ff8a40" stroke-width="4"/>
-        <text x="345" y="116" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-size="18" font-weight="bold">02</text>
-        <text x="345" y="172" text-anchor="middle" fill="#1e293b" font-family="sans-serif" font-size="14" font-weight="bold">Technology Transfer</text>
-        
-        <circle cx="555" cy="110" r="32" fill="#6c3231" stroke="#ff8a40" stroke-width="4"/>
-        <text x="555" y="116" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-size="18" font-weight="bold">03</text>
-        <text x="555" y="172" text-anchor="middle" fill="#1e293b" font-family="sans-serif" font-size="14" font-weight="bold">Corporate Pilots</text>
-        
-        <circle cx="765" cy="110" r="32" fill="#6c3231" stroke="#ff8a40" stroke-width="4"/>
-        <text x="765" y="116" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-size="18" font-weight="bold">04</text>
-        <text x="765" y="172" text-anchor="middle" fill="#1e293b" font-family="sans-serif" font-size="14" font-weight="bold">Pan-India Growth</text>
-        </svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="230" viewBox="0 0 900 230">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f8f5f0"/>
+    </linearGradient>
+    <linearGradient id="trackGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="var(--t-brand, #6c3231)"/>
+      <stop offset="50%" stop-color="var(--t-accent, #e66a1f)"/>
+      <stop offset="100%" stop-color="var(--t-accent, #e66a1f)"/>
+    </linearGradient>
+    <linearGradient id="nodeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7e3a39"/>
+      <stop offset="100%" stop-color="#552423"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="var(--t-brand, #6c3231)" flood-opacity="0.08"/>
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000000" flood-opacity="0.04"/>
+    </filter>
+    <filter id="nodeGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="var(--t-brand, #6c3231)" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Container Box -->
+  <rect x="8" y="8" width="884" height="214" rx="22" fill="url(#bgGrad)" stroke="#e8e2d8" stroke-width="1.5" filter="url(#cardShadow)"/>
+
+  <!-- Connecting Beam Track -->
+  <line x1="120" y1="80" x2="780" y2="80" stroke="url(#trackGrad)" stroke-width="4" stroke-linecap="round"/>
+  <line x1="120" y1="80" x2="780" y2="80" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-dasharray="6 6"/>
+
+  <!-- Node 01: Commercialization -->
+  <g class="node">
+    <circle cx="135" cy="80" r="30" fill="url(#nodeGrad)" stroke="var(--t-accent, #e66a1f)" stroke-width="3" filter="url(#nodeGlow)"/>
+    <circle cx="135" cy="80" r="23" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+    <text x="135" y="86" text-anchor="middle" fill="#ffffff" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="15" font-weight="800" letter-spacing="0.5">01</text>
+    <text x="135" y="142" text-anchor="middle" fill="#23201e" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="14.5" font-weight="700">Commercialization</text>
+    <text x="135" y="162" text-anchor="middle" fill="#6b5e5c" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="11.5" font-weight="500">Go-to-market &amp; client rollouts</text>
+    <text x="135" y="178" text-anchor="middle" fill="var(--t-accent, #e66a1f)" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="10.5" font-weight="600">TRL 9 · GTM</text>
+  </g>
+
+  <!-- Node 02: Technology Transfer -->
+  <g class="node">
+    <circle cx="345" cy="80" r="30" fill="url(#nodeGrad)" stroke="var(--t-accent, #e66a1f)" stroke-width="3" filter="url(#nodeGlow)"/>
+    <circle cx="345" cy="80" r="23" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+    <text x="345" y="86" text-anchor="middle" fill="#ffffff" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="15" font-weight="800" letter-spacing="0.5">02</text>
+    <text x="345" y="142" text-anchor="middle" fill="#23201e" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="14.5" font-weight="700">Technology Transfer</text>
+    <text x="345" y="162" text-anchor="middle" fill="#6b5e5c" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="11.5" font-weight="500">Licensing &amp; spinout governance</text>
+    <text x="345" y="178" text-anchor="middle" fill="var(--t-accent, #e66a1f)" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="10.5" font-weight="600">TRL 9 · Licensing</text>
+  </g>
+
+  <!-- Node 03: Corporate Pilots -->
+  <g class="node">
+    <circle cx="555" cy="80" r="30" fill="url(#nodeGrad)" stroke="var(--t-accent, #e66a1f)" stroke-width="3" filter="url(#nodeGlow)"/>
+    <circle cx="555" cy="80" r="23" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+    <text x="555" y="86" text-anchor="middle" fill="#ffffff" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="15" font-weight="800" letter-spacing="0.5">03</text>
+    <text x="555" y="142" text-anchor="middle" fill="#23201e" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="14.5" font-weight="700">Corporate Pilots</text>
+    <text x="555" y="162" text-anchor="middle" fill="#6b5e5c" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="11.5" font-weight="500">Paid customer deployments</text>
+    <text x="555" y="178" text-anchor="middle" fill="var(--t-accent, #e66a1f)" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="10.5" font-weight="600">TRL 9+ · Scale</text>
+  </g>
+
+  <!-- Node 04: Pan-India Growth -->
+  <g class="node">
+    <circle cx="765" cy="80" r="30" fill="url(#nodeGrad)" stroke="var(--t-accent, #e66a1f)" stroke-width="3" filter="url(#nodeGlow)"/>
+    <circle cx="765" cy="80" r="23" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+    <text x="765" y="86" text-anchor="middle" fill="#ffffff" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="15" font-weight="800" letter-spacing="0.5">04</text>
+    <text x="765" y="142" text-anchor="middle" fill="#23201e" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="14.5" font-weight="700">Pan-India Growth</text>
+    <text x="765" y="162" text-anchor="middle" fill="#6b5e5c" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="11.5" font-weight="500">VC demo days &amp; national reach</text>
+    <text x="765" y="178" text-anchor="middle" fill="var(--t-accent, #e66a1f)" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="10.5" font-weight="600">TRL 9+ · National</text>
+  </g>
+</svg>

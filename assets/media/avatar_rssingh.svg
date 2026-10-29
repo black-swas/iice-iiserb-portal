@@ -5,6 +5,6 @@
   <circle cx="120" cy="86" r="30" fill="#ffffff" fill-opacity="0.08"/>
   <text x="120" y="98" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="30" font-weight="800" fill="#ffffff" letter-spacing="1">RS</text>
   <rect x="42" y="146" width="156" height="40" rx="20" fill="#09181d"/>
-  <circle cx="66" cy="166" r="4" fill="#ff8a40"/>
+  <circle cx="66" cy="166" r="4" fill="var(--t-accent, #94a3b8)"/>
   <text x="122" y="172" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="14.5" font-weight="700" fill="#ffffff" letter-spacing="0.6">Ravi Singh.</text>
 </svg>

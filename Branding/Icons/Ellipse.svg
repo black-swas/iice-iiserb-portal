@@ -1,1 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><circle cx="60" cy="60" r="56" fill="#6c3231" stroke="#ff8a40" stroke-width="3"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><circle cx="60" cy="60" r="56" fill="var(--t-brand, #6c3231)" stroke="var(--t-accent, #e66a1f)" stroke-width="3"/></svg>

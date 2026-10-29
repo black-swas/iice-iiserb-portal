@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160">
-  <rect width="160" height="160" rx="32" fill="#fff7ed" stroke="#c2410c" stroke-width="3"/>
-  <rect x="14" y="14" width="132" height="132" rx="22" fill="#ffffff" stroke="#c2410c" stroke-width="1.5" stroke-opacity="0.25"/>
+  <rect width="160" height="160" rx="32" fill="#fff7ed" stroke="var(--t-accent-2, #b34506)" stroke-width="3"/>
+  <rect x="14" y="14" width="132" height="132" rx="22" fill="#ffffff" stroke="var(--t-accent-2, #b34506)" stroke-width="1.5" stroke-opacity="0.25"/>
   <circle cx="80" cy="64" r="32" fill="#fff7ed"/>
   <g transform="translate(56, 40) scale(2)">
-    <path d="M9 9h6v6H9V9zm-2-4h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm2-3v2m6-2v2M9 20v2m6-2v2M2 9h2m-2 6h2m16-6h2m-2 6h2" fill="none" stroke="#c2410c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M9 9h6v6H9V9zm-2-4h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm2-3v2m6-2v2M9 20v2m6-2v2M2 9h2m-2 6h2m16-6h2m-2 6h2" fill="none" stroke="var(--t-accent-2, #b34506)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <text x="80" y="118" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="800" fill="#18181b">INTISEN</text>
-  <text x="80" y="135" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9.5" font-weight="600" fill="#c2410c">FLEXIBLE BIO-SENSORS</text>
+  <text x="80" y="135" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9.5" font-weight="600" fill="var(--t-accent-2, #b34506)">FLEXIBLE BIO-SENSORS</text>
 </svg>

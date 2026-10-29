@@ -16,10 +16,10 @@
   <!-- flask silhouette, right side -->
   <g transform="translate(1540, 260)" fill="#ffffff" opacity="0.10">
     <path d="M-16-78h32v10l-7 9v13l15 23a7 7 0 0 1-6 11h-36a7 7 0 0 1-6-11l15-23v-13l-7-9v-10z"/>
-    <circle cx="0" cy="26" r="5" fill="#ff8a40" opacity="0.5"/>
+    <circle cx="0" cy="26" r="5" fill="var(--t-accent, #e66a1f)" opacity="0.5"/>
   </g>
   <!-- corner accents -->
-  <path d="M0 500 L180 500 L180 512 L12 512 L12 520 L0 520 Z" fill="#ff8a40" opacity="0.85"/>
-  <rect x="0" y="512" width="180" height="8" fill="#ff8a40" opacity="0.9"/>
-  <rect x="1884" y="0" width="36" height="36" fill="none" stroke="#ff8a40" stroke-width="3" opacity="0.5"/>
+  <path d="M0 500 L180 500 L180 512 L12 512 L12 520 L0 520 Z" fill="var(--t-accent, #e66a1f)" opacity="0.85"/>
+  <rect x="0" y="512" width="180" height="8" fill="var(--t-accent, #e66a1f)" opacity="0.9"/>
+  <rect x="1884" y="0" width="36" height="36" fill="none" stroke="var(--t-accent, #e66a1f)" stroke-width="3" opacity="0.5"/>
 </svg>

@@ -1,20 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="220" viewBox="0 0 900 220">
     <rect width="900" height="220" rx="20" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
-    <line x1="120" y1="110" x2="780" y2="110" stroke="#ff8a40" stroke-width="4" stroke-dasharray="8 6"/>
+    <line x1="120" y1="110" x2="780" y2="110" stroke="var(--t-accent, #e66a1f)" stroke-width="4" stroke-dasharray="8 6"/>
     
-        <circle cx="135" cy="110" r="32" fill="#6c3231" stroke="#ff8a40" stroke-width="4"/>
+        <circle cx="135" cy="110" r="32" fill="var(--t-brand, #6c3231)" stroke="var(--t-accent, #e66a1f)" stroke-width="4"/>
         <text x="135" y="116" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-size="18" font-weight="bold">01</text>
         <text x="135" y="172" text-anchor="middle" fill="#1e293b" font-family="sans-serif" font-size="14" font-weight="bold">CIF Instrumentation</text>
         
-        <circle cx="345" cy="110" r="32" fill="#6c3231" stroke="#ff8a40" stroke-width="4"/>
+        <circle cx="345" cy="110" r="32" fill="var(--t-brand, #6c3231)" stroke="var(--t-accent, #e66a1f)" stroke-width="4"/>
         <text x="345" y="116" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-size="18" font-weight="bold">02</text>
         <text x="345" y="172" text-anchor="middle" fill="#1e293b" font-family="sans-serif" font-size="14" font-weight="bold">Wet &amp; Dry Labs</text>
         
-        <circle cx="555" cy="110" r="32" fill="#6c3231" stroke="#ff8a40" stroke-width="4"/>
+        <circle cx="555" cy="110" r="32" fill="var(--t-brand, #6c3231)" stroke="var(--t-accent, #e66a1f)" stroke-width="4"/>
         <text x="555" y="116" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-size="18" font-weight="bold">03</text>
         <text x="555" y="172" text-anchor="middle" fill="#1e293b" font-family="sans-serif" font-size="14" font-weight="bold">Technical Evaluation</text>
         
-        <circle cx="765" cy="110" r="32" fill="#6c3231" stroke="#ff8a40" stroke-width="4"/>
+        <circle cx="765" cy="110" r="32" fill="var(--t-brand, #6c3231)" stroke="var(--t-accent, #e66a1f)" stroke-width="4"/>
         <text x="765" y="116" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-size="18" font-weight="bold">04</text>
         <text x="765" y="172" text-anchor="middle" fill="#1e293b" font-family="sans-serif" font-size="14" font-weight="bold">Proof of Concept</text>
         </svg>

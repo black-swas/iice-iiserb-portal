@@ -5,9 +5,9 @@
       <stop offset="100%" stop-color="#ede8dc"/>
     </linearGradient>
   </defs>
-  <rect width="240" height="240" rx="120" fill="url(#ceo-bg)" stroke="#c2410c" stroke-width="4"/>
-  <circle cx="120" cy="92" r="38" fill="#9a3412" fill-opacity="0.16" stroke="#9a3412" stroke-width="2.5"/>
-  <path d="M56 204c8-36 34-56 64-56s56 20 64 56" fill="#9a3412" fill-opacity="0.14" stroke="#9a3412" stroke-width="2.5" stroke-linecap="round"/>
+  <rect width="240" height="240" rx="120" fill="url(#ceo-bg)" stroke="var(--t-accent-2, #b34506)" stroke-width="4"/>
+  <circle cx="120" cy="92" r="38" fill="var(--t-accent-text, #9a3412)" fill-opacity="0.16" stroke="var(--t-accent-text, #9a3412)" stroke-width="2.5"/>
+  <path d="M56 204c8-36 34-56 64-56s56 20 64 56" fill="var(--t-accent-text, #9a3412)" fill-opacity="0.14" stroke="var(--t-accent-text, #9a3412)" stroke-width="2.5" stroke-linecap="round"/>
   <rect x="48" y="176" width="144" height="34" rx="17" fill="#18181b"/>
   <text x="120" y="198" text-anchor="middle" font-family="ui-monospace, monospace" font-size="13" font-weight="700" fill="#faf9f6">DR. SANDEEP RAUT · CEO</text>
 </svg>

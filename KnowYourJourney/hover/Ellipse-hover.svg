@@ -1,1 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><circle cx="60" cy="60" r="56" fill="#ff8a40" stroke="#2d415c" stroke-width="3"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <defs>
+    <radialGradient id="hGrad" cx="38%" cy="32%" r="65%">
+      <stop offset="0%" stop-color="#ff9e54"/>
+      <stop offset="100%" stop-color="var(--t-accent-2, #b34506)"/>
+    </radialGradient>
+    <filter id="hGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="var(--t-accent-2, #b34506)" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+  <circle cx="60" cy="60" r="54" fill="url(#hGrad)" stroke="#ffffff" stroke-width="2.5" filter="url(#hGlow)"/>
+  <circle cx="60" cy="60" r="48" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.2" stroke-dasharray="3 3"/>
+</svg>

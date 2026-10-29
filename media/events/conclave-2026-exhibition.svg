@@ -1,16 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
   <rect width="800" height="450" rx="18" fill="#faf9f6"/>
   <rect x="1" y="1" width="798" height="448" rx="17" stroke="#e4e2dd" stroke-width="2"/>
-  <circle cx="710" cy="80" r="150" fill="#c2410c" opacity="0.06"/>
-  <circle cx="120" cy="390" r="130" fill="#9a3412" opacity="0.06"/>
+  <circle cx="710" cy="80" r="150" fill="var(--t-accent-2, #b34506)" opacity="0.06"/>
+  <circle cx="120" cy="390" r="130" fill="var(--t-accent-text, #9a3412)" opacity="0.06"/>
 
   <!-- Top Editorial Header Strip -->
   <rect x="36" y="28" width="728" height="88" rx="12" fill="#ffffff" stroke="#e4e2dd" stroke-width="1.5"/>
-  <rect x="54" y="46" width="52" height="52" rx="12" fill="#fff7ed" stroke="#c2410c" stroke-width="1.5"/>
+  <rect x="54" y="46" width="52" height="52" rx="12" fill="#fff7ed" stroke="var(--t-accent-2, #b34506)" stroke-width="1.5"/>
   <svg x="66" y="58" width="28" height="28" viewBox="0 0 24 24">
-    <path d="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z" fill="#c2410c"/>
+    <path d="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z" fill="var(--t-accent-2, #b34506)"/>
   </svg>
-  <text x="122" y="65" font-family="monospace" font-size="11" font-weight="700" fill="#c2410c" letter-spacing="1.2">CONCLAVE 2.0 · STARTUP EXHIBITION</text>
+  <text x="122" y="65" font-family="monospace" font-size="11" font-weight="700" fill="var(--t-accent-2, #b34506)" letter-spacing="1.2">CONCLAVE 2.0 · STARTUP EXHIBITION</text>
   <text x="122" y="92" font-family="sans-serif" font-size="22" font-weight="800" fill="#18181b">Startup Expo &amp; BIRAC-EDGE Launch</text>
   <rect x="632" y="48" width="112" height="30" rx="15" fill="#f3f1ec" stroke="#d4d4d8"/>
   <text x="688" y="67" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#52525b">08 AUG 2026</text>
@@ -26,16 +26,16 @@
   <rect x="44" y="138" width="440" height="218" rx="14" fill="none" stroke="#e4e2dd" stroke-width="1.5"/>
   <!-- Right Event Metadata Dossier Card -->
   <rect x="504" y="138" width="260" height="218" rx="14" fill="#ffffff" stroke="#e4e2dd" stroke-width="1.5"/>
-  <rect x="504" y="138" width="260" height="6" rx="3" fill="#c2410c"/>
+  <rect x="504" y="138" width="260" height="6" rx="3" fill="var(--t-accent-2, #b34506)"/>
   <text x="524" y="170" font-family="monospace" font-size="10" font-weight="700" fill="#71717a" letter-spacing="1">SESSION HIGHLIGHTS</text>
   <text x="524" y="193" font-family="sans-serif" font-size="11.5" font-weight="700" fill="#18181b">Inaugurated by Mr. Jagdish Tanvani</text>
   <text x="524" y="211" font-family="sans-serif" font-size="11.5" font-weight="600" fill="#52525b">(AGM, BHEL Bhopal)</text>
   <line x1="524" y1="228" x2="744" y2="228" stroke="#e4e2dd"/>
-  <text x="524" y="248" font-family="monospace" font-size="10" font-weight="700" fill="#c2410c">VENUE / HOST</text>
+  <text x="524" y="248" font-family="monospace" font-size="10" font-weight="700" fill="var(--t-accent-2, #b34506)">VENUE / HOST</text>
   <text x="524" y="266" font-family="sans-serif" font-size="11" font-weight="600" fill="#27272a">BIRAC-EDGE Launch · Dr. Debasis Nayak</text>
 
-  <rect x="524" y="284" width="104" height="24" rx="12" fill="#fff7ed" stroke="#c2410c" stroke-width="1"/>
-  <text x="576" y="300" text-anchor="middle" font-family="monospace" font-size="9.5" font-weight="700" fill="#c2410c">14 Startups</text>
+  <rect x="524" y="284" width="104" height="24" rx="12" fill="#fff7ed" stroke="var(--t-accent-2, #b34506)" stroke-width="1"/>
+  <text x="576" y="300" text-anchor="middle" font-family="monospace" font-size="9.5" font-weight="700" fill="var(--t-accent-2, #b34506)">14 Startups</text>
   <rect x="636" y="284" width="108" height="24" rx="12" fill="#f3f1ec" stroke="#d4d4d8" stroke-width="1"/>
   <text x="690" y="300" text-anchor="middle" font-family="monospace" font-size="9.5" font-weight="700" fill="#27272a">Live Demos</text>
   <rect x="524" y="316" width="220" height="24" rx="12" fill="#faf9f6" stroke="#d4d4d8" stroke-width="1"/>
@@ -43,7 +43,7 @@
 
   <!-- Bottom Attribution Bar -->
   <rect x="36" y="374" width="728" height="46" rx="10" fill="#f3f1ec"/>
-  <circle cx="58" cy="397" r="6" fill="#c2410c"/>
+  <circle cx="58" cy="397" r="6" fill="var(--t-accent-2, #b34506)"/>
   <text x="74" y="401" font-family="monospace" font-size="11" font-weight="700" fill="#27272a">IICE · IISER BHOPAL EVENT GALLERY ARCHIVE</text>
   <text x="744" y="401" text-anchor="end" font-family="monospace" font-size="10.5" font-weight="600" fill="#71717a">iice.iiserb.ac.in</text>
 </svg>

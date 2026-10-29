@@ -1,1 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><circle cx="60" cy="60" r="56" fill="#6c3231" stroke="#ff8a40" stroke-width="3"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <defs>
+    <radialGradient id="eGrad" cx="38%" cy="32%" r="65%">
+      <stop offset="0%" stop-color="#7e3a39"/>
+      <stop offset="100%" stop-color="#4a1c1b"/>
+    </radialGradient>
+    <filter id="eGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#4a1c1b" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <circle cx="60" cy="60" r="54" fill="url(#eGrad)" stroke="var(--t-accent, #e66a1f)" stroke-width="2.5" filter="url(#eGlow)"/>
+  <circle cx="60" cy="60" r="48" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.2" stroke-dasharray="3 3"/>
+</svg>

@@ -19,7 +19,7 @@
   </defs>
   <rect width="650" height="510" rx="24" fill="url(#skyGrad)"/>
   <rect width="650" height="510" rx="24" fill="url(#archGrid)"/>
-  <circle cx="520" cy="110" r="140" fill="#ff8a40" fill-opacity="0.16"/>
+  <circle cx="520" cy="110" r="140" fill="var(--t-accent, #e66a1f)" fill-opacity="0.16"/>
   <circle cx="140" cy="400" r="170" fill="#38bdf8" fill-opacity="0.1"/>
 
   <!-- Top Badge Bar -->
@@ -27,7 +27,7 @@
   <circle cx="48" cy="42" r="5" fill="#4ade80"/>
   <text x="64" y="47" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700" fill="#ffffff" letter-spacing="0.8">IISER BHOPAL · MAIN BUILDING (2ND FLOOR)</text>
 
-  <rect x="442" y="24" width="180" height="36" rx="18" fill="#ff8a40" fill-opacity="0.92"/>
+  <rect x="442" y="24" width="180" height="36" rx="18" fill="var(--t-accent, #e66a1f)" fill-opacity="0.92"/>
   <text x="532" y="47" text-anchor="middle" font-family="ui-monospace, monospace" font-size="11.5" font-weight="800" fill="#ffffff" letter-spacing="0.8">10,000+ SQ. FT. TBI</text>
 
   <!-- Architectural Illustration of IISER Bhopal Main Building &amp; 2nd Floor IICE Wing -->
@@ -36,13 +36,13 @@
     <rect x="0" y="275" width="560" height="36" rx="10" fill="#14532d" fill-opacity="0.75"/>
     <path d="M20 275 L540 275" stroke="#4ade80" stroke-width="2" stroke-opacity="0.5"/>
     <!-- Left Academic Wing -->
-    <rect x="24" y="95" width="140" height="180" rx="6" fill="url(#warmSlab)" stroke="#9a3412" stroke-width="1.5"/>
+    <rect x="24" y="95" width="140" height="180" rx="6" fill="url(#warmSlab)" stroke="var(--t-accent-text, #9a3412)" stroke-width="1.5"/>
     <!-- Central Atrium Tower -->
     <rect x="156" y="45" width="248" height="230" rx="8" fill="#ffffff" stroke="#6c3231" stroke-width="2"/>
     <rect x="172" y="62" width="216" height="52" rx="4" fill="url(#glassGrad)" stroke="#0284c7" stroke-width="1.2"/>
     <!-- Highlighted 2nd Floor IICE Incubation Floor -->
-    <rect x="20" y="122" width="520" height="64" rx="8" fill="#fff7ed" stroke="#ff8a40" stroke-width="3"/>
-    <rect x="32" y="132" width="120" height="44" rx="5" fill="#9a3412"/>
+    <rect x="20" y="122" width="520" height="64" rx="8" fill="#fff7ed" stroke="var(--t-accent, #e66a1f)" stroke-width="3"/>
+    <rect x="32" y="132" width="120" height="44" rx="5" fill="var(--t-accent-text, #9a3412)"/>
     <text x="92" y="152" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="800" fill="#ffffff">IICE FLOOR</text>
     <text x="92" y="167" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" fill="#fed7aa">2ND FLOOR · MAIN BLDG</text>
     <!-- 2nd Floor Lab &amp; Cubicle Windows -->
@@ -56,8 +56,8 @@
     <text x="488" y="158" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" font-weight="700" fill="#f87171">BIRAC-EDGE</text>
 
     <!-- Right Wing -->
-    <rect x="396" y="95" width="140" height="80" rx="6" fill="url(#warmSlab)" stroke="#9a3412" stroke-width="1.5" fill-opacity="0.35"/>
-    <rect x="396" y="186" width="140" height="89" rx="6" fill="url(#warmSlab)" stroke="#9a3412" stroke-width="1.5"/>
+    <rect x="396" y="95" width="140" height="80" rx="6" fill="url(#warmSlab)" stroke="var(--t-accent-text, #9a3412)" stroke-width="1.5" fill-opacity="0.35"/>
+    <rect x="396" y="186" width="140" height="89" rx="6" fill="url(#warmSlab)" stroke="var(--t-accent-text, #9a3412)" stroke-width="1.5"/>
 
     <!-- Ground Floor Pillars &amp; Entrance -->
     <rect x="226" y="200" width="108" height="75" rx="6" fill="#0f2537"/>
@@ -68,7 +68,7 @@
   <!-- Bottom Metrics Strip on Hero Card -->
   <rect x="28" y="408" width="594" height="76" rx="16" fill="#09181d" fill-opacity="0.86" stroke="#ffffff" stroke-opacity="0.18"/>
   <g transform="translate(52, 428)">
-    <text x="0" y="16" font-family="'Plus Jakarta Sans', sans-serif" font-size="20" font-weight="800" fill="#ff8a40">14+ Ventures</text>
+    <text x="0" y="16" font-family="'Plus Jakarta Sans', sans-serif" font-size="20" font-weight="800" fill="var(--t-accent, #e66a1f)">14+ Ventures</text>
     <text x="0" y="36" font-family="ui-monospace, monospace" font-size="10.5" font-weight="600" fill="#cbd5e1">DEEP-TECH &amp; BIOSCIENCE</text>
 
     <line x1="175" y1="2" x2="175" y2="40" stroke="#ffffff" stroke-opacity="0.18"/>

@@ -325,3 +325,39 @@
 .top-3\.5 { top: 0.875rem; }
 .right-3\.5 { right: 0.875rem; }
 .bg-\[\#09181D\]\/75 { background-color: color-mix(in srgb, var(--t-dark) 75%, transparent); }
+
+/* Dynamic theme accent mappings */
+.border-orange-500 { border-color: var(--t-accent); }
+.border-orange-600 { border-color: var(--t-accent-2); }
+.bg-orange-500 { background-color: var(--t-accent); }
+.bg-orange-600 { background-color: var(--t-accent-2); }
+.bg-orange-50 { background-color: color-mix(in srgb, var(--t-accent) 12%, var(--t-bg, white)); }
+.bg-orange-50\/40 { background-color: color-mix(in srgb, var(--t-accent) 10%, transparent); }
+.bg-orange-100 { background-color: color-mix(in srgb, var(--t-accent) 18%, var(--t-bg, white)); }
+.bg-orange-200 { background-color: color-mix(in srgb, var(--t-accent) 28%, var(--t-bg, white)); }
+.text-orange-500, .text-orange-600, .text-orange-700 { color: var(--t-accent-text, var(--t-accent)); }
+.text-orange-200, .text-orange-300 { color: var(--t-accent-soft); }
+.via-orange-600 { --tw-gradient-via: var(--t-accent); }
+.from-orange-500 { --tw-gradient-from: var(--t-accent); }
+.to-orange-500 { --tw-gradient-to: var(--t-accent); }
+.hover\:bg-orange-600:hover { background-color: var(--t-accent-2); }
+.hover\:text-orange-600:hover { color: var(--t-accent-2); }
+.group-hover\:text-orange-600:hover { color: var(--t-accent-2); }
+.group-hover\/card\:text-orange-200:is(:where(.group\/card):hover *) { color: var(--t-accent-soft); }
+.text-\[\#ff8a40\] { color: var(--t-accent-text, var(--t-accent)); }
+.hover\:text-\[\#ff8a40\]:hover { color: var(--t-accent-2); }
+.bg-\[\#ff8a40\] { background-color: var(--t-accent); }
+.focus\:ring-\[\#ff8a40\]:focus { --tw-ring-color: var(--t-accent); }
+.from-\[\#ff8a40\] { --tw-gradient-from: var(--t-accent); }
+.hover\:from-\[\#ff8a40\]:hover { --tw-gradient-from: var(--t-accent); }
+.hover\:to-\[\#e8621a\]:hover { --tw-gradient-to: var(--t-accent-2); }
+.hover\:bg-\[\#e8621a\]:hover { background-color: var(--t-accent-2); }
+.shadow-\[0_0_0\.4rem_\#ff8a40\] { box-shadow: 0 0 0.4rem var(--t-accent); }
+.group-hover\:fill-\[\#FF8A40\]:is(:where(.group):hover *) { fill: var(--t-accent); }
+.group-focus-visible\:fill-\[\#FF8A40\]:is(:where(.group):focus-visible *) { fill: var(--t-accent); }
+.from-amber-500.via-orange-600.to-amber-500 { background-image: linear-gradient(to right, var(--t-brand), var(--t-accent-2), var(--t-brand)); }
+.text-primary-highlight { color: var(--t-accent-text, var(--t-accent)); }
+.bg-primary-highlight { background-color: var(--t-accent); }
+.border-primary-highlight { border-color: var(--t-accent); }
+.border-l-4.border-orange-500, p[class*="border-orange-500"] { border-left-color: var(--t-accent); }
+

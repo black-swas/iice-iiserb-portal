@@ -2,7 +2,7 @@
   <rect width="800" height="450" rx="18" fill="#faf9f6"/>
   <rect x="1" y="1" width="798" height="448" rx="17" stroke="#e4e2dd" stroke-width="2"/>
   <circle cx="710" cy="80" r="150" fill="#15803d" opacity="0.06"/>
-  <circle cx="120" cy="390" r="130" fill="#c2410c" opacity="0.06"/>
+  <circle cx="120" cy="390" r="130" fill="var(--t-accent-2, #b34506)" opacity="0.06"/>
 
   <!-- Top Editorial Header Strip -->
   <rect x="36" y="28" width="728" height="88" rx="12" fill="#ffffff" stroke="#e4e2dd" stroke-width="1.5"/>
