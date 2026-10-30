@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 520" width="1920" height="520" preserveAspectRatio="xMidYMid slice">
-  <rect width="1920" height="520" fill="#262020"/>
-  <rect width="1920" height="520" fill="#322b28" opacity="0.55"/>
+  <rect width="1920" height="520" fill="var(--t-brand-3, #4a1f1e)"/>
+  <rect width="1920" height="520" fill="var(--t-brand-2, #5e2928)" opacity="0.55"/>
   <!-- subtle dot grid -->
   <pattern id="dots" width="44" height="44" patternUnits="userSpaceOnUse">
     <circle cx="2" cy="2" r="1.6" fill="#ffffff" opacity="0.05"/>

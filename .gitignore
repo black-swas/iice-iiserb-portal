@@ -3,3 +3,15 @@ __pycache__/
 .DS_Store
 Thumbs.db
 node_modules/
+
+# Root-level audit and test screenshots
+/*.png
+
+# Temporary test profiles and scratch directories
+scratch/
+tmp_*/
+
+# Local helper scripts
+reapply_all_polish.py
+update_*.py
+

@@ -361,3 +361,184 @@
 .border-primary-highlight { border-color: var(--t-accent); }
 .border-l-4.border-orange-500, p[class*="border-orange-500"] { border-left-color: var(--t-accent); }
 
+
+
+/* ============================================================
+   Section 14: Comprehensive Dynamic Theming & Contrast Optimization
+   - Eliminates all hardcoded brown/maroon on /board-of-directors,
+     /our-team, /contact, /who-we-are
+   - Eliminates hardcoded orange accents across nav, cards, badges
+   - Dynamic contrast and aesthetic tuning for all 8 palettes
+   ============================================================ */
+
+/* 1. Universal Subpage Header Banner (Ea on /board-of-directors, /our-team, /contact, /who-we-are) */
+div[class*="min-h-[203px]"] {
+  background:
+    radial-gradient(circle at 88% 25%, color-mix(in srgb, var(--t-accent) 26%, transparent) 0%, transparent 48%),
+    radial-gradient(circle at 82% 55%, color-mix(in srgb, var(--t-accent-2) 18%, transparent) 0%, transparent 40%),
+    linear-gradient(135deg,
+      var(--t-brand-3, #4a1f1e) 0%,
+      var(--t-brand, #6c3231) 45%,
+      var(--t-secondary, #2d415c) 82%,
+      var(--t-accent-2, #d96b27) 100%
+    ) !important;
+  position: relative !important;
+}
+
+/* Hide the static hardcoded base64 brown SVG image inside the subpage header */
+div[class*="min-h-[203px]"] > img[src^="data:image/svg+xml"] {
+  display: none !important;
+}
+
+/* 2. Program Card Banners (_B component) */
+div[class*="min-h-[290px]"] {
+  background:
+    radial-gradient(circle at 85% 20%, color-mix(in srgb, var(--t-accent) 22%, transparent) 0%, transparent 45%),
+    linear-gradient(135deg,
+      var(--t-brand-3, #4a1f1e) 0%,
+      var(--t-brand, #6c3231) 50%,
+      var(--t-secondary, #2d415c) 100%
+    ) !important;
+}
+div[class*="min-h-[290px]"] > div:first-child > img[src^="data:image/svg+xml"] {
+  display: none !important;
+}
+
+/* 3. Domain Head and Badge Theming (Team & BOD Cards) */
+.from-amber-500.via-orange-600.to-amber-500,
+div[class*="from-amber-500"][class*="via-orange-600"][class*="to-amber-500"] {
+  background-image: linear-gradient(to right,
+    var(--t-accent),
+    var(--t-accent-2),
+    var(--t-accent)
+  ) !important;
+  color: #ffffff !important;
+}
+
+/* Card Hover States in Team & Directors */
+.group\/card:hover .group-hover\/card\:text-orange-200 {
+  color: var(--t-accent-soft, #fed7aa) !important;
+}
+.group\/card:hover .group-hover\/card\:border-primary {
+  border-color: var(--t-brand) !important;
+}
+.group\/card:hover .group-hover\/card\:bg-primary {
+  background-color: var(--t-brand) !important;
+}
+
+/* 4. Leadership Duo & CEO Spotlight on /our-team */
+.zlm-ceo {
+  background: linear-gradient(130deg,
+    rgba(255, 255, 255, 0.94),
+    color-mix(in srgb, var(--t-cream, white) 75%, white) 55%,
+    rgba(255, 255, 255, 0.92)
+  ) !important;
+  border-color: color-mix(in srgb, var(--t-line) 80%, transparent) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 24px 48px -24px color-mix(in srgb, var(--t-dark) 24%, transparent) !important;
+}
+.zlm-ceo__badge {
+  background: color-mix(in srgb, var(--t-dark) 60%, transparent) !important;
+  color: color-mix(in srgb, var(--t-accent) 45%, white) !important;
+}
+.zlm-ceo__eyebrow {
+  color: var(--t-brand) !important;
+}
+.zlm-ceo__eyebrow::before {
+  background: var(--t-accent) !important;
+}
+.zlm-ceo__role {
+  color: var(--t-brand) !important;
+}
+.zlm-ceo__chip {
+  color: var(--t-brand) !important;
+  border-color: var(--t-line) !important;
+  background: rgba(255, 255, 255, 0.85) !important;
+}
+.zlm-ceo__chip:hover {
+  background: var(--t-brand) !important;
+  border-color: var(--t-brand) !important;
+  color: #ffffff !important;
+}
+
+/* 5. Contact Page Overrides (/contact) */
+.border-secondary-blue\/20 {
+  border-color: color-mix(in srgb, var(--t-secondary) 25%, transparent) !important;
+}
+.hover\:border-secondary-blue\/50:hover {
+  border-color: color-mix(in srgb, var(--t-secondary) 50%, transparent) !important;
+}
+.bg-secondary-blue {
+  background-color: var(--t-secondary) !important;
+}
+.text-secondary-blue {
+  color: var(--t-secondary) !important;
+}
+.hover\:text-secondary-blue:hover {
+  color: var(--t-secondary) !important;
+}
+.text-primary-highlight {
+  color: var(--t-accent-text, var(--t-accent)) !important;
+}
+
+/* 6. Who We Are / Vision & Mission Cards (/who-we-are) */
+.bg-\[\#faf8f6\] {
+  background-color: color-mix(in srgb, var(--t-cream, white) 85%, var(--t-bg)) !important;
+  border-color: color-mix(in srgb, var(--t-line) 80%, transparent) !important;
+}
+.from-\[\#ff8a40\].via-\[\#6c3231\].to-\[\#4a1f1e\] {
+  background-image: linear-gradient(to bottom, var(--t-accent), var(--t-brand), var(--t-brand-3)) !important;
+}
+.from-\[\#6c3231\].to-\[\#522322\] {
+  background-image: linear-gradient(to bottom, var(--t-brand), var(--t-brand-2)) !important;
+}
+.shadow-\[0_24px_48px_-12px_rgba\(108\,50\,49\,0\.45\)\] {
+  box-shadow: 0 24px 48px -12px color-mix(in srgb, var(--t-brand) 45%, transparent) !important;
+}
+.border-\[\#6C3231\], .border-\[\#6c3231\] {
+  border-color: var(--t-brand) !important;
+}
+.text-\[\#6c3231\], .text-\[\#6C3231\] {
+  color: var(--t-brand) !important;
+}
+
+/* 7. Orange Accent Overrides across the Entire Site */
+.bg-\[\#ff8a40\] {
+  background-color: var(--t-accent) !important;
+}
+.text-\[\#ff8a40\] {
+  color: var(--t-accent-text, var(--t-accent)) !important;
+}
+.hover\:text-\[\#ff8a40\]:hover {
+  color: var(--t-accent-2) !important;
+}
+.focus\:ring-\[\#ff8a40\]:focus {
+  --tw-ring-color: var(--t-accent) !important;
+}
+.from-\[\#ff8a40\] {
+  --tw-gradient-from: var(--t-accent) !important;
+}
+.hover\:from-\[\#ff8a40\]:hover {
+  --tw-gradient-from: var(--t-accent-2) !important;
+}
+.hover\:to-\[\#e8621a\]:hover {
+  --tw-gradient-to: var(--t-accent-2) !important;
+}
+.shadow-\[0_0_0\.4rem_\#ff8a40\] {
+  box-shadow: 0 0 0.4rem var(--t-accent) !important;
+}
+.group:hover .group-hover\:fill-\[\#FF8A40\],
+.group:focus-visible .group-focus-visible\:fill-\[\#FF8A40\] {
+  fill: var(--t-accent) !important;
+}
+
+/* 8. Search Input and Filter Controls on /our-team */
+input[placeholder*="Search"] {
+  border-color: var(--t-line) !important;
+}
+input[placeholder*="Search"]:focus {
+  border-color: var(--t-brand) !important;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--t-brand) 20%, transparent) !important;
+  outline: none !important;
+}

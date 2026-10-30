@@ -179,6 +179,21 @@
       }
     });
 
+    // Reparent Focus Domains to the last of the page (right before footer)
+    var footer = document.querySelector("footer") || document.getElementById("site-footer");
+    if (footer && footer.parentElement) {
+      if (footer.previousElementSibling !== sec) {
+        footer.parentElement.insertBefore(sec, footer);
+      }
+    } else {
+      var main = document.querySelector("main");
+      if (main && main.lastElementChild !== sec) {
+        main.appendChild(sec);
+      }
+    }
+    sec.style.paddingTop = "3rem";
+    sec.style.paddingBottom = "3rem";
+
     // Mount new Focus Domains button grid directly under heading
     var fdContainer = document.createElement("div");
     renderFocusDomains(fdContainer);

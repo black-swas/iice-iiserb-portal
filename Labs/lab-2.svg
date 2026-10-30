@@ -3,7 +3,7 @@
         <linearGradient id="fbg" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stop-color="#18181b"/>
           <stop offset="50%" stop-color="#2d415c"/>
-          <stop offset="100%" stop-color="var(--t-accent-text, #9a3412)"/>
+          <stop offset="100%" stop-color="var(--t-accent-text, #9a3412))"/>
         </linearGradient>
         <pattern id="fgrid" width="32" height="32" patternUnits="userSpaceOnUse">
           <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#ffffff" stroke-width="0.6" stroke-opacity="0.1"/>
@@ -17,7 +17,7 @@
       <text x="44" y="170" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="34" font-weight="800" fill="#ffffff">Single-Crystal &amp; Powder XRD Laboratory</text>
       <text x="44" y="216" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="18" font-weight="500" fill="#e2e8f0">Bruker D8 Venture Dual-Source (Mo/Cu) · PANalytical High-Res PXRD</text>
       <rect x="44" y="280" width="712" height="160" rx="18" fill="#ffffff" fill-opacity="0.95"/>
-      <text x="72" y="328" font-family="ui-monospace, monospace" font-size="13" font-weight="800" fill="var(--t-accent-text, #9a3412)">TECHNICAL SPECIFICATIONS &amp; ACCESS</text>
+      <text x="72" y="328" font-family="ui-monospace, monospace" font-size="13" font-weight="800" fill="var(--t-accent-text, #9a3412))">TECHNICAL SPECIFICATIONS &amp; ACCESS</text>
       <text x="72" y="366" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="18" font-weight="700" fill="#18181b">90 K – 400 K Cryostream · Topological &amp; Quantum Single-Crystal Analysis</text>
       <text x="72" y="402" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="14" font-weight="500" fill="#52525b">2nd Floor, Main Building &amp; Central Instrumentation Facility (CIF), IISER Bhopal</text>
     </svg>

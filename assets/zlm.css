@@ -834,9 +834,9 @@ html { background: var(--t-brand-2); }
 }
 
 /* ── custom dot / "Open" cursor (desktop ring) ── */
-.spin-stage[data-cursor="on"],
-.spin-stage[data-cursor="on"] a,
-.spin-stage[data-cursor="on"] button { cursor: none; }
+
+
+/* cursor: none removed for usability */
 .spin-cursor {
   position: fixed; top: 0; left: 0; z-index: 60;
   width: 0.85rem; height: 0.85rem; border-radius: 999px;
@@ -1144,7 +1144,7 @@ body { overflow-x: clip; }
   transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
   font-family: "Plus Jakarta Sans", system-ui, sans-serif;
 }
-.zlm-boot.is-done { opacity: 0; transform: scale(1.02); filter: blur(6px); pointer-events: none; }
+.zlm-boot.is-done { opacity: 0 !important; visibility: hidden !important; display: none !important; pointer-events: none !important; }
 .zlm-boot__orbs { position: absolute; inset: 0; overflow: hidden; }
 .zlm-boot__orbs span {
   position: absolute; border-radius: 50%;
@@ -1234,6 +1234,9 @@ body::before {
    tints it, so it reads as glass. Only applied when the column holds
    no position:fixed descendants — glassify() guards. */
 .zlm-column {
+  overflow: clip !important;
+  overflow-x: clip !important;
+  overflow-y: clip !important;
   background: linear-gradient(180deg,
     rgba(255, 255, 255, 0.82), rgba(255, 253, 248, 0.76) 16%,
     rgba(255, 255, 255, 0.78) 84%, rgba(255, 251, 245, 0.84));
@@ -1246,18 +1249,18 @@ body::before {
 /* ---- tinted glass cards (JS-tagged) ---- */
 .zlm-gl {
   --gl-tint: 255 253 249;
-  position: relative !important;
-  overflow: hidden !important;
-  background-color: rgba(255, 255, 255, 0.42);
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.52);
   background-image: linear-gradient(135deg,
-    rgb(var(--gl-tint) / 0.74), rgb(var(--gl-tint) / 0.52) 46%, rgb(var(--gl-tint) / 0.7));
-  -webkit-backdrop-filter: blur(13px) saturate(1.5) brightness(1.03);
-  backdrop-filter: blur(13px) saturate(1.5) brightness(1.03);
-  border-color: color-mix(in srgb, var(--t-brand) 14%, transparent);
+    rgb(var(--gl-tint) / 0.8), rgb(var(--gl-tint) / 0.6) 46%, rgb(var(--gl-tint) / 0.76));
+  -webkit-backdrop-filter: blur(13px) saturate(1.4);
+  backdrop-filter: blur(13px) saturate(1.4);
+  border-color: color-mix(in srgb, var(--t-brand) 12%, transparent);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.82),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
     inset 0 -1px 0 color-mix(in srgb, var(--t-brand) 5%, transparent),
-    0 16px 38px -18px color-mix(in srgb, var(--t-dark) 18%, transparent);
+    0 16px 38px -18px color-mix(in srgb, var(--t-dark) 14%, transparent);
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .zlm-gl--amber { --gl-tint: 255 243 226; }
@@ -1295,19 +1298,19 @@ body::before {
   right: -20%;
   width: 140%;
   height: 140%;
-  z-index: 10;
+  z-index: 5;
   pointer-events: none;
   border-radius: inherit;
   background: linear-gradient(
     108deg,
-    transparent 28%,
-    rgba(255, 255, 255, 0.45) 46%,
-    color-mix(in srgb, var(--t-accent, #e66a1f) 35%, white) 50%,
-    rgba(255, 255, 255, 0.45) 54%,
-    transparent 72%
+    transparent 35%,
+    rgba(255, 255, 255, 0.16) 47%,
+    color-mix(in srgb, var(--t-accent, #e66a1f) 16%, white) 50%,
+    rgba(255, 255, 255, 0.16) 53%,
+    transparent 65%
   );
   transform: translateX(-160%) skewX(-18deg);
-  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }
 .zlm-gl:hover > .zlm-gl__sheen,
@@ -1797,13 +1800,13 @@ p[class*="border-orange-500"] {
   top: 58px;
   left: 8%;
   right: 8%;
-  height: 2.5px;
+  height: 2px;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    color-mix(in srgb, var(--t-line) 75%, var(--t-brand) 25%) 12%,
-    color-mix(in srgb, var(--t-accent) 55%, transparent) 50%,
-    color-mix(in srgb, var(--t-line) 75%, var(--t-brand) 25%) 88%,
+    color-mix(in srgb, var(--t-line) 80%, var(--t-brand) 20%) 15%,
+    color-mix(in srgb, var(--t-accent) 30%, transparent) 50%,
+    color-mix(in srgb, var(--t-line) 80%, var(--t-brand) 20%) 85%,
     transparent 100%
   );
   z-index: 0;
@@ -1812,22 +1815,22 @@ p[class*="border-orange-500"] {
 #start::after {
   content: "";
   position: absolute;
-  top: 57px;
+  top: 57.5px;
   left: 8%;
   right: 8%;
-  height: 4.5px;
+  height: 3px;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    color-mix(in srgb, var(--t-accent) 70%, transparent) 35%,
-    #ffffff 50%,
-    color-mix(in srgb, var(--t-accent) 70%, transparent) 65%,
+    color-mix(in srgb, var(--t-accent) 40%, transparent) 38%,
+    color-mix(in srgb, var(--t-accent) 60%, white) 50%,
+    color-mix(in srgb, var(--t-accent) 40%, transparent) 62%,
     transparent 100%
   );
-  filter: drop-shadow(0 0 6px var(--t-accent));
+  filter: drop-shadow(0 0 3px color-mix(in srgb, var(--t-accent) 35%, transparent));
   z-index: 0;
   pointer-events: none;
-  animation: zlm-stage-line-glare 5s ease-in-out infinite;
+  animation: zlm-stage-line-glare 7.5s ease-in-out infinite;
 }
 @media (max-width: 767.98px) {
   #start::before, #start::after {
@@ -2329,6 +2332,11 @@ p[class*="border-orange-500"] {
    Directly linked to the dynamic theme system via --t-accent
    Starts un-drawn (not pre-rendered); scribbles with cursor; stays persistent
    ============================================================ */
+.zlm-hero-highlight-bg,
+.zlm-hero-scribble {
+  display: none !important;
+}
+
 .zlm-hero-highlight {
   position: relative;
   display: inline-block;
@@ -3072,4 +3080,688 @@ p[class*="border-orange-500"] {
 div:has(#our-leadership) > .max-w-8xl,
 .zlm-dup-leadership-hidden {
   display: none !important;
+}
+
+
+/* Safeguard: ensure sticky spinbar ancestors never get overflow:hidden */
+.zlm-column,
+div:has(> main .zlm-gateways),
+div:has(> .zlm-gateways),
+main:has(.zlm-gateways) {
+  overflow: clip !important;
+  overflow-x: clip !important;
+  overflow-y: clip !important;
+}
+
+
+/* ============================================================
+   Hero Section: Contrast, Alignment & Button Safeguards
+   ============================================================ */
+.animated-button {
+  color: #ffffff !important;
+  background: linear-gradient(150deg,
+    color-mix(in srgb, var(--t-brand) 90%, var(--t-accent)),
+    var(--t-brand) 55%,
+    color-mix(in srgb, var(--t-brand) 82%, black)
+  ) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  box-shadow: 0 4px 18px color-mix(in srgb, var(--t-brand) 40%, transparent), 0 1px 4px rgba(0, 0, 0, 0.2) !important;
+}
+.animated-button,
+.animated-button * {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+/* Hero Pill Badge: retain translucent dark glass and crisp white text */
+div[class*="tracking-[0.15em]"][class*="rounded-full"] {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  background-image: none !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+/* Incubate with us CTA button contrast */
+a[aria-label="Incubate with IICE"] span {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+a[aria-label="Incubate with IICE"]:hover span {
+  color: var(--t-brand, #6c3231) !important;
+  text-shadow: none;
+}
+
+/* Hero Floating Badges */
+.hero-float-badge,
+.hero-float-badge-delayed {
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+}
+
+
+/* ============================================================
+   Section 14: Comprehensive Dynamic Theming & Contrast Optimization
+   - Eliminates all hardcoded brown/maroon on /board-of-directors,
+     /our-team, /contact, /who-we-are
+   - Eliminates hardcoded orange accents across nav, cards, badges
+   - Dynamic contrast and aesthetic tuning for all 8 palettes
+   ============================================================ */
+
+/* 1. Universal Subpage Header Banner (Ea on /board-of-directors, /our-team, /contact, /who-we-are) */
+div[class*="min-h-[203px]"] {
+  background:
+    radial-gradient(circle at 88% 25%, color-mix(in srgb, var(--t-accent) 26%, transparent) 0%, transparent 48%),
+    radial-gradient(circle at 82% 55%, color-mix(in srgb, var(--t-accent-2) 18%, transparent) 0%, transparent 40%),
+    linear-gradient(135deg,
+      var(--t-brand-3, #4a1f1e) 0%,
+      var(--t-brand, #6c3231) 45%,
+      var(--t-secondary, #2d415c) 82%,
+      var(--t-accent-2, #d96b27) 100%
+    ) !important;
+  position: relative !important;
+}
+
+/* Hide the static hardcoded base64 brown SVG image inside the subpage header */
+div[class*="min-h-[203px]"] > img[src^="data:image/svg+xml"] {
+  display: none !important;
+}
+
+/* 2. Program Card Banners (_B component) */
+div[class*="min-h-[290px]"] {
+  background:
+    radial-gradient(circle at 85% 20%, color-mix(in srgb, var(--t-accent) 22%, transparent) 0%, transparent 45%),
+    linear-gradient(135deg,
+      var(--t-brand-3, #4a1f1e) 0%,
+      var(--t-brand, #6c3231) 50%,
+      var(--t-secondary, #2d415c) 100%
+    ) !important;
+}
+div[class*="min-h-[290px]"] > div:first-child > img[src^="data:image/svg+xml"] {
+  display: none !important;
+}
+
+/* 3. Domain Head and Badge Theming (Team & BOD Cards) */
+.from-amber-500.via-orange-600.to-amber-500,
+div[class*="from-amber-500"][class*="via-orange-600"][class*="to-amber-500"] {
+  background-image: linear-gradient(to right,
+    var(--t-accent),
+    var(--t-accent-2),
+    var(--t-accent)
+  ) !important;
+  color: #ffffff !important;
+}
+
+/* Card Hover States in Team & Directors */
+.group\/card:hover .group-hover\/card\:text-orange-200 {
+  color: var(--t-accent-soft, #fed7aa) !important;
+}
+.group\/card:hover .group-hover\/card\:border-primary {
+  border-color: var(--t-brand) !important;
+}
+.group\/card:hover .group-hover\/card\:bg-primary {
+  background-color: var(--t-brand) !important;
+}
+
+/* 4. Leadership Duo & CEO Spotlight on /our-team */
+.zlm-ceo {
+  background: linear-gradient(130deg,
+    rgba(255, 255, 255, 0.94),
+    color-mix(in srgb, var(--t-cream, white) 75%, white) 55%,
+    rgba(255, 255, 255, 0.92)
+  ) !important;
+  border-color: color-mix(in srgb, var(--t-line) 80%, transparent) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 24px 48px -24px color-mix(in srgb, var(--t-dark) 24%, transparent) !important;
+}
+.zlm-ceo__badge {
+  background: color-mix(in srgb, var(--t-dark) 60%, transparent) !important;
+  color: color-mix(in srgb, var(--t-accent) 45%, white) !important;
+}
+.zlm-ceo__eyebrow {
+  color: var(--t-brand) !important;
+}
+.zlm-ceo__eyebrow::before {
+  background: var(--t-accent) !important;
+}
+.zlm-ceo__role {
+  color: var(--t-brand) !important;
+}
+.zlm-ceo__chip {
+  color: var(--t-brand) !important;
+  border-color: var(--t-line) !important;
+  background: rgba(255, 255, 255, 0.85) !important;
+}
+.zlm-ceo__chip:hover {
+  background: var(--t-brand) !important;
+  border-color: var(--t-brand) !important;
+  color: #ffffff !important;
+}
+
+/* 5. Contact Page Overrides (/contact) */
+.border-secondary-blue\/20 {
+  border-color: color-mix(in srgb, var(--t-secondary) 25%, transparent) !important;
+}
+.hover\:border-secondary-blue\/50:hover {
+  border-color: color-mix(in srgb, var(--t-secondary) 50%, transparent) !important;
+}
+.bg-secondary-blue {
+  background-color: var(--t-secondary) !important;
+}
+.text-secondary-blue {
+  color: var(--t-secondary) !important;
+}
+.hover\:text-secondary-blue:hover {
+  color: var(--t-secondary) !important;
+}
+.text-primary-highlight {
+  color: var(--t-accent-text, var(--t-accent)) !important;
+}
+
+/* 6. Who We Are / Vision & Mission Cards (/who-we-are) */
+.bg-\[\#faf8f6\] {
+  background-color: color-mix(in srgb, var(--t-cream, white) 85%, var(--t-bg)) !important;
+  border-color: color-mix(in srgb, var(--t-line) 80%, transparent) !important;
+}
+.from-\[\#ff8a40\].via-\[\#6c3231\].to-\[\#4a1f1e\] {
+  background-image: linear-gradient(to bottom, var(--t-accent), var(--t-brand), var(--t-brand-3)) !important;
+}
+.from-\[\#6c3231\].to-\[\#522322\] {
+  background-image: linear-gradient(to bottom, var(--t-brand), var(--t-brand-2)) !important;
+}
+.shadow-\[0_24px_48px_-12px_rgba\(108\,50\,49\,0\.45\)\] {
+  box-shadow: 0 24px 48px -12px color-mix(in srgb, var(--t-brand) 45%, transparent) !important;
+}
+.border-\[\#6C3231\], .border-\[\#6c3231\] {
+  border-color: var(--t-brand) !important;
+}
+.text-\[\#6c3231\], .text-\[\#6C3231\] {
+  color: var(--t-brand) !important;
+}
+
+/* 7. Orange Accent Overrides across the Entire Site */
+.bg-\[\#ff8a40\] {
+  background-color: var(--t-accent) !important;
+}
+.text-\[\#ff8a40\] {
+  color: var(--t-accent-text, var(--t-accent)) !important;
+}
+.hover\:text-\[\#ff8a40\]:hover {
+  color: var(--t-accent-2) !important;
+}
+.focus\:ring-\[\#ff8a40\]:focus {
+  --tw-ring-color: var(--t-accent) !important;
+}
+.from-\[\#ff8a40\] {
+  --tw-gradient-from: var(--t-accent) !important;
+}
+.hover\:from-\[\#ff8a40\]:hover {
+  --tw-gradient-from: var(--t-accent-2) !important;
+}
+.hover\:to-\[\#e8621a\]:hover {
+  --tw-gradient-to: var(--t-accent-2) !important;
+}
+.shadow-\[0_0_0\.4rem_\#ff8a40\] {
+  box-shadow: 0 0 0.4rem var(--t-accent) !important;
+}
+.group:hover .group-hover\:fill-\[\#FF8A40\],
+.group:focus-visible .group-focus-visible\:fill-\[\#FF8A40\] {
+  fill: var(--t-accent) !important;
+}
+
+/* 8. Search Input and Filter Controls on /our-team */
+input[placeholder*="Search"] {
+  border-color: var(--t-line) !important;
+}
+input[placeholder*="Search"]:focus {
+  border-color: var(--t-brand) !important;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--t-brand) 20%, transparent) !important;
+  outline: none !important;
+}
+
+
+/* ============================================================
+   MASTER VISUAL POLISH & READABILITY ENHANCEMENTS (SLOP REMOVAL)
+   ============================================================ */
+
+/* 1. Complete Removal of Developer Theme Studio & Floating Theme FAB */
+.zlm-themefab,
+#zlm-theme-studio,
+.zlm-studio {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* 2. Normal, Responsive Mouse Cursor across All Sections */
+.spin-cursor {
+  display: none !important;
+}
+.spin-stage, .spin-track, .zlm-gateways, .zlm-gateways * {
+  cursor: auto;
+}
+.spin-card a, .spin-card button, .spin-card [role="button"] {
+  cursor: pointer !important;
+}
+
+/* 3. Deep High-Contrast Typography Tokens */
+:root {
+  --t-ink: #141110 !important;
+  --t-ink-2: #28211f !important;
+  --t-ink-soft: #443835 !important;
+  --t-line: #e6dfd8 !important;
+  --t-cream: #fcf9f5 !important;
+  --t-accent-text: #8b2d2b !important;
+}
+
+/* Universal Text Contrast on Light Surfaces */
+body,
+main,
+article p,
+.bg-white p,
+.bg-\[\#faf8f6\] p,
+.bg-\[\#fcf9f5\] p {
+  color: var(--t-ink-soft, #443835);
+}
+
+/* Crisp Headings on Light Surfaces */
+main h1:not([class*="text-white"]):not(header *):not(.zlm-banner *),
+main h2:not([class*="text-white"]):not(header *):not(.zlm-banner *),
+main h3:not([class*="text-white"]):not(header *):not(.zlm-banner *),
+main h4:not([class*="text-white"]):not(header *):not(.zlm-banner *) {
+  color: var(--t-ink, #141110) !important;
+}
+
+/* Gray/Slate Helper Classes on Light Surfaces (WCAG AA: minimum #475569) */
+main .text-slate-600,
+main .text-slate-500,
+main .text-gray-600,
+main .text-gray-500,
+main .text-neutral-600,
+main .text-neutral-500 {
+  color: #3d4b53 !important;
+}
+
+/* 4. Highlighted Words on All Light Content Sections (Rich, Crisp Brand Maroon) */
+.text-primary-highlight,
+span[class*="text-primary-highlight"],
+p .text-primary-highlight {
+  color: var(--t-brand, #8b2d2b) !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+}
+
+/* 5. Force Crisp White & Luminous Amber on Dark Banners & Headers */
+header[class*="min-h-"],
+div[class*="min-h-\[203px\]"],
+div[class*="min-h-\[300px\]"],
+div[class*="min-h-\[380px\]"],
+div[class*="min-h-\[400px\]"],
+div[class*="min-h-\[500px\]"],
+div[class*="min-h-\[600px\]"],
+div[class*="bg-\[\#09181D\]"],
+div[class*="from-black"],
+div[class*="from-\[\#09181D\]"],
+.zlm-hero {
+  /* dark banner context */
+}
+
+header[class*="min-h-"] h1, header[class*="min-h-"] h2,
+div[class*="min-h-\[203px\]"] h1, div[class*="min-h-\[203px\]"] h2,
+div[class*="min-h-\[300px\]"] h1, div[class*="min-h-\[300px\]"] h2,
+div[class*="min-h-\[380px\]"] h1, div[class*="min-h-\[380px\]"] h2,
+div[class*="min-h-\[400px\]"] h1, div[class*="min-h-\[400px\]"] h2,
+div[class*="min-h-\[500px\]"] h1, div[class*="min-h-\[500px\]"] h2,
+div[class*="min-h-\[600px\]"] h1, div[class*="min-h-\[600px\]"] h2,
+div[class*="from-black"] h1, div[class*="from-black"] h2,
+div[class*="from-\[\#09181D\]"] h1, div[class*="from-\[\#09181D\]"] h2,
+.zlm-hero h1, .zlm-hero h2 {
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45) !important;
+}
+
+header[class*="min-h-"] p,
+div[class*="min-h-\[203px\]"] p,
+div[class*="min-h-\[300px\]"] p,
+div[class*="min-h-\[380px\]"] p,
+div[class*="min-h-\[400px\]"] p,
+div[class*="min-h-\[500px\]"] p,
+div[class*="min-h-\[600px\]"] p,
+div[class*="from-black"] p,
+div[class*="from-\[\#09181D\]"] p,
+.zlm-hero p {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+header[class*="min-h-"] [class*="text-primary-highlight"],
+div[class*="min-h-\[203px\]"] [class*="text-primary-highlight"],
+div[class*="min-h-\[300px\]"] [class*="text-primary-highlight"],
+div[class*="min-h-\[380px\]"] [class*="text-primary-highlight"],
+div[class*="min-h-\[400px\]"] [class*="text-primary-highlight"],
+div[class*="min-h-\[500px\]"] [class*="text-primary-highlight"],
+div[class*="min-h-\[600px\]"] [class*="text-primary-highlight"],
+div[class*="from-black"] [class*="text-primary-highlight"],
+div[class*="from-\[\#09181D\]"] [class*="text-primary-highlight"],
+div[class*="bg-\[\#09181D\]"] [class*="text-primary-highlight"],
+.zlm-hero [class*="text-primary-highlight"] {
+  color: #ffb47d !important;
+  font-weight: 800 !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 6. Top Announcement Bar Contrast */
+div[class*="bg-\[\#622220\]"],
+div[class*="bg-\[\#622220\]"] p,
+div[class*="bg-\[\#622220\]"] span,
+div[class*="bg-\[\#622220\]"] a {
+  color: #ffffff !important;
+}
+div[class*="bg-\[\#622220\]"] p {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+div[class*="bg-\[\#622220\]"] .text-primary-highlight {
+  color: #ffd4a8 !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+}
+div[class*="bg-\[\#622220\]"] a {
+  color: #ffd8b8 !important;
+  font-weight: 700 !important;
+}
+
+/* 7. Startup Cards Navy Drawer Contrast */
+div[class*="bg-\[\#2d415c\]"],
+div[class*="bg-\[\#2d415c\]"] h3,
+div[class*="bg-\[\#2d415c\]"] p,
+div[class*="bg-\[\#09181D\]"] h3,
+div[class*="bg-\[\#09181D\]"] p {
+  color: #ffffff !important;
+}
+div[class*="bg-\[\#2d415c\]"] p,
+div[class*="bg-\[\#09181D\]"] p {
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+div[class*="group"]:hover div[class*="bg-\[\#2d415c\]"],
+div[class*="group"]:hover div[class*="bg-\[\#2d415c\]"] h3 {
+  color: var(--t-ink, #141110) !important;
+}
+div[class*="group"]:hover div[class*="bg-\[\#2d415c\]"] p {
+  color: var(--t-ink-soft, #443835) !important;
+}
+
+/* 8. "From Idea to Enterprise" Stage 02 Dark Card Contrast */
+div[class*="bg-\[\#3d1413\]"] h3,
+div[class*="bg-\[\#3d1413\]"] span,
+div[class*="bg-\[\#3d1413\]"] a {
+  color: #ffffff !important;
+}
+div[class*="bg-\[\#3d1413\]"] p {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+
+/* Hero DST NIDHI-TBI pill */
+.hero-nidhi-pill,
+.zlm-hero div:has(> span.bg-primary-highlight) {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+.hero-nidhi-pill span.bg-primary-highlight {
+  background-color: #f59e0b !important;
+  box-shadow: 0 0 8px #f59e0b !important;
+}
+
+/* 9. Hero Card Container & Floating Badges */
+.hero-card-container,
+div:has(> div > img[src*="hero_iiserb_main"]),
+header div[class*="rounded-3xl"] {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  background-image: none !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.55) !important;
+  overflow: visible !important;
+}
+
+.hero-float-badge,
+.hero-float-badge-delayed {
+  position: absolute !important;
+  z-index: 25 !important;
+  background: rgba(15, 23, 42, 0.92) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55) !important;
+  border-radius: 1rem !important;
+  padding: 0.55rem 0.95rem !important;
+  overflow: visible !important;
+}
+.hero-float-badge .zlm-gl__sheen,
+.hero-float-badge-delayed .zlm-gl__sheen {
+  display: none !important;
+}
+.hero-float-badge p,
+.hero-float-badge-delayed p {
+  color: #ffffff !important;
+  text-shadow: none !important;
+}
+.hero-float-badge p:first-child,
+.hero-float-badge-delayed p:first-child {
+  color: #ffb47d !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  line-height: 1.2 !important;
+  margin: 0 !important;
+}
+.hero-float-badge p:last-child,
+.hero-float-badge-delayed p:last-child {
+  color: #ffffff !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  margin-top: 2px !important;
+}
+.hero-float-badge span.rounded-full {
+  background-color: #10b981 !important;
+  box-shadow: 0 0 10px #10b981 !important;
+}
+.hero-float-badge-delayed span.rounded-full {
+  background-color: #f59e0b !important;
+  box-shadow: 0 0 10px #f59e0b !important;
+}
+
+/* 10. Director / Team "Know More" button text */
+button:has(> span:empty),
+span.text-xs.font-medium.text-orange-500,
+span.text-xs.font-medium.text-amber-600,
+.spin-card button span {
+  color: var(--t-brand, #8b2d2b) !important;
+  font-weight: 700 !important;
+}
+
+/* 11. Consistent, Premium White Card Surfaces */
+.zlm-gl:not(.hero-card-container):not(.hero-float-badge):not(.hero-float-badge-delayed),
+.spin-card,
+article,
+div[class*="rounded-2xl"][class*="border"]:not(.hero-float-badge):not(.hero-float-badge-delayed),
+div[class*="rounded-3xl"][class*="border"]:not([class*="min-h-"]):not(.hero-card-container):not(header div) {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  border-color: #e8e2dc !important;
+  box-shadow: 0 4px 20px -4px rgba(108, 50, 49, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+}
+.zlm-gl--amber,
+.zlm-gl--rose,
+.zlm-gl--brand {
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+.zlm-gl:hover,
+.spin-card:hover,
+article:hover,
+div[class*="rounded-2xl"][class*="border"]:hover {
+  box-shadow: 0 14px 32px -6px rgba(108, 50, 49, 0.12), 0 2px 6px rgba(0, 0, 0, 0.05) !important;
+  border-color: color-mix(in srgb, var(--t-brand) 30%, var(--t-line)) !important;
+}
+
+/* 12. Stakeholder Gateways Clean Grid Layout */
+.zlm-gateways {
+  padding: 3.5rem 0 2.5rem !important;
+  background: #fbf9f6 !important;
+}
+.zlm-gw__head {
+  text-align: center !important;
+  max-width: 50rem !important;
+  margin: 0 auto 2.5rem !important;
+  padding: 0 1.25rem !important;
+}
+.zlm-gw__eyebrow {
+  display: inline-block !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.12em !important;
+  color: var(--t-brand, #8b2d2b) !important;
+  margin-bottom: 0.5rem !important;
+}
+.zlm-gw__title {
+  font-size: 2.25rem !important;
+  font-weight: 800 !important;
+  color: var(--t-ink, #141110) !important;
+  letter-spacing: -0.02em !important;
+  margin: 0 0 0.75rem !important;
+}
+.zlm-gw__sub {
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+  color: var(--t-ink-soft, #443835) !important;
+  margin: 0 !important;
+}
+.spin-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 1.5rem !important;
+  max-width: 82rem !important;
+  margin: 0 auto !important;
+  padding: 0 1.5rem !important;
+  list-style: none !important;
+}
+@media (min-width: 640px) {
+  .spin-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+@media (min-width: 1024px) {
+  .spin-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 1.5rem !important;
+    padding: 0 2rem !important;
+  }
+}
+.spin-card {
+  min-height: 20rem !important;
+  padding: 1.5rem !important;
+  border-radius: 1.25rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  background: #ffffff !important;
+  border: 1px solid #e8e2dc !important;
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.28s ease, border-color 0.28s ease !important;
+}
+.spin-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 16px 36px -8px rgba(108, 50, 49, 0.15) !important;
+  border-color: color-mix(in srgb, var(--t-brand) 40%, var(--t-line)) !important;
+}
+.spin-card__badge {
+  display: inline-block !important;
+  font-size: 0.6875rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  color: var(--t-brand, #8b2d2b) !important;
+  margin-bottom: 0.5rem !important;
+}
+.spin-card__index {
+  display: none !important;
+}
+.spin-card__title {
+  font-size: 1.25rem !important;
+  font-weight: 800 !important;
+  line-height: 1.3 !important;
+  color: var(--t-ink, #141110) !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+.spin-card:hover .spin-card__title {
+  color: var(--t-brand, #8b2d2b) !important;
+}
+.spin-card__desc {
+  font-size: 0.875rem !important;
+  line-height: 1.55 !important;
+  color: var(--t-ink-soft, #443835) !important;
+  margin-top: 0.5rem !important;
+  margin-bottom: 1rem !important;
+}
+.spin-card__links {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.5rem !important;
+  border-top: 1px solid #f0eae4 !important;
+  padding-top: 0.75rem !important;
+}
+.spin-card__links a {
+  font-size: 0.8125rem !important;
+  font-weight: 600 !important;
+  color: var(--t-brand, #8b2d2b) !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.25rem !important;
+}
+.spin-card__links a:hover {
+  color: #a63a22 !important;
+  text-decoration: underline !important;
+}
+
+/* 13. Cookie Consent Banner: Sleek, Floating Glass Pill */
+div.fixed.bottom-4.right-4.z-50.max-w-xs.w-full.bg-\[\#09181D\] {
+  max-width: 23rem !important;
+  background: rgba(18, 26, 36, 0.94) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(1.4) !important;
+  backdrop-filter: blur(16px) saturate(1.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  border-radius: 1.25rem !important;
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.5) !important;
+  padding: 1.1rem 1.25rem !important;
+}
+div.fixed.bottom-4.right-4.z-50.max-w-xs.w-full.bg-\[\#09181D\] p {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 0.8125rem !important;
+  line-height: 1.45 !important;
+}
+div.fixed.bottom-4.right-4.z-50.max-w-xs.w-full.bg-\[\#09181D\] button {
+  border-radius: 9999px !important;
+  font-weight: 600 !important;
+  font-size: 0.8125rem !important;
+  padding: 0.45rem 1.1rem !important;
+  transition: all 0.2s ease !important;
 }

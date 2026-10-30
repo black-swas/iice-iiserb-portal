@@ -3,14 +3,14 @@
     <linearGradient id="skyGrad" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#0f2537"/>
       <stop offset="45%" stop-color="#1e3a5f"/>
-      <stop offset="100%" stop-color="#6c3231"/>
+      <stop offset="100%" stop-color="var(--t-brand, #6c3231)"/>
     </linearGradient>
     <linearGradient id="glassGrad" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.42"/>
       <stop offset="100%" stop-color="#0284c7" stop-opacity="0.18"/>
     </linearGradient>
     <linearGradient id="warmSlab" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#faf9f6"/>
+      <stop offset="0%" stop-color="var(--t-cream, #faf9f6)"/>
       <stop offset="100%" stop-color="#e5e0d5"/>
     </linearGradient>
     <pattern id="archGrid" width="26" height="26" patternUnits="userSpaceOnUse">
@@ -38,7 +38,7 @@
     <!-- Left Academic Wing -->
     <rect x="24" y="95" width="140" height="180" rx="6" fill="url(#warmSlab)" stroke="var(--t-accent-text, #9a3412)" stroke-width="1.5"/>
     <!-- Central Atrium Tower -->
-    <rect x="156" y="45" width="248" height="230" rx="8" fill="#ffffff" stroke="#6c3231" stroke-width="2"/>
+    <rect x="156" y="45" width="248" height="230" rx="8" fill="#ffffff" stroke="var(--t-brand, #6c3231)" stroke-width="2"/>
     <rect x="172" y="62" width="216" height="52" rx="4" fill="url(#glassGrad)" stroke="#0284c7" stroke-width="1.2"/>
     <!-- Highlighted 2nd Floor IICE Incubation Floor -->
     <rect x="20" y="122" width="520" height="64" rx="8" fill="#fff7ed" stroke="var(--t-accent, #e66a1f)" stroke-width="3"/>

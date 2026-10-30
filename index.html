@@ -62,18 +62,40 @@
       fetchpriority="high"
     />
 
-    <script data-cfasync="false" type="module" crossorigin src="/assets/index-ZR1PTk0a.js?v=61"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-B1pelq2w.css?v=61">
-    <link rel="stylesheet" crossorigin href="/assets/zlm.css?v=61">
-    <link rel="stylesheet" crossorigin href="/assets/focus_domains.css?v=61">
-    <script defer src="/assets/focus_domains.js?v=61"></script>
-    <script defer src="/assets/zlm.js?v=61"></script>
+    <script data-cfasync="false" type="module" crossorigin src="/assets/index-ZR1PTk0a.js?v=110"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-B1pelq2w.css?v=110">
+    <link rel="stylesheet" crossorigin href="/assets/zlm.css?v=110">
+    <link rel="stylesheet" crossorigin href="/assets/focus_domains.css?v=110">
+    <script defer src="/assets/focus_domains.js?v=110"></script>
+    <script defer src="/assets/zlm.js?v=110"></script>
     <script>
-      /* Theme Studio: apply the persisted palette before first paint (no flash). */
+      /* Theme Studio: apply the persisted or query palette before first paint (no flash). */
       try {
-        var zlmT = localStorage.getItem("zlm-theme");
-        if (zlmT) document.documentElement.setAttribute("data-zlm-theme", zlmT);
+        var params = new URLSearchParams(window.location.search);
+        var qTheme = params.get("theme");
+        if (qTheme) {
+          localStorage.setItem("zlm-theme", qTheme);
+          document.documentElement.setAttribute("data-zlm-theme", qTheme);
+        } else {
+          var zlmT = localStorage.getItem("zlm-theme");
+          if (zlmT) document.documentElement.setAttribute("data-zlm-theme", zlmT);
+        }
       } catch (e) {}
+    </script>
+    <script>
+      /* Hash anchors for instant section targeting & testing */
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          var h = window.location.hash;
+          if (h === "#gateways") {
+            var gw = document.querySelector(".zlm-gateways") || document.querySelector(".spin-stage");
+            if (gw) gw.scrollIntoView({ behavior: "instant", block: "center" });
+          } else if (h === "#studio") {
+            var fab = document.querySelector(".zlm-themefab");
+            if (fab) fab.click();
+          }
+        }, 600);
+      });
     </script>
     <style>
       /* seamless branded boot: no white flash before React mounts

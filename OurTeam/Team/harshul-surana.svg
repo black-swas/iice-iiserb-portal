@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 330" width="240" height="330">
-      <rect width="240" height="330" rx="20" fill="#faf9f6" stroke="var(--t-accent-text, #9a3412)" stroke-width="2"/>
+      <rect width="240" height="330" rx="20" fill="#faf9f6" stroke="var(--t-accent-text, #9a3412))" stroke-width="2"/>
       <circle cx="120" cy="118" r="48" fill="#fff7ed" stroke="var(--t-accent-2, #b34506)" stroke-width="2.5"/>
-      <text x="120" y="128" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="30" font-weight="800" fill="var(--t-accent-text, #9a3412)">HS</text>
-      <path d="M52 248c12-42 36-62 68-62s56 20 68 62" fill="var(--t-accent-text, #9a3412)" fill-opacity="0.14" stroke="var(--t-accent-text, #9a3412)" stroke-width="2.2"/>
+      <text x="120" y="128" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="30" font-weight="800" fill="var(--t-accent-text, #9a3412))">HS</text>
+      <path d="M52 248c12-42 36-62 68-62s56 20 68 62" fill="var(--t-accent-text, #9a3412))" fill-opacity="0.14" stroke="var(--t-accent-text, #9a3412))" stroke-width="2.2"/>
       <rect x="20" y="258" width="200" height="50" rx="12" fill="#09181d"/>
       <text x="120" y="280" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="800" fill="#ffffff">Harshul Surana</text>
       <text x="120" y="297" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" font-weight="700" fill="var(--t-accent, #e66a1f)">BS-MS 2019 · IISERB</text>

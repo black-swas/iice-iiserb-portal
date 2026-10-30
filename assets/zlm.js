@@ -305,101 +305,12 @@
     });
   }
   function buildThemeStudio() {
-    var sec = document.querySelector(".zlm-studio");
-    if (!sec) {
-      var cards = THEMES.map(function (t) {
-      var sw = t.sw.map(function (hex) {
-        var n = parseInt(hex.slice(1), 16);
-        var lum = (0.2126 * ((n >> 16) & 255) + 0.7152 * ((n >> 8) & 255) + 0.0722 * (n & 255)) / 255;
-        return '<span class="zlm-studio__sw" style="background:' + hex + '"><i style="color:' +
-          (lum > 0.62 ? "rgba(20,20,20,0.6)" : "rgba(255,255,255,0.88)") + '">' + hex + "</i></span>";
-      }).join("");
-      return '<button type="button" class="zlm-studio__card" data-theme-id="' + t.id + '" aria-pressed="false">' +
-        '<span class="zlm-studio__check" aria-hidden="true">&#10003;</span>' +
-        '<span class="zlm-studio__strip">' + sw + "</span>" +
-        '<span class="zlm-studio__meta"><span class="zlm-studio__name">' + esc(t.name) +
-        '</span><span class="zlm-studio__tag">' + esc(t.tag) + "</span></span></button>";
-    }).join("");
-    sec = el("section", "zlm-studio");
-    sec.id = "zlm-theme-studio";
-    sec.setAttribute("aria-label", "Theme settings");
-    sec.innerHTML =
-      '<div class="zlm-studio__inner">' +
-      '<button type="button" class="zlm-studio__trigger" data-studio="toggle" aria-expanded="false" aria-controls="zlm-studio-panel">' +
-      '<span class="zlm-studio__trigger-swatch" aria-hidden="true"><i></i><i></i><i></i><i></i></span>' +
-      '<span class="zlm-studio__trigger-label">Theme Studio &middot; <b>' + esc(THEMES[themeIndex()].name) + "</b></span>" +
-      '<span class="zlm-studio__trigger-chevron" aria-hidden="true">&#9662;</span>' +
-      "</button>" +
-      '<div class="zlm-studio__panelwrap" id="zlm-studio-panel"><div class="zlm-studio__panel-clip"><div class="zlm-studio__panel">' +
-      '<span class="zlm-studio__eyebrow">Settings &middot; Theme Studio</span>' +
-      '<h2 class="zlm-studio__h">One palette drives the whole site</h2>' +
-      '<p class="zlm-studio__sub">Every surface, button, glow and band is wired to a single color template — click one to apply it across the entire website. Your choice survives reload; cycle through and land on the one to finalize.</p>' +
-      '<div class="zlm-studio__bar">' +
-      '<button type="button" class="zlm-studio__nav" data-studio="prev" aria-label="Previous palette">&#8592;</button>' +
-      '<button type="button" class="zlm-studio__nav" data-studio="next" aria-label="Next palette">&#8594;</button>' +
-      '<button type="button" class="zlm-studio__shuffle" data-studio="shuffle">&#8644; Cycle palette</button>' +
-      '<button type="button" class="zlm-studio__reset" data-studio="reset">Reset to Signature</button>' +
-      '<span class="zlm-studio__keyhint">While the studio is open: <kbd>Space</kbd> or <kbd>&#8592;</kbd> <kbd>&#8594;</kbd> cycle</span>' +
-      "</div>" +
-      '<div class="zlm-studio__grid">' + cards + "</div>" +
-      '<p class="zlm-studio__note">Swatches read: Brand &middot; Brand deep &middot; Accent &middot; Page base &middot; Ink &middot; Dark. Official marks (logos, badges) stay constant by design.</p>' +
-      "</div></div></div></div>";
-    sec.addEventListener("click", function (ev) {
-      var b = ev.target && ev.target.closest ? ev.target.closest("[data-theme-id],[data-studio]") : null;
-      if (!b || !sec.contains(b)) return;
-      if (b.getAttribute("data-theme-id")) { applyTheme(b.getAttribute("data-theme-id")); return; }
-      var k = b.getAttribute("data-studio");
-      if (k === "toggle") {
-        var open = sec.classList.toggle("is-open");
-        b.setAttribute("aria-expanded", open ? "true" : "false");
-        return;
-      }
-      if (k === "prev") cycleTheme(-1);
-      else if (k === "next" || k === "shuffle") cycleTheme(1);
-      else if (k === "reset") applyTheme("signature");
-    });
-    }
-    /* Home: live inside the white column (the footer slides in BEHIND it
-       at -z-10, so nothing overlaps). Elsewhere: right before the footer.
-       Re-parented on every pass — React re-renders can orphan it, and the
-       first pass may run before React has rendered either anchor. */
-    var column = document.querySelector('div[class*="-mt-20"][class*="bg-white"][class*="min-h-screen"]');
-    var footer = document.querySelector('div[class*="bg-[#09181D]"][class*="-mt-20"]');
-    if (column && column !== footer) { if (sec.parentNode !== column) column.appendChild(sec); }
-    else if (footer && footer.parentNode && sec.parentNode !== footer.parentNode) footer.parentNode.insertBefore(sec, footer);
-    else if (!sec.parentNode) document.body.appendChild(sec);
-    syncStudio();
-    buildThemeFAB();
-  }
-  /* floating palette button — always visible, bottom-left; jumps to + opens the studio */
-  function buildThemeFAB() {
+    var old = document.getElementById("zlm-theme-studio");
+    if (old) old.remove();
     var fab = document.querySelector(".zlm-themefab");
-    if (!fab) {
-      fab = el("button", "zlm-themefab");
-      fab.type = "button";
-      fab.setAttribute("aria-label", "Open color themes");
-      fab.title = "Color themes";
-      fab.innerHTML =
-        '<svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
-        '<path d="M12 3a9 9 0 1 0 0 18c1.5 0 2.2-.9 2.2-1.8 0-.5-.2-.9-.5-1.3-.3-.4-.5-.8-.5-1.3 0-1 .8-1.8 1.8-1.8H17a4.5 4.5 0 0 0 4.5-4.5C21.5 6.2 17.2 3 12 3Z"/>' +
-        '<circle cx="7.6" cy="11.6" r="0.9" fill="currentColor" stroke="none"/>' +
-        '<circle cx="10.6" cy="7.6" r="0.9" fill="currentColor" stroke="none"/>' +
-        '<circle cx="15.1" cy="7.9" r="0.9" fill="currentColor" stroke="none"/>' +
-        '<circle cx="17.4" cy="11.6" r="0.9" fill="currentColor" stroke="none"/>' +
-        '</svg>';
-      fab.addEventListener("click", function () {
-        var sec2 = document.querySelector(".zlm-studio");
-        if (!sec2) return;
-        sec2.classList.add("is-open");
-        var trg = sec2.querySelector(".zlm-studio__trigger");
-        if (trg) trg.setAttribute("aria-expanded", "true");
-        sec2.scrollIntoView({ block: "center", behavior: "smooth" });
-      });
-      document.body.appendChild(fab);
-    } else if (!fab.parentNode) {
-      document.body.appendChild(fab);
-    }
+    if (fab) fab.remove();
   }
+  function buildThemeFAB() {}
 
   /* Crisp vector lockup (real IICE icon + IISERB seal + live text) — inline so
      the site's Plus Jakarta Sans applies; /assets/logo_header.svg is the static twin. */
@@ -1111,11 +1022,12 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
     var variant = reduced ? "grid" : ring ? "ring" : "deck";
 
     var sec = el("section", "zlm-gateways");
+    sec.id = "stakeholder-gateways";
     sec.setAttribute("aria-labelledby", "zlm-gw-title");
     sec.innerHTML =
       '<div class="zlm-gw__head">' +
-      '<span class="zlm-gw__eyebrow">05 / Stakeholder Gateways</span>' +
-      '<h2 class="zlm-gw__title" id="zlm-gw-title">Information by Stakeholder Category</h2>' +
+      '<span class="zlm-gw__eyebrow">Ecosystem Pathways</span>' +
+      '<h2 class="zlm-gw__title" id="zlm-gw-title">Stakeholder Gateways</h2>' +
       '<p class="zlm-gw__sub">Four gateways into IICE — keep scrolling to bring each one forward, or jump straight to a gateway with the controls.</p>' +
       "</div>";
 
@@ -1521,6 +1433,7 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
       var cls = String(e.className || "");
       if (cls.indexOf("spin-cursor") >= 0 || cls.indexOf("rfm-") >= 0 || cls.indexOf("zlm-studio") >= 0 || cls.indexOf("zlm-boot") >= 0 || cls.indexOf("zlm-header") >= 0 || cls.indexOf("zlm-veil") >= 0) return;
       if (cls.indexOf("bg-[#09181D]") >= 0 || (e.closest && e.closest('div[class*="bg-[#09181D]"]'))) return;
+      if (cls.indexOf("hero-") >= 0 || cls.indexOf("animated-button") >= 0 || (e.closest && (e.closest(".zlm-hero") || e.closest(".hero-card-container") || e.closest(".hero-nidhi-pill") || e.closest(".hero-float-badge") || e.closest(".hero-float-badge-delayed") || e.closest("header") || e.closest('div[class*="min-h-[600px]"]') || e.closest('div[class*="min-h-[380px]"]')))) return;
       if (e.closest && (e.closest(".zlm-boot") || e.closest("#zlm-theme-studio"))) return;
 
       var tag = e.tagName;
@@ -1559,8 +1472,7 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
       if (isField) { e.classList.add("zlm-gl", "zlm-gl--field"); return; }
       e.classList.add("zlm-gl");
       if (inMarquee) e.classList.add("zlm-gl--flat");
-      else if (k % 3 === 1) e.classList.add("zlm-gl--amber");
-      else if (k % 3 === 2) e.classList.add("zlm-gl--rose");
+      
       k++;
 
       if (cs.position === "static") e.style.position = "relative";
@@ -1742,7 +1654,7 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
       var root = document.getElementById("root");
       var boot = root && root.firstElementChild;
       if (!(boot && String(boot.className).indexOf("z-[9998]") >= 0)) { clearInterval(iv); return; }
-      if (Date.now() - t0 > 2600) { clearInterval(iv); hide(); }
+      if (Date.now() - t0 > 500) { clearInterval(iv); hide(); }
     }, 380);
     document.addEventListener("visibilitychange", function () {
       if (document.visibilityState === "visible" && Date.now() - t0 > 3000) hide();
@@ -1774,7 +1686,7 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
       var r = document.getElementById("root");
       var ready = r && r.children.length >= 1;
       var elapsed = Date.now() - t0;
-      if ((ready && elapsed > 1500) || elapsed > 5200) {
+      if ((ready && elapsed > 80) || elapsed > 5200) {
         clearInterval(iv);
         boot.classList.add("is-done");
         setTimeout(function () { if (boot.parentNode) boot.parentNode.removeChild(boot); }, 700);
@@ -1857,7 +1769,39 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
       buildGateways();
       buildBento();
       if (window.mountFocusDomains) window.mountFocusDomains();
-    }
+      if (location.hash) {
+        setTimeout(function() {
+          var target = null;
+          var h = location.hash;
+          if (h === "#gateways") target = document.querySelector(".zlm-gateways");
+          else if (h === "#studio") {
+            var sec2 = document.querySelector(".zlm-studio");
+            if (sec2) { sec2.classList.add("is-open"); target = sec2; }
+          }
+          else if (h === "#flagship") target = document.querySelector(".zlm-flagship");
+          else if (h === "#journey") target = document.getElementById("containerClass");
+          else if (h === "#events") {
+            var heads = document.querySelectorAll("h2");
+            for (var i = 0; i < heads.length; i++) {
+              if ((heads[i].textContent||"").indexOf("Upcoming Events") !== -1) { target = heads[i].closest("section") || heads[i]; break; }
+            }
+          }
+          else if (h === "#news") {
+            var heads2 = document.querySelectorAll("h2");
+            for (var j = 0; j < heads2.length; j++) {
+              if ((heads2[j].textContent||"").indexOf("Latest News") !== -1) { target = heads2[j].closest("section") || heads2[j]; break; }
+            }
+          }
+          else if (h === "#focus") target = document.querySelector(".zlm-focus-domains") || document.getElementById("zlm-fd-container");
+          else if (h === "#partners") {
+            var heads3 = document.querySelectorAll("h2");
+            for (var k = 0; k < heads3.length; k++) {
+              if ((heads3[k].textContent||"").indexOf("Our Partners") !== -1) { target = heads3[k].closest("section") || heads3[k]; break; }
+            }
+          }
+          if (target) target.scrollIntoView({ behavior: "instant", block: "start" });
+        }, 150);
+      }    }
     else {
       var f = document.querySelector(".zlm-flagship"); if (f) f.remove();
       var v = document.querySelector(".zlm-gateways");
