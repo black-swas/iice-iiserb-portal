@@ -1456,7 +1456,7 @@ main .zlm-tone--a:nth-child(even) {
    Coolors-style palette rows; click to retheme the whole site.
    Markup + cycling logic live in zlm.js (buildThemeStudio).
    ============================================================ */
-.zlm-studio { position: relative; padding: 2.4rem 2rem 4.8rem; }
+.zlm-studio { position: relative; z-index: 2; padding: 2.4rem 2rem 5.5rem; }
 .zlm-studio__inner { max-width: 100rem; margin: 0 auto; }
 /* floating palette button — bottom-left on every page; opens the studio */
 .zlm-themefab {
@@ -3326,10 +3326,8 @@ input[placeholder*="Search"]:focus {
    MASTER VISUAL POLISH & READABILITY ENHANCEMENTS (SLOP REMOVAL)
    ============================================================ */
 
-/* 1. Complete Removal of Developer Theme Studio & Floating Theme FAB */
-.zlm-themefab,
-#zlm-theme-studio,
-.zlm-studio {
+/* 1. Hide Floating Theme FAB (Theme Studio remains accessible at the bottom of the page) */
+.zlm-themefab {
   display: none !important;
   visibility: hidden !important;
   pointer-events: none !important;
@@ -3397,7 +3395,7 @@ p .text-primary-highlight {
 header[class*="min-h-"],
 div[class*="min-h-\[203px\]"],
 div[class*="min-h-\[300px\]"],
-div[class*="min-h-\[380px\]"],
+div.overflow-hidden[class*="min-h-\[380px\]"]:not(.zlm-upcoming-card),
 div[class*="min-h-\[400px\]"],
 div[class*="min-h-\[500px\]"],
 div[class*="min-h-\[600px\]"],
@@ -3411,7 +3409,7 @@ div[class*="from-\[\#09181D\]"],
 header[class*="min-h-"] h1, header[class*="min-h-"] h2,
 div[class*="min-h-\[203px\]"] h1, div[class*="min-h-\[203px\]"] h2,
 div[class*="min-h-\[300px\]"] h1, div[class*="min-h-\[300px\]"] h2,
-div[class*="min-h-\[380px\]"] h1, div[class*="min-h-\[380px\]"] h2,
+div.overflow-hidden[class*="min-h-\[380px\]"]:not(.zlm-upcoming-card) h1, div.overflow-hidden[class*="min-h-\[380px\]"]:not(.zlm-upcoming-card) h2,
 div[class*="min-h-\[400px\]"] h1, div[class*="min-h-\[400px\]"] h2,
 div[class*="min-h-\[500px\]"] h1, div[class*="min-h-\[500px\]"] h2,
 div[class*="min-h-\[600px\]"] h1, div[class*="min-h-\[600px\]"] h2,
@@ -3426,7 +3424,7 @@ div[class*="from-\[\#09181D\]"] h1, div[class*="from-\[\#09181D\]"] h2,
 header[class*="min-h-"] p,
 div[class*="min-h-\[203px\]"] p,
 div[class*="min-h-\[300px\]"] p,
-div[class*="min-h-\[380px\]"] p,
+div.overflow-hidden[class*="min-h-\[380px\]"]:not(.zlm-upcoming-card) p,
 div[class*="min-h-\[400px\]"] p,
 div[class*="min-h-\[500px\]"] p,
 div[class*="min-h-\[600px\]"] p,
@@ -3439,7 +3437,7 @@ div[class*="from-\[\#09181D\]"] p,
 header[class*="min-h-"] [class*="text-primary-highlight"],
 div[class*="min-h-\[203px\]"] [class*="text-primary-highlight"],
 div[class*="min-h-\[300px\]"] [class*="text-primary-highlight"],
-div[class*="min-h-\[380px\]"] [class*="text-primary-highlight"],
+div.overflow-hidden[class*="min-h-\[380px\]"]:not(.zlm-upcoming-card) [class*="text-primary-highlight"],
 div[class*="min-h-\[400px\]"] [class*="text-primary-highlight"],
 div[class*="min-h-\[500px\]"] [class*="text-primary-highlight"],
 div[class*="min-h-\[600px\]"] [class*="text-primary-highlight"],
@@ -3764,4 +3762,325 @@ div.fixed.bottom-4.right-4.z-50.max-w-xs.w-full.bg-\[\#09181D\] button {
   font-size: 0.8125rem !important;
   padding: 0.45rem 1.1rem !important;
   transition: all 0.2s ease !important;
+}
+
+
+/* ============================================================
+   V112 OVERHAUL: ZERO GLARE, EDITORIAL OPENING SCREEN, CRISP
+   PAGE TRANSITIONS, THEMED UPCOMING EVENTS & FOOTER POLISH
+   ============================================================ */
+
+/* 1. Completely remove all glare / sheen / reflection sweeps across the site */
+.zlm-header__sheen,
+.zlm-gl__sheen,
+.zlm-veil,
+.zlm-veil__edge,
+.zlm-veil__sheen,
+.zlm-mobile::before,
+.spin-controls::after,
+#start::after {
+  display: none !important;
+  opacity: 0 !important;
+  animation: none !important;
+  content: none !important;
+}
+
+/* Permanently hide legacy React loading spinner splash */
+#root > div[class*="z-[9998]"],
+.zlm-boot {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* 2. Refined Editorial Opening Screen (replaces loading screen) */
+.zlm-opening {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  cursor: pointer;
+  background:
+    radial-gradient(60vmax 40vmax at 18% 15%, color-mix(in srgb, var(--t-accent) 18%, transparent), transparent 65%),
+    radial-gradient(50vmax 40vmax at 85% 85%, color-mix(in srgb, var(--t-brand) 40%, transparent), transparent 65%),
+    linear-gradient(155deg, var(--t-brand-2) 0%, var(--t-brand-3) 48%, var(--t-dark) 100%);
+  color: #ffffff;
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  transition: transform 0.58s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
+  will-change: transform, opacity;
+}
+.zlm-opening.is-lifting {
+  transform: translateY(-100%);
+  opacity: 0.92;
+  pointer-events: none;
+}
+.zlm-opening__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.9rem;
+  animation: zlm-open-rise 0.52s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes zlm-open-rise {
+  from { opacity: 0; transform: translateY(14px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.zlm-opening__marks {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 0.75rem 1.35rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 18px 42px -18px rgba(0, 0, 0, 0.45);
+}
+.zlm-opening__logo,
+.zlm-opening__seal {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+.zlm-opening__seal {
+  border-radius: 50%;
+}
+.zlm-opening__sep {
+  width: 1px;
+  height: 30px;
+  background: rgba(0, 0, 0, 0.14);
+}
+.zlm-opening__kicker {
+  margin: 0.35rem 0 0;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--t-accent-soft) 92%, white);
+}
+.zlm-opening__title {
+  margin: 0;
+  font-size: clamp(2.1rem, 4.5vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.05;
+  color: #ffffff;
+}
+.zlm-opening__rule {
+  width: 72px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, var(--t-accent), transparent);
+  animation: zlm-open-rule 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+@keyframes zlm-open-rule {
+  from { transform: scaleX(0); opacity: 0; }
+  to { transform: scaleX(1); opacity: 1; }
+}
+.zlm-opening__tagline {
+  margin: 0;
+  font-size: clamp(0.95rem, 1.5vw, 1.12rem);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.86);
+  letter-spacing: 0.01em;
+}
+
+/* 3. Crisp, single-source page transition (replaces veil + staggered footer flicker) */
+.zlm-page-enter {
+  animation: zlm-crisp-in 0.26s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes zlm-crisp-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 4. Upcoming Events Home Section — clean theme-aware colors & WCAG AAA contrast */
+
+/* Section Heading (Upcoming Events) */
+main .max-w-\[90rem\] h2,
+section[aria-labelledby="upcoming-events-mobile-heading"] h2,
+#upcoming-events-mobile-heading {
+  color: var(--t-ink, #0f172a) !important;
+  font-weight: 800 !important;
+}
+main .max-w-\[90rem\] h2 .text-primary-highlight,
+section[aria-labelledby="upcoming-events-mobile-heading"] h2 .text-primary-highlight,
+main .max-w-\[90rem\] h2 span[class*="text-primary-highlight"] {
+  color: var(--t-brand) !important;
+  font-weight: 800 !important;
+  text-shadow: none !important;
+}
+
+/* Desktop Main Event Card */
+.zlm-upcoming-card,
+div.zlm-upcoming-card,
+div[class*="zlm-upcoming-card"] {
+  background: #ffffff !important;
+  border: 1px solid color-mix(in srgb, var(--t-brand) 18%, var(--t-line, #e2e8f0)) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 20px 48px -18px color-mix(in srgb, var(--t-dark) 24%, transparent),
+    0 2px 10px -2px rgba(0, 0, 0, 0.05) !important;
+  border-radius: 1.75rem !important;
+}
+
+/* Event Title */
+.zlm-upcoming-card h3,
+div.zlm-upcoming-card h3,
+div[class*="zlm-upcoming-card"] h3,
+section[aria-labelledby="upcoming-events-mobile-heading"] h3 {
+  color: var(--t-ink, #09181d) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.01em !important;
+  text-shadow: none !important;
+}
+
+/* Indicator dot next to title */
+.zlm-upcoming-card .bg-primary-highlight {
+  background-color: var(--t-brand) !important;
+}
+
+/* External Link Button */
+.zlm-upcoming-card button.group,
+.zlm-upcoming-card button[aria-label*="Learn more"],
+section[aria-labelledby="upcoming-events-mobile-heading"] button.grid {
+  background-color: color-mix(in srgb, var(--t-brand) 8%, #ffffff) !important;
+  border: 1px solid color-mix(in srgb, var(--t-brand) 22%, var(--t-line, #e2e8f0)) !important;
+  color: var(--t-brand) !important;
+  box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.08) !important;
+}
+.zlm-upcoming-card button.group:hover,
+.zlm-upcoming-card button[aria-label*="Learn more"]:hover,
+section[aria-labelledby="upcoming-events-mobile-heading"] button.grid:hover {
+  background-color: var(--t-brand) !important;
+  color: #ffffff !important;
+  transform: scale(1.1) !important;
+}
+
+/* Event Description */
+.zlm-upcoming-card p,
+div.zlm-upcoming-card p,
+div[class*="zlm-upcoming-card"] p,
+div[class*="min-h-\[380px\]"].zlm-upcoming-card p,
+div[class*="min-h-\[380px\]"] .zlm-upcoming-card p,
+section[aria-labelledby="upcoming-events-mobile-heading"] p {
+  color: var(--t-ink-2, #374151) !important;
+  font-weight: 450 !important;
+  line-height: 1.65 !important;
+  text-shadow: none !important;
+}
+
+/* Desktop Metadata Pill Box */
+.zlm-upcoming-meta {
+  background: color-mix(in srgb, var(--t-brand) 5%, #f8f9fa) !important;
+  border: 1px solid color-mix(in srgb, var(--t-brand) 18%, var(--t-line, #e2e8f0)) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 2px 6px -2px rgba(0, 0, 0, 0.04) !important;
+  border-radius: 1rem !important;
+}
+.zlm-upcoming-meta > div + div {
+  border-left: 1px solid color-mix(in srgb, var(--t-brand) 18%, var(--t-line, #e2e8f0)) !important;
+}
+
+/* Labels: Location, Schedule, Academic Year */
+.zlm-upcoming-meta .uppercase,
+.zlm-upcoming-meta .text-gray-500,
+.zlm-upcoming-meta div > div:first-child,
+section[aria-labelledby="upcoming-events-mobile-heading"] dt {
+  color: var(--t-brand) !important;
+  font-weight: 800 !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+
+/* Values: Detail text */
+.zlm-upcoming-meta .font-semibold,
+.zlm-upcoming-meta .text-gray-800,
+.zlm-upcoming-meta div > div:last-child,
+section[aria-labelledby="upcoming-events-mobile-heading"] dd {
+  color: var(--t-ink, #09181d) !important;
+  font-weight: 700 !important;
+  font-size: 0.88rem !important;
+  line-height: 1.35 !important;
+  text-shadow: none !important;
+}
+
+/* Navigation Dots (Desktop) */
+.zlm-upcoming-dot {
+  border: 2px solid color-mix(in srgb, var(--t-brand) 40%, transparent) !important;
+  background: #ffffff !important;
+}
+.zlm-upcoming-dot.is-active {
+  border-color: var(--t-brand) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--t-accent) 25%, transparent) !important;
+}
+.zlm-upcoming-dot__core {
+  background: color-mix(in srgb, var(--t-brand) 28%, transparent) !important;
+}
+.zlm-upcoming-dot__core.is-active {
+  background: var(--t-brand) !important;
+}
+
+/* Bottom Progress Bar */
+.upcoming-event-progress {
+  background: linear-gradient(90deg, var(--t-brand), var(--t-accent)) !important;
+}
+
+/* Event Image Container Frame */
+.zlm-upcoming-card div[class*="border-4"] {
+  border-color: #ffffff !important;
+  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.18), 0 0 0 1px color-mix(in srgb, var(--t-brand) 18%, var(--t-line, #e2e8f0)) !important;
+}
+
+/* Mobile Upcoming Events Section */
+section[aria-labelledby="upcoming-events-mobile-heading"] > div {
+  background: #ffffff !important;
+  border: 1px solid color-mix(in srgb, var(--t-brand) 18%, var(--t-line, #e2e8f0)) !important;
+  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.1) !important;
+}
+section[aria-labelledby="upcoming-events-mobile-heading"] dl {
+  background: color-mix(in srgb, var(--t-brand) 5%, #f8f9fa) !important;
+  border: 1px solid color-mix(in srgb, var(--t-brand) 18%, var(--t-line, #e2e8f0)) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+}
+section[aria-labelledby="upcoming-events-mobile-heading"] dl > div + div {
+  border-left: 1px solid color-mix(in srgb, var(--t-brand) 18%, var(--t-line, #e2e8f0)) !important;
+}
+section[aria-labelledby="upcoming-events-mobile-heading"] div[role="tablist"] {
+  border-top: 1px solid color-mix(in srgb, var(--t-brand) 14%, var(--t-line, #e2e8f0)) !important;
+}
+section[aria-labelledby="upcoming-events-mobile-heading"] button[role="tab"] {
+  border-color: color-mix(in srgb, var(--t-brand) 30%, transparent) !important;
+}
+section[aria-labelledby="upcoming-events-mobile-heading"] button[role="tab"].bg-primary-highlight,
+section[aria-labelledby="upcoming-events-mobile-heading"] button[role="tab"][class*="bg-primary-highlight"] {
+  background-color: var(--t-brand) !important;
+}
+
+/* 5. General site-wide polish: smooth scroll, crisp focus rings, subtle scrollbar */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--t-accent) !important;
+  outline-offset: 2px !important;
+}
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--t-bg); }
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--t-brand) 42%, transparent);
+  border-radius: 999px;
+  border: 2px solid var(--t-bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--t-brand) 68%, transparent);
 }

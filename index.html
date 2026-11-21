@@ -62,12 +62,12 @@
       fetchpriority="high"
     />
 
-    <script data-cfasync="false" type="module" crossorigin src="/assets/index-ZR1PTk0a.js?v=110"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-B1pelq2w.css?v=110">
-    <link rel="stylesheet" crossorigin href="/assets/zlm.css?v=110">
-    <link rel="stylesheet" crossorigin href="/assets/focus_domains.css?v=110">
-    <script defer src="/assets/focus_domains.js?v=110"></script>
-    <script defer src="/assets/zlm.js?v=110"></script>
+    <script data-cfasync="false" type="module" crossorigin src="/assets/index-ZR1PTk0a.js?v=113"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-B1pelq2w.css?v=113">
+    <link rel="stylesheet" crossorigin href="/assets/zlm.css?v=113">
+    <link rel="stylesheet" crossorigin href="/assets/focus_domains.css?v=113">
+    <script defer src="/assets/focus_domains.js?v=113"></script>
+    <script defer src="/assets/zlm.js?v=113"></script>
     <script>
       /* Theme Studio: apply the persisted or query palette before first paint (no flash). */
       try {
@@ -91,8 +91,13 @@
             var gw = document.querySelector(".zlm-gateways") || document.querySelector(".spin-stage");
             if (gw) gw.scrollIntoView({ behavior: "instant", block: "center" });
           } else if (h === "#studio") {
-            var fab = document.querySelector(".zlm-themefab");
-            if (fab) fab.click();
+            var st = document.getElementById("zlm-theme-studio");
+            if (st) {
+              st.classList.add("is-open");
+              var tr = st.querySelector(".zlm-studio__trigger");
+              if (tr) tr.setAttribute("aria-expanded", "true");
+              st.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
           }
         }, 600);
       });

@@ -11,7 +11,7 @@
   try {
     var __t = localStorage.getItem("zlm-theme");
     if (__t) document.documentElement.setAttribute("data-zlm-theme", __t);
-  } catch (e) {}
+  } catch (e) { }
 
   /* ---------------- data ---------------- */
   var NAV = [
@@ -85,11 +85,11 @@
       ],
     },
     {
-      label: "Activities",
+      label: "Events & Activities",
       match: ["/upcoming-events", "/latest-news"],
       groups: [
         {
-          heading: "Activities",
+          heading: "Events & Activities",
           items: [
             ["Conclaves & Events", "/upcoming-events"],
             ["News & Past Events", "/latest-news"],
@@ -172,22 +172,38 @@
      Selection persists in localStorage("zlm-theme"). */
   var THEME_KEY = "zlm-theme";
   var THEMES = [
-    { id: "signature", name: "Signature Maroon", tag: "The IICE classic — heritage maroon, warm copper amber",
-      sw: ["#6C3231", "#5E2928", "#E66A1F", "#F3ECE3", "#23201E", "#09181D"] },
-    { id: "navy", name: "Institute Navy", tag: "Academic navy, gold spark — formal, campus-grade",
-      sw: ["#1E3A5F", "#152E4D", "#F59E0B", "#EEF0F4", "#1A2430", "#0B1526"] },
-    { id: "emerald", name: "Emerald Campus", tag: "Deep greens, citrine spark — growth and energy",
-      sw: ["#14584A", "#0E463A", "#EAB308", "#EDF3EE", "#15241E", "#07201A"] },
-    { id: "indigo", name: "Royal Indigo", tag: "Scholarly indigo, electric rose spark — modern research",
-      sw: ["#3F3A9E", "#322D80", "#F43F5E", "#EFEDF7", "#201C3A", "#131030"] },
-    { id: "terracotta", name: "Terracotta Dusk", tag: "Baked clay, warm honey — earthy incubator warmth",
-      sw: ["#9C4A2F", "#7E3722", "#E59819", "#F6EEE4", "#2B1D14", "#241209"] },
-    { id: "teal", name: "Teal Lagoon", tag: "Deep teal, tropical sea-coral flare — fresh and technical",
-      sw: ["#0E5F66", "#0A4B51", "#FF6B6B", "#EAF2F2", "#12302F", "#052124"] },
-    { id: "plum", name: "Plum Orchard", tag: "Berry plum, ripe apricot blossom — distinctive and warm",
-      sw: ["#6D2F5E", "#57244A", "#FB923C", "#F4EDF3", "#2A1A26", "#1E0E1A"] },
-    { id: "graphite", name: "Graphite Slate", tag: "Ink graphite, electric cyan spark — minimal, product-grade",
-      sw: ["#3A4552", "#2C3540", "#0EA5E9", "#F0F1F0", "#1B232B", "#0F151B"] },
+    {
+      id: "signature", name: "Signature Maroon", tag: "The IICE classic — heritage maroon, warm copper amber",
+      sw: ["#6C3231", "#5E2928", "#E66A1F", "#F3ECE3", "#23201E", "#09181D"]
+    },
+    {
+      id: "navy", name: "Institute Navy", tag: "Academic navy, gold spark — formal, campus-grade",
+      sw: ["#1E3A5F", "#152E4D", "#F59E0B", "#EEF0F4", "#1A2430", "#0B1526"]
+    },
+    {
+      id: "emerald", name: "Emerald Campus", tag: "Deep greens, citrine spark — growth and energy",
+      sw: ["#14584A", "#0E463A", "#EAB308", "#EDF3EE", "#15241E", "#07201A"]
+    },
+    {
+      id: "indigo", name: "Royal Indigo", tag: "Scholarly indigo, electric rose spark — modern research",
+      sw: ["#3F3A9E", "#322D80", "#F43F5E", "#EFEDF7", "#201C3A", "#131030"]
+    },
+    {
+      id: "terracotta", name: "Terracotta Dusk", tag: "Baked clay, warm honey — earthy incubator warmth",
+      sw: ["#9C4A2F", "#7E3722", "#E59819", "#F6EEE4", "#2B1D14", "#241209"]
+    },
+    {
+      id: "teal", name: "Teal Lagoon", tag: "Deep teal, tropical sea-coral flare — fresh and technical",
+      sw: ["#0E5F66", "#0A4B51", "#FF6B6B", "#EAF2F2", "#12302F", "#052124"]
+    },
+    {
+      id: "plum", name: "Plum Orchard", tag: "Berry plum, ripe apricot blossom — distinctive and warm",
+      sw: ["#6D2F5E", "#57244A", "#FB923C", "#F4EDF3", "#2A1A26", "#1E0E1A"]
+    },
+    {
+      id: "graphite", name: "Graphite Slate", tag: "Ink graphite, electric cyan spark — minimal, product-grade",
+      sw: ["#3A4552", "#2C3540", "#0EA5E9", "#F0F1F0", "#1B232B", "#0F151B"]
+    },
   ];
   function themeIndex() {
     var id = document.documentElement.getAttribute("data-zlm-theme") || "signature";
@@ -221,7 +237,7 @@
       applyTheme._t = setTimeout(function () { html.classList.remove("zlm-theming"); }, 700);
     }
     html.setAttribute("data-zlm-theme", id);
-    try { localStorage.setItem(THEME_KEY, id); } catch (e) {}
+    try { localStorage.setItem(THEME_KEY, id); } catch (e) { }
     syncStudio();
     themeSvgPass();
     inlineThemedImages();
@@ -301,16 +317,156 @@
           img.parentNode.replaceChild(svg, img);
           themeSvgPass();
         })
-        .catch(function () {});
+        .catch(function () { });
     });
   }
-  function buildThemeStudio() {
-    var old = document.getElementById("zlm-theme-studio");
-    if (old) old.remove();
-    var fab = document.querySelector(".zlm-themefab");
-    if (fab) fab.remove();
+  function isLightHex(hex) {
+    var h = String(hex || "").replace("#", "");
+    if (h.length === 3) h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2];
+    if (h.length !== 6) return false;
+    var r = parseInt(h.slice(0, 2), 16);
+    var g = parseInt(h.slice(2, 4), 16);
+    var b = parseInt(h.slice(4, 6), 16);
+    return (0.299 * r + 0.587 * g + 0.114 * b) > 165;
   }
-  function buildThemeFAB() {}
+  function ensurePersistedTheme() {
+    try {
+      var saved = localStorage.getItem(THEME_KEY);
+      if (saved && document.documentElement.getAttribute("data-zlm-theme") !== saved) {
+        document.documentElement.setAttribute("data-zlm-theme", saved);
+      }
+    } catch (e) { }
+  }
+  function buildThemeStudio() {
+    ensurePersistedTheme();
+    var footer = document.getElementById("footer") || document.querySelector("footer");
+    if (!footer || !footer.parentNode) return;
+
+    var sec = document.getElementById("zlm-theme-studio");
+    if (sec) {
+      if (sec.nextSibling !== footer) {
+        footer.parentNode.insertBefore(sec, footer);
+      }
+      syncStudio();
+      return;
+    }
+
+    sec = el("section", "zlm-studio");
+    sec.id = "zlm-theme-studio";
+    sec.setAttribute("aria-label", "Theme Studio");
+
+    var inner = el("div", "zlm-studio__inner");
+
+    var trigger = el("button", "zlm-studio__trigger");
+    trigger.type = "button";
+    trigger.setAttribute("aria-expanded", "false");
+    trigger.setAttribute("aria-controls", "zlm-studio-panel");
+    trigger.innerHTML =
+      '<span class="zlm-studio__trigger-swatch" aria-hidden="true"><i></i><i></i><i></i><i></i></span>' +
+      '<span class="zlm-studio__trigger-label">Theme: <b>' + esc(THEMES[themeIndex()].name) + "</b></span>" +
+      '<span class="zlm-studio__trigger-chevron" aria-hidden="true">▾</span>';
+
+    var wrap = el("div", "zlm-studio__panelwrap");
+    wrap.id = "zlm-studio-panel";
+    var clip = el("div", "zlm-studio__panel-clip");
+    var panel = el("div", "zlm-studio__panel");
+
+    panel.appendChild(el("span", "zlm-studio__eyebrow", "Theme Studio"));
+    panel.appendChild(el("h2", "zlm-studio__h", "Switch Portal Palette"));
+    panel.appendChild(el("p", "zlm-studio__sub",
+      "Choose from 8 curated institutional palettes. Your selection applies live across every page and persists automatically."));
+
+    var bar = el("div", "zlm-studio__bar");
+    var prevBtn = el("button", "zlm-studio__nav", "←");
+    prevBtn.type = "button";
+    prevBtn.setAttribute("aria-label", "Previous theme");
+    prevBtn.addEventListener("click", function () { cycleTheme(-1); });
+
+    var nextBtn = el("button", "zlm-studio__nav", "→");
+    nextBtn.type = "button";
+    nextBtn.setAttribute("aria-label", "Next theme");
+    nextBtn.addEventListener("click", function () { cycleTheme(1); });
+
+    var shuffleBtn = el("button", "zlm-studio__shuffle", "↻ Shuffle Palette");
+    shuffleBtn.type = "button";
+    shuffleBtn.addEventListener("click", function () {
+      var cur = themeIndex();
+      var next = cur;
+      while (next === cur && THEMES.length > 1) {
+        next = Math.floor(Math.random() * THEMES.length);
+      }
+      applyTheme(THEMES[next].id);
+    });
+
+    var resetBtn = el("button", "zlm-studio__reset", "Reset Default");
+    resetBtn.type = "button";
+    resetBtn.addEventListener("click", function () { applyTheme("signature"); });
+
+    var hint = el("span", "zlm-studio__keyhint",
+      'Press <kbd>Space</kbd>, <kbd>←</kbd> or <kbd>→</kbd> to cycle');
+
+    bar.appendChild(prevBtn);
+    bar.appendChild(nextBtn);
+    bar.appendChild(shuffleBtn);
+    bar.appendChild(resetBtn);
+    bar.appendChild(hint);
+    panel.appendChild(bar);
+
+    var grid = el("div", "zlm-studio__grid");
+    THEMES.forEach(function (t) {
+      var card = el("button", "zlm-studio__card");
+      card.type = "button";
+      card.setAttribute("data-theme-id", t.id);
+      card.setAttribute("aria-pressed", "false");
+
+      card.appendChild(el("span", "zlm-studio__check", "✓"));
+
+      var strip = el("div", "zlm-studio__strip");
+      t.sw.forEach(function (hex) {
+        var sw = el("span", "zlm-studio__sw");
+        sw.style.background = hex;
+        var code = el("i", null, esc(hex));
+        code.style.color = isLightHex(hex) ? "rgba(0, 0, 0, 0.72)" : "rgba(255, 255, 255, 0.92)";
+        if (isLightHex(hex)) code.style.textShadow = "none";
+        sw.appendChild(code);
+        strip.appendChild(sw);
+      });
+      card.appendChild(strip);
+
+      var meta = el("div", "zlm-studio__meta");
+      meta.appendChild(el("span", "zlm-studio__name", esc(t.name)));
+      meta.appendChild(el("span", "zlm-studio__tag", esc(t.tag)));
+      card.appendChild(meta);
+
+      card.addEventListener("click", function () { applyTheme(t.id); });
+      grid.appendChild(card);
+    });
+    panel.appendChild(grid);
+
+    panel.appendChild(el("p", "zlm-studio__note",
+      "Your chosen palette is stored locally in your browser and persists across page reloads and navigation."));
+
+    clip.appendChild(panel);
+    wrap.appendChild(clip);
+
+    trigger.addEventListener("click", function () {
+      var open = sec.classList.toggle("is-open");
+      trigger.setAttribute("aria-expanded", open ? "true" : "false");
+      if (open) {
+        setTimeout(function () {
+          sec.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }, 120);
+      }
+    });
+
+    inner.appendChild(trigger);
+    inner.appendChild(wrap);
+    sec.appendChild(inner);
+
+    footer.parentNode.insertBefore(sec, footer);
+    syncStudio();
+  }
+  function buildThemeFAB() { }
 
   /* Crisp vector lockup (real IICE icon + IISERB seal + live text) — inline so
      the site's Plus Jakarta Sans applies; /assets/logo_header.svg is the static twin. */
@@ -325,9 +481,9 @@
   <text x="142" y="66" font-size="10.5" font-weight="500" fill="#8a7d7a">Indian Institute of Science Education and Research Bhopal</text>
 </svg>`;
 
-/* compact lockup for phone bars — icon + seal + IICE only; badges and the
-   two long text lines of the full lockup are unreadable below ~30px tall */
-var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 72" width="210" height="72" font-family="'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif" role="img" aria-label="IICE IISER Bhopal">
+  /* compact lockup for phone bars — icon + seal + IICE only; badges and the
+     two long text lines of the full lockup are unreadable below ~30px tall */
+  var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 72" width="210" height="72" font-family="'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif" role="img" aria-label="IICE IISER Bhopal">
   <image x="0" y="7" width="58" height="58" preserveAspectRatio="xMidYMid meet" href="/assets/media/logo_iice.webp"/>
   <rect x="67" y="12" width="1.5" height="48" rx="1" fill="#e7e2dc"/>
   <clipPath id="sealClipM"><circle cx="103" cy="36" r="27"/></clipPath>
@@ -343,54 +499,36 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
     lastPath: null,
     enterScheduled: 0,
     leave: function (cb) {
-      var w = header ? header.parentElement : null;
-      if (!w || window.matchMedia("(prefers-reduced-motion: reduce)").matches) { cb(); return; }
-      var v = buildVeil();
-      v.classList.remove("zlm-veil--out");
-      /* restart the cover animation if a transition is still in flight */
-      v.classList.remove("zlm-veil--in");
-      void v.offsetWidth;
-      v.classList.add("zlm-veil--in");
-      w.classList.add("zlm-route-leave");
-      setTimeout(function () { cb(); }, 150);
+      cb();
     },
     enter: function () {
-      var w = header ? header.parentElement : null;
-      if (!w) return;
-      w.classList.remove("zlm-route-leave");
-      w.classList.add("zlm-route-enter");
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      var target = document.querySelector("main") || (document.getElementById("root") && document.getElementById("root").firstElementChild);
+      if (!target) return;
+      target.classList.remove("zlm-page-enter");
+      void target.offsetWidth;
+      target.classList.add("zlm-page-enter");
       clearTimeout(this.enterScheduled);
       this.enterScheduled = setTimeout(function () {
-        w.classList.remove("zlm-route-enter");
-      }, 650);
-      var v = document.querySelector(".zlm-veil");
-      if (v && v.classList.contains("zlm-veil--in")) {
-        v.classList.remove("zlm-veil--in");
-        v.classList.add("zlm-veil--out");
-      }
+        target.classList.remove("zlm-page-enter");
+      }, 320);
     },
   };
 
-  /* the brand veil — one fixed element, transform-only animation */
-  function buildVeil() {
-    var v = document.querySelector(".zlm-veil");
-    if (v) return v;
-    v = el("div", "zlm-veil");
-    v.setAttribute("aria-hidden", "true");
-    v.innerHTML = '<span class="zlm-veil__edge"></span><span class="zlm-veil__sheen"></span>';
-    document.body.appendChild(v);
-    return v;
-  }
+  function buildVeil() { return null; }
 
-  /* SPA-safe navigation: react-router listens to popstate */
+  /* SPA-safe navigation: crisp instant route swap + smooth content fade-in */
   function navigate(href) {
     if (href.indexOf("/") === 0 && href.indexOf("//") !== 0) {
       try {
-        pageTransition.leave(function () {
-          history.pushState({}, "", href);
-          window.dispatchEvent(new PopStateEvent("popstate"));
-          setTimeout(function () { pageTransition.enter(); }, 120);
-        });
+        if (location.pathname + location.search === href) {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          return;
+        }
+        history.pushState({}, "", href);
+        window.scrollTo({ top: 0, behavior: "instant" });
+        window.dispatchEvent(new PopStateEvent("popstate"));
+        requestAnimationFrame(function () { pageTransition.enter(); });
         return;
       } catch (err) { /* fall through */ }
     }
@@ -431,7 +569,7 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
     header.setAttribute("role", "banner");
     var inner = el("div", "zlm-header__inner");
 
-    var glass = el("span", "zlm-header__glass", '<span class="zlm-header__sheen"></span>');
+    var glass = el("span", "zlm-header__glass", "");
     glass.setAttribute("aria-hidden", "true");
     header.appendChild(glass);
 
@@ -1433,7 +1571,7 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
       var cls = String(e.className || "");
       if (cls.indexOf("spin-cursor") >= 0 || cls.indexOf("rfm-") >= 0 || cls.indexOf("zlm-studio") >= 0 || cls.indexOf("zlm-boot") >= 0 || cls.indexOf("zlm-header") >= 0 || cls.indexOf("zlm-veil") >= 0) return;
       if (cls.indexOf("bg-[#09181D]") >= 0 || (e.closest && e.closest('div[class*="bg-[#09181D]"]'))) return;
-      if (cls.indexOf("hero-") >= 0 || cls.indexOf("animated-button") >= 0 || (e.closest && (e.closest(".zlm-hero") || e.closest(".hero-card-container") || e.closest(".hero-nidhi-pill") || e.closest(".hero-float-badge") || e.closest(".hero-float-badge-delayed") || e.closest("header") || e.closest('div[class*="min-h-[600px]"]') || e.closest('div[class*="min-h-[380px]"]')))) return;
+      if (cls.indexOf("hero-") >= 0 || cls.indexOf("animated-button") >= 0 || (e.closest && (e.closest(".zlm-hero") || e.closest(".hero-card-container") || e.closest(".hero-nidhi-pill") || e.closest(".hero-float-badge") || e.closest(".hero-float-badge-delayed") || e.closest("header") || e.closest('div[class*="min-h-[600px]"]') || (e.closest('div[class*="min-h-[380px]"]') && !e.closest(".zlm-upcoming-card"))))) return;
       if (e.closest && (e.closest(".zlm-boot") || e.closest("#zlm-theme-studio"))) return;
 
       var tag = e.tagName;
@@ -1472,18 +1610,13 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
       if (isField) { e.classList.add("zlm-gl", "zlm-gl--field"); return; }
       e.classList.add("zlm-gl");
       if (inMarquee) e.classList.add("zlm-gl--flat");
-      
+
       k++;
 
       if (cs.position === "static") e.style.position = "relative";
       if (cs.overflow === "visible") e.style.overflow = "hidden";
 
-      if (!e.querySelector(":scope > .zlm-gl__sheen")) {
-        var sheen = document.createElement("span");
-        sheen.className = "zlm-gl__sheen";
-        sheen.setAttribute("aria-hidden", "true");
-        e.appendChild(sheen);
-      }
+      /* sheen/glare removed */
     });
   }
 
@@ -1528,14 +1661,14 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
         msg: String(e.message), f: e.filename, l: e.lineno, c: e.colno, t: Date.now(),
         s: e.error && e.error.stack ? String(e.error.stack).slice(0, 900) : null,
       }));
-    } catch (x) {}
+    } catch (x) { }
   });
   window.addEventListener("unhandledrejection", function (e) {
     try {
       localStorage.setItem("zlm-last-error", JSON.stringify({
         rej: String(e.reason && (e.reason.stack || e.reason)).slice(0, 900), t: Date.now(),
       }));
-    } catch (x) {}
+    } catch (x) { }
   });
   /* ---------------- bento grid ---------------- */
   function dirFromEvent(ev, cell) {
@@ -1661,37 +1794,60 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
     });
   }
 
-  /* ---------------- pretty boot screen ----------------
-     We own the whole boot: the React splash is hidden immediately (never
-     removed) and this overlay fades out once the app tree has mounted. */
+  /* ---------------- refined editorial opening screen ----------------
+     Replaces the old loading bar/spinner with a brief, dignified welcome
+     curtain shown once per browser session, lifting smoothly to reveal the portal. */
   function buildBoot() {
-    if (document.querySelector(".zlm-boot")) return;
-    var boot = el("div", "zlm-boot");
-    boot.setAttribute("aria-hidden", "true");
-    boot.innerHTML =
-      '<div class="zlm-boot__orbs"><span></span><span></span><span></span></div>' +
-      '<div class="zlm-boot__chip">' + LOGO_SVG + "</div>" +
-      '<div class="zlm-boot__bar"><span></span></div>' +
-      '<p class="zlm-boot__caption">DST NIDHI\u2013TBI \u00b7 Technology Business Incubator \u00b7 IISER Bhopal</p>';
-    document.body.appendChild(boot);
     var root = document.getElementById("root");
     var splash = root && root.firstElementChild;
     if (splash && String(splash.className).indexOf("z-[9998]") >= 0) {
+      splash.style.display = "none";
       splash.style.opacity = "0";
       splash.style.visibility = "hidden";
       splash.style.pointerEvents = "none";
     }
+    if (document.querySelector(".zlm-opening")) return;
+    var seen = false;
+    try { seen = sessionStorage.getItem("zlm-opened") === "1"; } catch (e) { }
+    if (seen || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    try { sessionStorage.setItem("zlm-opened", "1"); } catch (e) { }
+
+    var opener = el("div", "zlm-opening");
+    opener.setAttribute("role", "presentation");
+    opener.innerHTML =
+      '<div class="zlm-opening__inner">' +
+      '<div class="zlm-opening__marks">' +
+      '<img src="/assets/media/logo_iice.webp" alt="IICE" class="zlm-opening__logo" />' +
+      '<span class="zlm-opening__sep" aria-hidden="true"></span>' +
+      '<img src="/assets/media/logo_iiserb.webp" alt="IISER Bhopal" class="zlm-opening__seal" />' +
+      "</div>" +
+      '<p class="zlm-opening__kicker">DST NIDHI\u2013TBI \u00b7 IISER Bhopal</p>' +
+      '<h1 class="zlm-opening__title">IICE</h1>' +
+      '<span class="zlm-opening__rule" aria-hidden="true"></span>' +
+      '<p class="zlm-opening__tagline">Where Deep Science Becomes Enterprise</p>' +
+      "</div>";
+    document.body.appendChild(opener);
+
+    var dismissed = false;
+    function dismiss() {
+      if (dismissed) return;
+      dismissed = true;
+      opener.classList.add("is-lifting");
+      setTimeout(function () {
+        if (opener.parentNode) opener.parentNode.removeChild(opener);
+      }, 620);
+    }
+    opener.addEventListener("click", dismiss);
     var t0 = Date.now();
     var iv = setInterval(function () {
       var r = document.getElementById("root");
       var ready = r && r.children.length >= 1;
       var elapsed = Date.now() - t0;
-      if ((ready && elapsed > 80) || elapsed > 5200) {
+      if ((ready && elapsed >= 850) || elapsed >= 2200) {
         clearInterval(iv);
-        boot.classList.add("is-done");
-        setTimeout(function () { if (boot.parentNode) boot.parentNode.removeChild(boot); }, 700);
+        dismiss();
       }
-    }, 120);
+    }, 80);
   }
 
   /* ---------------- crash watchdog ----------------
@@ -1704,10 +1860,10 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
       if (!root) return;
       if (root.children.length > 0) {
         sawApp = true;
-        try { sessionStorage.removeItem("zlm-crash-reload"); } catch (e) {}
+        try { sessionStorage.removeItem("zlm-crash-reload"); } catch (e) { }
       } else if (sawApp && document.readyState === "complete") {
         var already = false;
-        try { already = !!sessionStorage.getItem("zlm-crash-reload"); sessionStorage.setItem("zlm-crash-reload", "1"); } catch (e) {}
+        try { already = !!sessionStorage.getItem("zlm-crash-reload"); sessionStorage.setItem("zlm-crash-reload", "1"); } catch (e) { }
         if (!already) location.reload();
       }
     }, 1500);
@@ -1770,7 +1926,7 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
       buildBento();
       if (window.mountFocusDomains) window.mountFocusDomains();
       if (location.hash) {
-        setTimeout(function() {
+        setTimeout(function () {
           var target = null;
           var h = location.hash;
           if (h === "#gateways") target = document.querySelector(".zlm-gateways");
@@ -1783,39 +1939,40 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
           else if (h === "#events") {
             var heads = document.querySelectorAll("h2");
             for (var i = 0; i < heads.length; i++) {
-              if ((heads[i].textContent||"").indexOf("Upcoming Events") !== -1) { target = heads[i].closest("section") || heads[i]; break; }
+              if ((heads[i].textContent || "").indexOf("Upcoming Events") !== -1) { target = heads[i].closest("section") || heads[i]; break; }
             }
           }
           else if (h === "#news") {
             var heads2 = document.querySelectorAll("h2");
             for (var j = 0; j < heads2.length; j++) {
-              if ((heads2[j].textContent||"").indexOf("Latest News") !== -1) { target = heads2[j].closest("section") || heads2[j]; break; }
+              if ((heads2[j].textContent || "").indexOf("Latest News") !== -1) { target = heads2[j].closest("section") || heads2[j]; break; }
             }
           }
           else if (h === "#focus") target = document.querySelector(".zlm-focus-domains") || document.getElementById("zlm-fd-container");
           else if (h === "#partners") {
             var heads3 = document.querySelectorAll("h2");
             for (var k = 0; k < heads3.length; k++) {
-              if ((heads3[k].textContent||"").indexOf("Our Partners") !== -1) { target = heads3[k].closest("section") || heads3[k]; break; }
+              if ((heads3[k].textContent || "").indexOf("Our Partners") !== -1) { target = heads3[k].closest("section") || heads3[k]; break; }
             }
           }
           if (target) target.scrollIntoView({ behavior: "instant", block: "start" });
         }, 150);
-      }    }
+      }
+    }
     else {
       var f = document.querySelector(".zlm-flagship"); if (f) f.remove();
       var v = document.querySelector(".zlm-gateways");
       if (v) { if (v.__gwDestroy) v.__gwDestroy(); v.remove(); }
       var vc = document.querySelector(".spin-cursor"); if (vc) vc.remove();
       var vo = document.querySelector(".zlm-ventures"); if (vo) vo.remove();
-      var pr = (function(){ var hs = document.querySelectorAll("h2"); for (var q = 0; q < hs.length; q++) if (hs[q].textContent.trim() === "Our Pride") return hs[q].closest("section"); })(); if (pr) pr.style.display = "";
+      var pr = (function () { var hs = document.querySelectorAll("h2"); for (var q = 0; q < hs.length; q++) if (hs[q].textContent.trim() === "Our Pride") return hs[q].closest("section"); })(); if (pr) pr.style.display = "";
       var b = document.querySelector(".zlm-bento"); if (b) b.remove();
       var fd = document.querySelector(".zlm-focus-domains"); if (fd) fd.remove();
       var og = document.querySelectorAll(".zlm-old-grid-hidden");
       og.forEach(function (g) { g.style.display = ""; g.classList.remove("zlm-old-grid-hidden"); });
     }
     if (location.pathname === "/our-team") buildCeoSpotlight();
-    else { var cs = document.querySelectorAll(".zlm-leadership-duo, .zlm-ceo"); cs.forEach(function(el){ el.remove(); }); }
+    else { var cs = document.querySelectorAll(".zlm-leadership-duo, .zlm-ceo"); cs.forEach(function (el) { el.remove(); }); }
     revealPass();
     scheduleTints();
     scheduleGlass();
@@ -1921,7 +2078,7 @@ var LOGO_SVG_COMPACT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210
 
   function safeInit() {
     try { init(); } catch (e) {
-      try { (window.__zlmErrors = window.__zlmErrors || []).push("init: " + String(e && e.stack || e)); } catch (x) {}
+      try { (window.__zlmErrors = window.__zlmErrors || []).push("init: " + String(e && e.stack || e)); } catch (x) { }
     }
   }
   if (document.readyState === "loading") {
