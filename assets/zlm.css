@@ -3785,10 +3785,14 @@ div.fixed.bottom-4.right-4.z-50.max-w-xs.w-full.bg-\[\#09181D\] button {
   content: none !important;
 }
 
-/* Permanently hide legacy React loading spinner splash */
+/* Permanently hide all loading screens, splash screens, and spinners */
 #root > div[class*="z-[9998]"],
-.zlm-boot {
+div[class*="z-[9998]"],
+div[class*="fixed inset-0 z-[9998]"],
+.zlm-boot,
+.zlm-opening {
   display: none !important;
+  opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
 }

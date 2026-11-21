@@ -62,12 +62,12 @@
       fetchpriority="high"
     />
 
-    <script data-cfasync="false" type="module" crossorigin src="/assets/index-ZR1PTk0a.js?v=113"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-B1pelq2w.css?v=113">
-    <link rel="stylesheet" crossorigin href="/assets/zlm.css?v=113">
-    <link rel="stylesheet" crossorigin href="/assets/focus_domains.css?v=113">
-    <script defer src="/assets/focus_domains.js?v=113"></script>
-    <script defer src="/assets/zlm.js?v=113"></script>
+    <script data-cfasync="false" type="module" crossorigin src="/assets/index-ZR1PTk0a.js?v=114"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-B1pelq2w.css?v=114">
+    <link rel="stylesheet" crossorigin href="/assets/zlm.css?v=114">
+    <link rel="stylesheet" crossorigin href="/assets/focus_domains.css?v=114">
+    <script defer src="/assets/focus_domains.js?v=114"></script>
+    <script defer src="/assets/zlm.js?v=114"></script>
     <script>
       /* Theme Studio: apply the persisted or query palette before first paint (no flash). */
       try {
@@ -106,6 +106,15 @@
       /* seamless branded boot: no white flash before React mounts
          (follows the Theme Studio palette via zlm.css §0) */
       html { background: var(--t-brand-2, #5e2928); }
+      .zlm-boot,
+      .zlm-opening,
+      div[class*="z-[9998]"],
+      div[class*="fixed inset-0 z-[9998]"] {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+      }
     </style>
   </head>
   <body>

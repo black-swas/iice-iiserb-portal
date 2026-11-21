@@ -85,11 +85,11 @@
       ],
     },
     {
-      label: "Events & Activities",
+      label: "Events and Activities",
       match: ["/upcoming-events", "/latest-news"],
       groups: [
         {
-          heading: "Events & Activities",
+          heading: "Events and Activities",
           items: [
             ["Conclaves & Events", "/upcoming-events"],
             ["News & Past Events", "/latest-news"],
@@ -1768,35 +1768,27 @@
   }
 
   /* ---------------- boot watchdog ----------------
-     If the React splash ever sticks (hidden-tab throttling), fade it out.
-     NOTE: we only HIDE it — removing React's own nodes makes React throw
-     NotFoundError on commit and unmount the entire app. */
+     Ensure any residual splash or boot screens are instantly hidden. */
   function bootWatchdog() {
-    var t0 = Date.now();
     function hide() {
       var root = document.getElementById("root");
       var boot = root && root.firstElementChild;
-      if (!(boot && String(boot.className).indexOf("z-[9998]") >= 0)) return true;
-      boot.style.transition = "opacity .25s ease";
-      boot.style.opacity = "0";
-      boot.style.visibility = "hidden";
-      boot.style.pointerEvents = "none";
-      return true;
+      if (boot && String(boot.className).indexOf("z-[9998]") >= 0) {
+        boot.style.display = "none";
+        boot.style.opacity = "0";
+        boot.style.visibility = "hidden";
+        boot.style.pointerEvents = "none";
+        try { boot.remove(); } catch (e) { }
+      }
+      var openers = document.querySelectorAll(".zlm-opening, .zlm-boot");
+      for (var i = 0; i < openers.length; i++) {
+        try { openers[i].parentNode.removeChild(openers[i]); } catch (e) { }
+      }
     }
-    var iv = setInterval(function () {
-      var root = document.getElementById("root");
-      var boot = root && root.firstElementChild;
-      if (!(boot && String(boot.className).indexOf("z-[9998]") >= 0)) { clearInterval(iv); return; }
-      if (Date.now() - t0 > 500) { clearInterval(iv); hide(); }
-    }, 380);
-    document.addEventListener("visibilitychange", function () {
-      if (document.visibilityState === "visible" && Date.now() - t0 > 3000) hide();
-    });
+    hide();
   }
 
-  /* ---------------- refined editorial opening screen ----------------
-     Replaces the old loading bar/spinner with a brief, dignified welcome
-     curtain shown once per browser session, lifting smoothly to reveal the portal. */
+  /* ---------------- boot screen (completely removed) ---------------- */
   function buildBoot() {
     var root = document.getElementById("root");
     var splash = root && root.firstElementChild;
@@ -1805,49 +1797,12 @@
       splash.style.opacity = "0";
       splash.style.visibility = "hidden";
       splash.style.pointerEvents = "none";
+      try { splash.remove(); } catch (e) { }
     }
-    if (document.querySelector(".zlm-opening")) return;
-    var seen = false;
-    try { seen = sessionStorage.getItem("zlm-opened") === "1"; } catch (e) { }
-    if (seen || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    try { sessionStorage.setItem("zlm-opened", "1"); } catch (e) { }
-
-    var opener = el("div", "zlm-opening");
-    opener.setAttribute("role", "presentation");
-    opener.innerHTML =
-      '<div class="zlm-opening__inner">' +
-      '<div class="zlm-opening__marks">' +
-      '<img src="/assets/media/logo_iice.webp" alt="IICE" class="zlm-opening__logo" />' +
-      '<span class="zlm-opening__sep" aria-hidden="true"></span>' +
-      '<img src="/assets/media/logo_iiserb.webp" alt="IISER Bhopal" class="zlm-opening__seal" />' +
-      "</div>" +
-      '<p class="zlm-opening__kicker">DST NIDHI\u2013TBI \u00b7 IISER Bhopal</p>' +
-      '<h1 class="zlm-opening__title">IICE</h1>' +
-      '<span class="zlm-opening__rule" aria-hidden="true"></span>' +
-      '<p class="zlm-opening__tagline">Where Deep Science Becomes Enterprise</p>' +
-      "</div>";
-    document.body.appendChild(opener);
-
-    var dismissed = false;
-    function dismiss() {
-      if (dismissed) return;
-      dismissed = true;
-      opener.classList.add("is-lifting");
-      setTimeout(function () {
-        if (opener.parentNode) opener.parentNode.removeChild(opener);
-      }, 620);
+    var openers = document.querySelectorAll(".zlm-opening, .zlm-boot");
+    for (var i = 0; i < openers.length; i++) {
+      try { openers[i].parentNode.removeChild(openers[i]); } catch (e) { }
     }
-    opener.addEventListener("click", dismiss);
-    var t0 = Date.now();
-    var iv = setInterval(function () {
-      var r = document.getElementById("root");
-      var ready = r && r.children.length >= 1;
-      var elapsed = Date.now() - t0;
-      if ((ready && elapsed >= 850) || elapsed >= 2200) {
-        clearInterval(iv);
-        dismiss();
-      }
-    }, 80);
   }
 
   /* ---------------- crash watchdog ----------------
